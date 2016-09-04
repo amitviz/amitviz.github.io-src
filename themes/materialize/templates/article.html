@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block seo %}
+{% include 'common_seo.html' %}
+<!-- Article specific data -->
+<meta name="twitter:title" content="{{ article.title|capitalize }}" />
+<meta name="twitter:url" content="{{ SITEURL }}/{{ article.url }}" />
+<meta property="og:title" content="{{ article.title|capitalize }}" />
+<meta property="og:url" content="{{ SITEURL }}/{{ article.url }}" />
+<meta property="og:type" content="article" />
+<meta itemprop="url" content="{{ SITEURL }}/{{ article.url }}" />
+{% if article.summary %}
+<meta property="og:description" content="{{ article.summary|striptags|e }}" />
+<meta name="twitter:description" content="{{ article.summary|striptags|e }}" />
+<meta itemprop="description" content="{{ article.summary|striptags|e }}" />
+{% endif %}
+{% if article.date %}
+<meta property="og:article:published_time" content="{{ article.date.strftime('%Y-%m-%d') }}" />
+{% endif %}
+{% if article.modified %}
+<meta property="og:article:modified_time" content="{{ article.modified.strftime('%Y-%m-%d') }}">
+<meta itemprop="dateModified" content="{{ article.date.strftime('%Y-%m-%d') }}" />
+{% endif %}
+{% if article.author %}
+<meta property="og:article:author" content="{{ article.author }}" >
+{% endif %}
+{% for tag in article.tags %}
+<meta property="og:article:tag" content="{{ tag }}">
+{% endfor %}
+{% for category in article.categories %}
+<meta property="og:article:section" content="{{ category }}" />
+{% endfor %}
+{% if article.image %}
+<meta itemprop="image" content="{{ article.image }}" />
+<meta name="twitter:image" content="{{ article.image }}" />
+<meta name="twitter:image:src" content="{{ article.image }}" />
+<meta property="og:image" content="{{ article.image }}" />
+<meta property="og:image:type" content="{{ article.image }}" />
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<section id="content" class="body">
+    <header>
+        <h2 class="entry-title">
+        <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a>
+        </h2>
+        {% import 'translations.html' as translations with context %}
+        {{ translations.translations_for(article) }}
+        <time class="published" datetime="{{ article.date.isoformat() }}">
+            <span class="grey-text">{{ article.locale_date }}</span> in 
+        </time>
+        <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
+        {% if DISQUS_SITENAME %}, <br><i class="uk-icon-comment"></i> <a href="{{ SITEURL }}/{{ article.url }}#disqus_thread" itemprop="discussionUrl"></a>{% endif %}
+        <br /><br />
+        {% for tag in article.tags|sort %}
+        <div class="chip no-print"><a href="{{ SITEURL }}/{{ tag.url}}">{{ tag }}</a></div>
+        {% endfor %}
+    </header>
+  
+    <main>
+    <div class="row">
+    <div class="col s12 m10 l9">
+    {{ article.content }}
+    </div>
+    <div class="col s12 m10 l3 no-print" id="panel-social">
+        <!-- This div is hidden by Anti-social block list -->
+        {% if SHARE %}
+            <div class="card-panel {{ COLOUR_PRIMARY }} lighten-1">
+                <div class="card-content white-text">
+                    <a class="grey-text text-lighten-3" href="https://plus.google.com/share?url={{ SITEURL }}/{{ article.url }}" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" target="_blank"><i class="fa fa-google-plus-square fa-lg fa-fw"></i> Share</a>
+                </div>
+            </div>
+            <div class="card-panel {{ COLOUR_PRIMARY }} lighten-1">
+                <div class="card-content white-text">
+                    <a class="grey-text text-lighten-3" href="https://www.facebook.com/sharer/sharer.php?u={{ SITEURL }}/{{ article.url }}" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank"><i class="fa fa-facebook fa-lg fa-fw"></i> Share</a>
+                </div>
+            </div>
+            <div class="card-panel {{ COLOUR_PRIMARY }} lighten-1">
+                <div class="card-content white-text">
+                    <a class="grey-text text-lighten-3" href="https://twitter.com/intent/tweet?text={{ article.title|striptags|urlencode }}&amp;url={{ SITEURL }}/{{ article.url }}&amp;via={{ TWITTER_USERNAME }}" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" target="_blank"><i class="fa fa-twitter fa-lg fa-fw"></i> Tweet</a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+    </div>
+    </main>
+  
+    <footer class="no-print">
+        {% if DISQUS_SITENAME %}
+        <div id="disqus_thread no-print"></div>
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = '{{ DISQUS_SITENAME }}'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        {% endif %}
+    </footer>
+</section>
+{% endblock %}

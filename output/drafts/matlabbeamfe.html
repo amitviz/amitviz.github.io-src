@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic'>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="//amit.visrolia.net/theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="//amit.visrolia.net/theme/stylesheet/tipuesearch.css">
+  <link rel="stylesheet" type="text/css" href="//amit.visrolia.net/theme/stylesheet/style.min.css">
+  <link rel="stylesheet" type="text/css" href="//amit.visrolia.net/theme/stylesheet/style.local.css">
+  <link rel='manifest' href='//amit.visrolia.net/manifest.json'>
+
+  <link href="//amit.visrolia.net/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Amit's notes Atom">
+  <link rel="shortcut icon" href="//amit.visrolia.net/favicon.ico" type="image/png">
+  <link rel="icon" href="//amit.visrolia.net/favicon.ico" type="image/png">
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <!-- Chrome, Firefox OS and Opera -->
+  <meta name="theme-color" content="#333333">
+  <!-- Windows Phone -->
+  <meta name="msapplication-navbutton-color" content="#333333">
+  <!-- iOS Safari -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<meta name="author" content="Amit" />
+<meta name="description" content="Beam Finite Element Analysis \mode{Part 2: Finite Element Analysis}} Here, we're going to take a brief overview of the steps required in producing a Finite Element (FE) programme for beam analysis. \item \textbf{Not all the answers are in these notes!} \item There should be enough hints to ..." />
+<meta name="keywords" content="matlab, code, teaching, bath">
+<meta property="og:site_name" content="Amit's notes"/>
+<meta property="og:title" content="Introduction to Matlab: lecture 2"/>
+<meta property="og:description" content="Beam Finite Element Analysis \mode{Part 2: Finite Element Analysis}} Here, we're going to take a brief overview of the steps required in producing a Finite Element (FE) programme for beam analysis. \item \textbf{Not all the answers are in these notes!} \item There should be enough hints to ..."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="//amit.visrolia.net/drafts/matlabbeamfe.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2011-11-01 00:00:00+00:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="//amit.visrolia.net/author/amit.html">
+<meta property="article:section" content="Notes"/>
+<meta property="article:tag" content="matlab"/>
+<meta property="article:tag" content="code"/>
+<meta property="article:tag" content="teaching"/>
+<meta property="article:tag" content="bath"/>
+<meta property="og:image" content="">
+
+  <title>Amit's notes &ndash; Introduction to Matlab: lecture 2</title>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="//amit.visrolia.net/">
+        <img src="//amit.visrolia.net/theme/img/profile.png" alt="Amit" title="Amit">
+      </a>
+      <h1><a href="//amit.visrolia.net/">Amit</a></h1>
+
+<p>Notes, links, and pictures</p>
+      <nav>
+        <ul class="list">
+          <li><a href="//amit.visrolia.net/pages/amit.html#amit">About&nbsp;me</a></li>
+          <li><a href="//amit.visrolia.net/pages/credits.html#credits">Credits</a></li>
+
+        </ul>
+      </nav>
+
+      <form id="tipue_search_form" action="//amit.visrolia.net/search.html" onsubmit="return (this.elements['q'].value.length > 0)">
+        <input id="tipue_search_input" name="q" type="search" autocomplete="off" placeholder="Search" required>
+      </form>
+      
+      <ul class="social">
+        <li><a class="sc-xlinkedin" href="https://uk.linkedin.com/in/amitvisrolia" target="_blank"><i class="fa fa-xlinkedin"></i></a></li>
+        <li><a class="sc-github" href="https://github.com/amitviz" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-rss" href="/feeds/atom.xml" target="_blank"><i class="fa fa-rss"></i></a></li>
+      </ul>
+      
+    </div>
+  </aside>
+  <main>
+
+<article>
+  <header>
+    <h1 id="matlabbeamfe">Introduction to Matlab: lecture&nbsp;2</h1>
+    <p>
+          Posted on November 01, 2011 in <a href="//amit.visrolia.net/category/notes.html">Notes</a>
+
+
+    </p>
+  </header>
+  <div>
+    <h2>Beam Finite Element&nbsp;Analysis</h2>
+<h3>\mode<presentation>{Part 2: Finite Element&nbsp;Analysis}}</h3>
+<p>Here, we're going to take a brief overview of the steps required in producing a Finite Element (FE) programme for beam&nbsp;analysis.</p>
+<div class="highlight"><pre><span></span>\item \textbf{Not all the answers are in these notes!}
+\item There should be enough hints to produce a 2D FE code.
+\item If we can produce a 2D code, extending it to 3D should be trivial.
+</pre></div>
+
+
+<p>\end{frame}</p>
+<h3>Parts of an <span class="caps">FE</span>&nbsp;programme}</h3>
+<p>\begin{columns}
+\mode<article>{\begin{tabular}{p{0.33\textwidth}p{0.33\textwidth}p{0.33\textwidth}}}
+  \column{0.33\textwidth}&nbsp;\begin{footnotesize}</p>
+<div class="highlight"><pre><span></span>    \item component shape
+    \item materials
+    \item loads
+
+\end{footnotesize}
+</pre></div>
+
+
+<p>\column{0.33\textwidth}\mode<article>{&amp;}
+    % empty column
+  \column{0.33\textwidth}\mode<article>{&amp;}&nbsp;\begin{footnotesize}</p>
+<div class="highlight"><pre><span></span>    \item does my component work?
+
+\end{footnotesize}
+</pre></div>
+
+
+<p>\mode<article>{\end{tabular}}&nbsp;\end{columns}</p>
+<div class="math">\begin{center}
+  \includefigure{width=1.0\textwidth}{width=1.0\textwidth}{fea2}
+\end{center}</div>
+<p>\begin{columns}
+\mode<article>{\begin{tabular}{p{0.33\textwidth}p{0.33\textwidth}p{0.33\textwidth}}}
+  \column{0.33\textwidth}&nbsp;\begin{footnotesize}</p>
+<div class="highlight"><pre><span></span>    \item digital representation: `geometry&#39;
+    \item mathematical representation of material behaviour
+    \item discretization: `meshing&#39;
+
+\end{footnotesize}
+</pre></div>
+
+
+<p>\column{0.33\textwidth}\mode<article>{&amp;}&nbsp;\begin{footnotesize}</p>
+<div class="highlight"><pre><span></span>    \item form element stiffness matrices
+    \item assemble global matrices
+    \item apply boundary conditions
+    \item solve for nodal unknowns
+
+\end{footnotesize}
+</pre></div>
+
+
+<p>\column{0.33\textwidth}\mode<article>{&amp;}&nbsp;\begin{footnotesize}</p>
+<div class="highlight"><pre><span></span>    \item calculate derived quantities, e.g. strains, stresses, thermal gradients
+    \item plotting and visualization tools
+
+\end{footnotesize}
+</pre></div>
+
+
+<p>\mode<article>{\end{tabular}}&nbsp;\end{columns}</p>
+<p>\end{frame}</p>
+<h3>Problem&nbsp;definition}</h3>
+<p>\begin{columns}
+\column{0.5\textwidth}
+\mode<presentation>{
+</p>
+<div class="math">\begin{center}
+  \includefigure{width=1.0\textwidth}{width=0.5\textwidth}{2dbeams}
+\end{center}</div>
+<p>
+}
+\column{0.5\textwidth}
+\textbf{Truss} or \textbf{beam}&nbsp;elements</p>
+<p>\item defined by length <span class="math">\(L\)</span>, area <span class="math">\(A\)</span>, modulus <span class="math">\(E\)</span>
+ \item pin-jointed
+ \item uniform strain
+ \item fixed locations, sliding joints, free&nbsp;joints</p>
+<p>Solve for displacements <span class="math">\(\mathbf{u}\)</span> (vector quantity), strains and stresses.
+\end{columns}&nbsp;\end{frame}</p>
+<h3>Pre-processor}</h3>
+<p>The problem definition already represents a suitable mesh: <code>elements' correspond to beams,</code>nodes&#8217; correspond to&nbsp;joints.</p>
+<p>\item a \textbf{node} is defined by its coordinates
+ \item an \textbf{element} is defined by the nodes it&nbsp;connects</p>
+<p>We can input these data directly in the form of a list (of course, <span class="caps">MATLAB</span> calls this a `matrix&#8217;). It&#8217;s also useful to input the moduli and areas: also as a list, since they might not be the same for all&nbsp;beams.
+</p>
+<div class="math">\begin{columns}
+\column{0.4\textwidth}
+\begin{center}
+  \includefigure{width=1.0\textwidth}{width=0.5\textwidth}{2dbeams_annotated}
+\end{center}
+\column{0.6\textwidth}
+\mfile{preproc.m}
+Remember: unit consistency!
+\end{columns}</div>
+<p>
+\end{frame}</p>
+<h3>Information about the&nbsp;model}</h3>
+<p>\label{meshinfo}
+\mfile{preproc2.m}&nbsp;\end{frame}</p>
+<h3>What about the element&nbsp;lengths?}</h3>
+<p>\label{elementlengthfunction}
+ The length of the element is also a factor. However, we don&#8217;t need to input this information, since is is implicit in the nodal coordinates and element definitions. We could write a function to calculate it for us:&nbsp;\mfile{lengthfunctionprototype.m}
+</p>
+<div class="math">\begin{columns}
+\column{0.6\textwidth}
+The function will implement (for the 2D case):
+\begin{align}
+ L = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}
+\end{align}
+\column{0.4\textwidth}
+\begin{center}
+  \includefigure{width=0.6\textwidth}{width=0.3\textwidth}{elementlength_calc}
+\end{center}
+\end{columns}</div>
+<p>
+Which arguments? A function is self contained, so it only has access to the variables that are passed to&nbsp;it.</p>
+<p>Should we calculate all the lengths in one go, or calculate the length of one specified element?&nbsp;\end{frame}</p>
+<h3>Solver&#8212;-general}</h3>
+<p>A reminder of the global system being solved (<span class="math">\(\mathbf{u}\)</span> is the&nbsp;unknown):
+</p>
+<div class="math">\begin{align}
+ [K]\{u\} = \{F\}
+\end{align}</div>
+<p>
+This is a simultaneous system of equations. Each element must&nbsp;satisfy:
+</p>
+<div class="math">\begin{align}
+ [K^e]\{u^e\} = \{F^e\}
+\end{align}</div>
+<div class="math">\begin{columns}
+ \column{0.6\textwidth}
+ The element solution vector ($\mathbf{u}^e$) defines the displacement of the element. It has 4 components, or \textbf{degrees-of-freedom}: $u_1, v_1, u_2, v_2$. We can choose to order these:
+ \begin{align}
+  \mathbf{u}^e = 
+  \begin{Bmatrix}
+    u_1\\v_1\\u_2\\v_2
+  \end{Bmatrix}
+  \text{ or }
+  \begin{Bmatrix}
+    u_1\\u_2\\v_1\\v_2
+  \end{Bmatrix}
+ \end{align}
+ \column{0.4\textwidth}
+\begin{center}
+ \includefigure{width=0.8\textwidth}{width=0.30\textwidth}{elementdisp}
+\end{center}
+\end{columns}</div>
+<p>
+The global solution vector is similar. We should choose and stick to one <span class="caps">DOF</span> ordering system.&nbsp;\end{frame}</p>
+<h3>Solver&#8212;-element matrices, local&nbsp;coordinates}</h3>
+<p>We know the stiffness of a beam, <span class="math">\(k\)</span>, in its longitudinal direction is given&nbsp;by:
+</p>
+<div class="math">\begin{columns}
+ \column{0.5\textwidth}
+\begin{align}
+ k = \frac{EA}{L}
+\end{align}
+ \column{0.5\textwidth}
+ \begin{center}
+ \includefigure{width=0.64\textwidth}{width=0.32\textwidth}{elementlocal}
+ \end{center}
+\end{columns}</div>
+<p>
+This corresponds to the direction <span class="math">\(x'\)</span> in the local coordinate system <span class="math">\((x',y')\)</span>, with associated displacements <span class="math">\((u',v')\)</span>, i.e. the&nbsp;system:
+</p>
+<div class="math">\begin{align}
+ \begin{bmatrix}
+  k &amp; 0 &amp; -k &amp; 0 \\
+  0 &amp; 0 &amp;  0 &amp; 0 \\
+ -k &amp; 0 &amp;  k &amp; 0 \\
+  0 &amp; 0 &amp;  0 &amp; 0
+ \end{bmatrix}
+ \begin{Bmatrix}
+  u'_1\\v'_1\\u'_2\\v'_2
+ \end{Bmatrix}
+ = 
+ \begin{Bmatrix}
+  F^{x'}_{1}\\F^{y'}_{1}\\F^{x'}_{2}\\F^{y'}_{2}
+ \end{Bmatrix}
+\end{align}</div>
+<p>
+\end{frame}</p>
+<h3>Solver&#8212;-local element matrices in <span class="caps">MATLAB</span>}</h3>
+<p>\label{elementmatrices}
+ We know how to get <span class="math">\(E,A,\text{ and }L\)</span> from the input data for a given element,&nbsp;(slide~\ref{meshinfo}).</p>
+<p>We know how to create empty matrices (slide~\ref{usefulmatrices}), and how to get data into them&nbsp;(slide~\ref{matrixaddressing}).</p>
+<p>So, creating the element stiffness matrices in the element coordinate system (<span class="math">\(\mathbf{K}'^e\)</span>) should be&nbsp;simple!</p>
+<p>Once we know how to calculate a single element, we can wrap the code in a loop to calculate for all the elements:
+\mfile{elementmatrices.m}&nbsp;\end{frame}</p>
+<h3>Solver&#8212;-element matrices in global&nbsp;coordinates}</h3>
+<p>Each node will have a displacement. So far, we&#8217;ve described that displacement in a local (element) coordinate system <span class="math">\((x',y')\)</span>. Where a node is shared by two elements, which element&#8217;s coordinate system should be&nbsp;used?</p>
+<p>All the displacements shoud be expressed in the \textbf{global coordinate system}, <span class="math">\((x,y)\)</span>.</p>
+<p>The global and local coordinate systems can be transformed using the transformation matrix, <span class="math">\(\mathbf{T^{\ast}}\)</span> (in&nbsp;2D):
+</p>
+<div class="math">\begin{align}
+ \begin{Bmatrix}
+  u' \\ v'
+ \end{Bmatrix}
+ &amp;=
+ \begin{bmatrix}
+  \cos\theta &amp; \sin\theta \\
+ -\sin\theta &amp; \cos\theta
+ \end{bmatrix}
+ \begin{Bmatrix}
+  u \\ v
+ \end{Bmatrix}
+ &amp; 
+ \mathbf{u}' &amp;= \mathbf{T^{\ast}}\mathbf{u}
+\end{align}</div>
+<p>
+Which allows us to perform the transform of the element local stiffness&nbsp;matrix:
+</p>
+<div class="math">\begin{align}
+ \mathbf{K}^e = \mathbf{T}^T \mathbf{K}'^{e} \mathbf{T}
+\end{align}</div>
+<p>
+where in the case of a 2 node element, <span class="math">\(\mathbf{T} = <div class="math">\begin{bmatrix}\mathbf{T^{\ast}} &amp; 0 \\ 0 &amp; \mathbf{T^{\ast}}\end{bmatrix}</div>\)</span>.&nbsp;\end{frame}</p>
+<h3>Element transform in <span class="caps">MATLAB</span>}</h3>
+<p>We need to know the angle, <span class="math">\(\theta\)</span> of the element. We could write a function, similar to our \mcode{calculate_length} function:
+\mfile{anglefunctionprototype.m}
+We could also do with a function to give us a transform matrix for any angle \mcode{theta}:
+\mfile{transformfunctionprototype.m}
+Then, in the element loop (slide~\ref{elementmatrices}), we can add the following lines:
+\mfile{elementtransformation.m}&nbsp;\end{frame}</p>
+<h3>The global stiffness&nbsp;matrix}</h3>
+<p>Now we have <span class="math">\(\mathbf{K}^e\)</span> for all the elements, we can construct the global stiffness matrix. This is a process called \textbf{assembly} or \textbf{scattering}.
+ Each of our elements had 4 <span class="caps">DOF</span>, (2 displacement components, <span class="math">\(u\)</span> and <span class="math">\(v\)</span>, at each end of the element), and hence a <span class="math">\(4\times4\)</span> <span class="math">\(\mathbf{K}^e\)</span>. We can calculate the size of <span class="math">\(\mathbf{K}\)</span> using the total number of degrees of freedom:
+\mfile{globaldof.m}
+Each element&#8217;s stiffness contribution to the global stiffness matrix must be added in at the appropriate position.&nbsp;\end{frame}</p>
+<h3>Scattering}</h3>
+<p>Example: element 3 connects nodes 1 and 3 (\mcode{element_nodes(3,:)}).
+Element stiffness&nbsp;matrix:
+</p>
+<div class="math">\begin{align*}
+ \begin{array}{r}
+  \text{\ding{192}, \ding{202}} x \\
+  \text{\ding{192}, \ding{202}} y \\
+  \text{\ding{193}, \ding{204}} x \\
+  \text{\ding{193}, \ding{204}} y \\
+ \end{array}
+ \begin{bmatrix}
+  k^{3}_{11} &amp; k^{3}_{12} &amp;  k^{3}_{13} &amp; k^{3}_{14} \\  
+  k^{3}_{21} &amp; k^{3}_{22} &amp;  k^{3}_{23} &amp; k^{3}_{24} \\
+  k^{3}_{31} &amp; k^{3}_{32} &amp;  k^{3}_{33} &amp; k^{3}_{34} \\
+  k^{3}_{41} &amp; k^{3}_{42} &amp;  k^{3}_{43} &amp; k^{3}_{44}
+ \end{bmatrix}
+\end{align*}</div>
+<p>
+Global stiffness&nbsp;matrix:
+</p>
+<div class="math">\begin{align*}
+ \rightarrow
+ \begin{bmatrix}
+  k^{3}_{11} &amp; k^{3}_{12} &amp; 0 &amp; 0 &amp;  k^{3}_{13} &amp; k^{3}_{14} \\  
+  k^{3}_{21} &amp; k^{3}_{22} &amp; 0 &amp; 0 &amp;  k^{3}_{23} &amp; k^{3}_{24} \\
+  0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+  0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+  k^{3}_{31} &amp; k^{3}_{32} &amp; 0 &amp; 0 &amp;  k^{3}_{33} &amp; k^{3}_{34} \\
+  k^{3}_{41} &amp; k^{3}_{42} &amp; 0 &amp; 0 &amp;  k^{3}_{43} &amp; k^{3}_{44}
+ \end{bmatrix}
+ \begin{array}{l}
+  \text{\ding{202}} x \\
+  \text{\ding{202}} y \\
+  \text{\ding{203}} x \\
+  \text{\ding{203}} y \\
+  \text{\ding{204}} x \\
+  \text{\ding{204}} y
+ \end{array}
+\end{align*}</div>
+<p>
+(\ding{192}:local or element node numbers; \ding{202}: global node numbers)&nbsp;\end{frame}</p>
+<h3>The scattering process in <span class="caps">MATLAB</span>}</h3>
+<p>\mfile{scattering.m}&nbsp;\end{frame}</p>
+<h3>The force&nbsp;vector}</h3>
+<p>We have our stiffness matrix. We also need the force vector, <span class="math">\(F\)</span>.</p>
+<div class="math">\begin{columns}[t]
+ \column{0.5\textwidth}
+Remember, when we input this, we input it in the form:
+ \begin{align}
+  \begin{bmatrix}
+   F_{x}^{1} &amp; F_{y}^{1} \\
+   F_{x}^{2} &amp; F_{y}^{2} \\
+   F_{x}^{3} &amp; F_{y}^{3} 
+  \end{bmatrix}
+ \end{align}
+ \column{0.5\textwidth}
+but we really need it as a vector, with the same ordering scheme as the stiffness matrix:
+ \begin{align}
+  \begin{bmatrix}
+   F_{x}^{1} \\ F_{y}^{1} \\
+   F_{x}^{2} \\ F_{y}^{2} \\
+   F_{x}^{3} \\ F_{y}^{3} 
+  \end{bmatrix}
+ \end{align}
+\end{columns}</div>
+<p>We need to perform a similar scattering operation to form <span class="math">\(F\)</span>. We only need 1 loop, since there is only 1 column in the vector.&nbsp;\end{frame}</p>
+<h3>Applying boundary&nbsp;conditions}</h3>
+<p>At the moment, the system is unconstrained: this means that there is no unique solution, and rigid body motion can occur. We need to input some boundary&nbsp;conditions:
+  </p>
+<div class="math">\begin{align}
+   \begin{bmatrix}
+    1 &amp; 1 \\
+    0 &amp; 1 \\
+    0 &amp; 0
+   \end{bmatrix}
+   \begin{array}{l}
+    \text{node 1: constrained (1) in x and y directions} \\
+    \text{node 2: sliding joint, constrained in y only} \\
+    \text{node 3: free: not constrained at all}
+   \end{array}
+  \end{align}</div>
+<p>
+where `<span class="math">\(1\)</span><span class="quo">&#8216;</span> indicates that a degree of freedom is constrained to no&nbsp;displacement.</p>
+<p>The boundary condition is applied by eliminating the row and column relevent to the degree of freedom in the system of equations.&nbsp;\end{frame}</p>
+<h3>Applying boundary conditions in <span class="caps">MATLAB</span>}</h3>
+<p>Removing rows and columns from the matrix will change their size, and we might lose track of which row/column corresponds to which displacement. Instead, we can achieve the same by replacing the rows and columns by the relevant bits of the identity&nbsp;matrix:
+</p>
+<div class="math">\begin{align}
+ \begin{bmatrix}
+  k_{11} &amp; k_{12} &amp;  k_{13} &amp; k_{14} \\  
+  k_{21} &amp; k_{22} &amp;  k_{23} &amp; k_{24} \\
+  k_{31} &amp; k_{32} &amp;  k_{33} &amp; k_{34} \\
+  k_{41} &amp; k_{42} &amp;  k_{43} &amp; k_{44}
+ \end{bmatrix}
+ \begin{Bmatrix}
+  u_1 \\ v_1 \\ u_2 \\ v_2
+ \end{Bmatrix}
+ = 
+ \begin{Bmatrix}
+  F_{1}^{x} \\ F_{1}^{y} \\ F_{2}^{x} \\ F_{2}^{y}
+ \end{Bmatrix}
+\end{align}</div>
+<p>
+Constraining <span class="math">\(v_1=0\)</span>, 
+</p>
+<div class="math">\begin{align}
+ \begin{bmatrix}
+  k_{11} &amp; 0 &amp;  k_{13} &amp; k_{14} \\  
+  0      &amp; 1 &amp;  0      &amp; 0      \\
+  k_{31} &amp; 0 &amp;  k_{33} &amp; k_{34} \\
+  k_{41} &amp; 0 &amp;  k_{43} &amp; k_{44}
+ \end{bmatrix}
+ \begin{Bmatrix}
+  u_1 \\ v_1 \\ u_2 \\ v_2
+ \end{Bmatrix}
+ = 
+ \begin{Bmatrix}
+  F_{1}^{x} \\ 0 \\ F_{2}^{x} \\ F_{2}^{y}
+ \end{Bmatrix}
+\end{align}</div>
+<p>
+\end{frame}</p>
+<h3>Applying boundary conditions in <span class="caps">MATLAB</span> <span class="caps">II</span>}</h3>
+<p>Applying this process in <span class="caps">MATLAB</span> should be easy:
+  \mfile{applybc.m}&nbsp;\end{frame}</p>
+<h3>Solving}</h3>
+<p>Now all our hard work is done. The system is set up, and all that remains is for <span class="caps">MATLAB</span> to solve it for the unknowns (in our case, displacements). We saw how to do this using the <span class="caps">MATLAB</span> `backslash&#8217; operator earlier:
+  \mfile{solve.m}&nbsp;\end{frame}</p>
+<h3>Post&nbsp;processor}</h3>
+<p>Once the displacements <span class="math">\(\mathbf{u}\)</span> are determined, calculating the strain shouldn&#8217;t be difficult. Strain is given&nbsp;by:
+  </p>
+<div class="math">\begin{align}
+    \varepsilon_{x'} = \frac{\partial u'}{\partial x'} = \frac{\Delta L}{L}
+  \end{align}</div>
+<p>
+ where <span class="math">\(\Delta L\)</span> is the change in length of the element. The new length of the element (after displacement) is given by the length calculated using the original coordinates, <span class="math">\(\mathbf{x}\)</span>, plus the displacements <span class="math">\(\mathbf{u}\)</span>. In fact, we could probably reuse our function&nbsp;\mcode{calculate_length()}.</p>
+<p>Knowing the strains, stresses are then trivial to calculate.&nbsp;\end{frame}</p>
+<h3>Conclusions}</h3>
+<p>Not all the required code has been given here, but there is enough to construct a simple beam element finite element code, in 1-, 2- or 3-D as required. Using information from earlier in the <span class="caps">FE</span> course, it should be possible to add in moment sustaining&nbsp;elements.</p>
+<p>\item The easiest way to get started in <span class="caps">MATLAB</span> is just to play with it
+   \item Begin by using it as a calculator - a single operation at a time, rather than as a full programming language
+   \item <span class="caps">MATLAB</span> `thinks&#8217; in matrices: once the matrices are defined, <span class="caps">MATLAB</span> understands what it means  to e.g. multiply matrices
+   \item Even when using it as a programming language, it&#8217;s easy to go back to the command line and try typing a line in to see what it&nbsp;does</p>
+<p>\end{frame}</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="//amit.visrolia.net/tag/matlab.html">matlab</a>
+      <a href="//amit.visrolia.net/tag/code.html">code</a>
+      <a href="//amit.visrolia.net/tag/teaching.html">teaching</a>
+      <a href="//amit.visrolia.net/tag/bath.html">bath</a>
+    </p>
+  </div>
+
+
+
+</article>
+
+    <footer>
+<p>&copy; Amit Visrolia 2016</p>
+    </footer>
+  </main>
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Amit's notes ",
+  "url" : "//amit.visrolia.net",
+  "image": "",
+  "description": "Amit's notes, links, and pictures"
+}
+</script>
+</body>
+</html>

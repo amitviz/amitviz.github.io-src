@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic'>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="//amit.visrolia.net/theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="//amit.visrolia.net/theme/stylesheet/tipuesearch.css">
+  <link rel="stylesheet" type="text/css" href="//amit.visrolia.net/theme/stylesheet/style.min.css">
+  <link rel="stylesheet" type="text/css" href="//amit.visrolia.net/theme/stylesheet/style.local.css">
+  <link rel='manifest' href='//amit.visrolia.net/manifest.json'>
+
+  <link href="//amit.visrolia.net/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Amit's notes Atom">
+  <link rel="shortcut icon" href="//amit.visrolia.net/favicon.ico" type="image/png">
+  <link rel="icon" href="//amit.visrolia.net/favicon.ico" type="image/png">
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <!-- Chrome, Firefox OS and Opera -->
+  <meta name="theme-color" content="#333333">
+  <!-- Windows Phone -->
+  <meta name="msapplication-navbutton-color" content="#333333">
+  <!-- iOS Safari -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<meta name="author" content="Amit" />
+<meta name="description" content="How to sync this blog to Github Now that some of the basic functionality of the blog is up and running, I have started to investigate hosting it. I’ve chosen Github, for the fact that it’s simple and free. The way I do this is documented here. The ..." />
+<meta name="keywords" content="code, pelican, git">
+<meta property="og:site_name" content="Amit's notes"/>
+<meta property="og:title" content="Github pages"/>
+<meta property="og:description" content="How to sync this blog to Github Now that some of the basic functionality of the blog is up and running, I have started to investigate hosting it. I’ve chosen Github, for the fact that it’s simple and free. The way I do this is documented here. The ..."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="//amit.visrolia.net/github-pages.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2015-11-08 00:00:00+00:00"/>
+<meta property="article:modified_time" content="2015-11-09 00:00:00+00:00"/>
+<meta property="article:author" content="//amit.visrolia.net/author/amit.html">
+<meta property="article:section" content="Notes"/>
+<meta property="article:tag" content="code"/>
+<meta property="article:tag" content="pelican"/>
+<meta property="article:tag" content="git"/>
+<meta property="og:image" content="">
+
+  <title>Amit's notes &ndash; Github pages</title>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="//amit.visrolia.net/">
+        <img src="//amit.visrolia.net/theme/img/profile.png" alt="Amit" title="Amit">
+      </a>
+      <h1><a href="//amit.visrolia.net/">Amit</a></h1>
+
+<p>Notes, links, and pictures</p>
+      <nav>
+        <ul class="list">
+          <li><a href="//amit.visrolia.net/pages/amit.html#amit">About&nbsp;me</a></li>
+          <li><a href="//amit.visrolia.net/pages/credits.html#credits">Credits</a></li>
+
+        </ul>
+      </nav>
+
+      <form id="tipue_search_form" action="//amit.visrolia.net/search.html" onsubmit="return (this.elements['q'].value.length > 0)">
+        <input id="tipue_search_input" name="q" type="search" autocomplete="off" placeholder="Search" required>
+      </form>
+      
+      <ul class="social">
+        <li><a class="sc-xlinkedin" href="https://uk.linkedin.com/in/amitvisrolia" target="_blank"><i class="fa fa-xlinkedin"></i></a></li>
+        <li><a class="sc-github" href="https://github.com/amitviz" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-rss" href="/feeds/atom.xml" target="_blank"><i class="fa fa-rss"></i></a></li>
+      </ul>
+      
+    </div>
+  </aside>
+  <main>
+
+<article>
+  <header>
+    <h1 id="github-pages">Github&nbsp;pages</h1>
+    <p>
+          Posted on November 08, 2015 in <a href="//amit.visrolia.net/category/notes.html">Notes</a>
+
+
+    </p>
+  </header>
+  <div>
+    <p>How to sync this blog to&nbsp;Github</p>
+<p>Now that some of the basic functionality of the blog is up and running, I have started to investigate hosting it. I&#8217;ve chosen Github, for the fact that it&#8217;s simple and free. The way I do this is documented&nbsp;here.</p>
+<p>The local folder has been set up as a git repository. <a href="https://github.com/davisp/ghp-import">ghp-import</a> is&nbsp;installed:</p>
+<div class="highlight"><pre><span></span>pip install ghp-import
+</pre></div>
+
+
+<p>Do the usual initialization and&nbsp;commit:</p>
+<div class="highlight"><pre><span></span>git add .
+git commit -m <span class="s2">&quot;&lt;message&gt;&quot;</span>
+</pre></div>
+
+
+<p>Then, use <code>ghp-import</code> to add files to the branch gh-pages, then push to&nbsp;Github:</p>
+<div class="highlight"><pre><span></span>ghp-import output
+git push git@github.com:amitviz/amitviz.github.io.git gh-pages:master
+</pre></div>
+
+
+<p>To be perfectly honest, this seems like a bit much effort. What I should do at some point is to add these commands to the makefile to automate as much as&nbsp;possible.</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="//amit.visrolia.net/tag/code.html">code</a>
+      <a href="//amit.visrolia.net/tag/pelican.html">pelican</a>
+      <a href="//amit.visrolia.net/tag/git.html">git</a>
+    </p>
+  </div>
+
+
+
+</article>
+
+    <footer>
+<p>&copy; Amit Visrolia 2016</p>
+    </footer>
+  </main>
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Amit's notes ",
+  "url" : "//amit.visrolia.net",
+  "image": "",
+  "description": "Amit's notes, links, and pictures"
+}
+</script>
+</body>
+</html>

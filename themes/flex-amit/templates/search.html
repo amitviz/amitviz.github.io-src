@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %} search results{% endblock %}
+{% block description %}{% endblock %}
+
+{% block content %}
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript" src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/tipuesearch_set.js"></script>
+<script type="text/javascript" src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/tipuesearch.min.js"></script>
+<script type="text/javascript" src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/tipuesearch_main.js"></script>
+
+<article>
+  <header>
+    <h1>Search results</h1>
+  </header>
+  
+  <!--
+  <form id="tipue_search_form_search" action="{{ SITEURL }}/search.html" onsubmit="return (this.elements['q'].value.length > 0)">
+        <input id="tipue_search_input_search" name="q" type="search" autocomplete="off" placeholder="Search" required>
+  </form>
+  -->
+      
+  <div id="tipue_search_content"></div>
+
+</article>
+{% endblock %}
+
+
+

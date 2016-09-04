@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic'>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="//amit.visrolia.net/theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="//amit.visrolia.net/theme/stylesheet/tipuesearch.css">
+  <link rel="stylesheet" type="text/css" href="//amit.visrolia.net/theme/stylesheet/style.min.css">
+  <link rel="stylesheet" type="text/css" href="//amit.visrolia.net/theme/stylesheet/style.local.css">
+  <link rel='manifest' href='//amit.visrolia.net/manifest.json'>
+
+  <link href="//amit.visrolia.net/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Amit's notes Atom">
+  <link rel="shortcut icon" href="//amit.visrolia.net/favicon.ico" type="image/png">
+  <link rel="icon" href="//amit.visrolia.net/favicon.ico" type="image/png">
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <!-- Chrome, Firefox OS and Opera -->
+  <meta name="theme-color" content="#333333">
+  <!-- Windows Phone -->
+  <meta name="msapplication-navbutton-color" content="#333333">
+  <!-- iOS Safari -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<meta name="author" content="Amit" />
+<meta name="description" content="Markdown reference" />
+<meta name="keywords" content="code, pelican, markdown">
+<meta property="og:site_name" content="Amit's notes"/>
+<meta property="og:title" content="Markdown"/>
+<meta property="og:description" content="Markdown reference"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="//amit.visrolia.net/markdown.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2015-11-10 00:00:00+00:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="//amit.visrolia.net/author/amit.html">
+<meta property="article:section" content="Notes"/>
+<meta property="article:tag" content="code"/>
+<meta property="article:tag" content="pelican"/>
+<meta property="article:tag" content="markdown"/>
+<meta property="og:image" content="">
+
+  <title>Amit's notes &ndash; Markdown</title>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="//amit.visrolia.net/">
+        <img src="//amit.visrolia.net/theme/img/profile.png" alt="Amit" title="Amit">
+      </a>
+      <h1><a href="//amit.visrolia.net/">Amit</a></h1>
+
+<p>Notes, links, and pictures</p>
+      <nav>
+        <ul class="list">
+          <li><a href="//amit.visrolia.net/pages/amit.html#amit">About&nbsp;me</a></li>
+          <li><a href="//amit.visrolia.net/pages/credits.html#credits">Credits</a></li>
+
+        </ul>
+      </nav>
+
+      <form id="tipue_search_form" action="//amit.visrolia.net/search.html" onsubmit="return (this.elements['q'].value.length > 0)">
+        <input id="tipue_search_input" name="q" type="search" autocomplete="off" placeholder="Search" required>
+      </form>
+      
+      <ul class="social">
+        <li><a class="sc-xlinkedin" href="https://uk.linkedin.com/in/amitvisrolia" target="_blank"><i class="fa fa-xlinkedin"></i></a></li>
+        <li><a class="sc-github" href="https://github.com/amitviz" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-rss" href="/feeds/atom.xml" target="_blank"><i class="fa fa-rss"></i></a></li>
+      </ul>
+      
+    </div>
+  </aside>
+  <main>
+
+<article>
+  <header>
+    <h1 id="markdown">Markdown</h1>
+    <p>
+          Posted on November 10, 2015 in <a href="//amit.visrolia.net/category/notes.html">Notes</a>
+
+
+    </p>
+  </header>
+  <div>
+    <p>The posts on this blog are written in Markdown. The full specs of Markdown are <a href="//daringfireball.net/projects/markdown/syntax">here</a>, but the most useful commands are summarized&nbsp;here.</p>
+<p>Markdown is written in a plain text&nbsp;file.</p>
+<h2>Headings</h2>
+<p>Headings are denoted by a series of <code>#</code> characters for heading levels&nbsp;1-6:</p>
+<div class="highlight"><pre><span></span># Heading 1
+## Heading 2
+### Heading 3
+#### Heading 4
+##### Heading 5
+###### Heading 6
+</pre></div>
+
+
+<h1>Heading&nbsp;1</h1>
+<h2>Heading&nbsp;2</h2>
+<h3>Heading&nbsp;3</h3>
+<h4>Heading&nbsp;4</h4>
+<h5>Heading&nbsp;5</h5>
+<h6>Heading&nbsp;6</h6>
+<h2>Formatting</h2>
+<p>Paragraphs are separated by blank lines.<br />
+Line breaks are added by terminating lines with two&nbsp;spaces.</p>
+<div class="highlight"><pre><span></span>Text formatting: *italic*, **bold**, `monospace`.
+</pre></div>
+
+
+<p>Text formatting: <em>italic</em>, <strong>bold</strong>, <code>monospace</code>.</p>
+<p>The monospace formatting is also useful for escaping certain characters and strings, but also see the code block section below. The escape code for special characters is <code>\</code>.</p>
+<p>Horizontal rules are specified by three or more  <code>-</code> characters on a&nbsp;line.</p>
+<div class="highlight"><pre><span></span>---
+</pre></div>
+
+
+<hr />
+<h2>Links</h2>
+<p>There are two main kinds of link, I&#8217;ll call them inline and&nbsp;referenced.</p>
+<div class="highlight"><pre><span></span>This is an [inline](//www.example.com) link.
+
+And this is a [referenced] [ref] link.
+[ref]: //www.example.com
+</pre></div>
+
+
+<p>This is an <a href="//www.example.com">inline</a>&nbsp;link.</p>
+<p>And this is a <a href="//www.example.com">referenced</a>&nbsp;link.</p>
+<h2>Code</h2>
+<p>A code block is indicated by starting the line with 4 spaces (a tab in most of the text editors I&#8217;ve set up). This will format the code in a monospace font, and ensure that everything in the block remains escaped (rather than parsed as&nbsp;Markdown).</p>
+<p>Pelican also has syntax highlighting support via Pygments. To invoke this, add <code>:::&lt;language&gt;</code> to the beginning of the code block, where <code>&lt;language&gt;</code> is replaced by whatever language you want to highlight for. Alternatively, use <code>#!&lt;language&gt;</code> to add line&nbsp;numbering.</p>
+<p>There&#8217;s a demonstration of this on <a href="/pythonexample.html">this</a>&nbsp;page.</p>
+<h2>Images</h2>
+<p>Images are incorporated as a special kind of link, preceeded by the <code>!</code> character. They too come in inline and referenced&nbsp;forms.</p>
+<p>Inline</p>
+<div class="highlight"><pre><span></span><span class="o">!</span><span class="p">[</span><span class="n">Alt</span> <span class="n">text</span><span class="p">](</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">img</span><span class="p">.</span><span class="n">jpg</span><span class="p">)</span>
+<span class="o">!</span><span class="p">[</span><span class="n">Alt</span> <span class="n">text</span><span class="p">](</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">img</span><span class="p">.</span><span class="n">jpg</span> <span class="s">&quot;Optional title&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Referenced</p>
+<div class="highlight"><pre><span></span><span class="o">!</span><span class="p">[</span><span class="n">Alt</span> <span class="n">text</span><span class="p">][</span><span class="kt">id</span><span class="p">]</span>
+<span class="p">[</span><span class="kt">id</span><span class="p">]</span><span class="o">:</span> <span class="n">url</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">image</span>  <span class="s">&quot;Optional title attribute&quot;</span>
+</pre></div>
+
+
+<h2>Anything&nbsp;else</h2>
+<p><span class="caps">HTML</span> can be incorporated directly into Markdown for anything that&#8217;s not otherwise easily&nbsp;accomplished.</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="//amit.visrolia.net/tag/code.html">code</a>
+      <a href="//amit.visrolia.net/tag/pelican.html">pelican</a>
+      <a href="//amit.visrolia.net/tag/markdown.html">markdown</a>
+    </p>
+  </div>
+
+
+
+</article>
+
+    <footer>
+<p>&copy; Amit Visrolia 2016</p>
+    </footer>
+  </main>
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Amit's notes ",
+  "url" : "//amit.visrolia.net",
+  "image": "",
+  "description": "Amit's notes, links, and pictures"
+}
+</script>
+</body>
+</html>

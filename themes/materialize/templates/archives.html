@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Archives{% endblock %}
+{% block content %}
+<h1>Archives</h1>
+
+{% for article in dates %}
+    <article>
+        <h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
+        <p class="grey-text"><time datetime="{{ article.date.strftime('%Y-%m-%d') }}">{{ article.locale_date }}</time></p>
+        <div class="row">
+        <div class="col s12 m10 l9">
+        <p>{{ ' '.join(article.content.split(' ')[0:75])|striptags }}...</p>
+        </div>
+        </div>
+    </article>
+{% endfor %}
+{% endblock %}

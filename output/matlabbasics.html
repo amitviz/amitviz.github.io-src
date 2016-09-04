@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic'>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="//amit.visrolia.net/theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="//amit.visrolia.net/theme/stylesheet/tipuesearch.css">
+  <link rel="stylesheet" type="text/css" href="//amit.visrolia.net/theme/stylesheet/style.min.css">
+  <link rel="stylesheet" type="text/css" href="//amit.visrolia.net/theme/stylesheet/style.local.css">
+  <link rel='manifest' href='//amit.visrolia.net/manifest.json'>
+
+  <link href="//amit.visrolia.net/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Amit's notes Atom">
+  <link rel="shortcut icon" href="//amit.visrolia.net/favicon.ico" type="image/png">
+  <link rel="icon" href="//amit.visrolia.net/favicon.ico" type="image/png">
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <!-- Chrome, Firefox OS and Opera -->
+  <meta name="theme-color" content="#333333">
+  <!-- Windows Phone -->
+  <meta name="msapplication-navbutton-color" content="#333333">
+  <!-- iOS Safari -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<meta name="author" content="Amit" />
+<meta name="description" content="Matlab basics The purpose of these lectures is to introduce the students to the MATLAB environment, and use it to solve simple beam finite element problems. At the end of the lectures, the students should have enough information to be able to: Use MATLAB to write complex programmes using multiple ..." />
+<meta name="keywords" content="matlab, code, teaching, bath">
+<meta property="og:site_name" content="Amit's notes"/>
+<meta property="og:title" content="Introduction to Matlab: lecture 1"/>
+<meta property="og:description" content="Matlab basics The purpose of these lectures is to introduce the students to the MATLAB environment, and use it to solve simple beam finite element problems. At the end of the lectures, the students should have enough information to be able to: Use MATLAB to write complex programmes using multiple ..."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="//amit.visrolia.net/matlabbasics.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2011-10-31 00:00:00+00:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="//amit.visrolia.net/author/amit.html">
+<meta property="article:section" content="Notes"/>
+<meta property="article:tag" content="matlab"/>
+<meta property="article:tag" content="code"/>
+<meta property="article:tag" content="teaching"/>
+<meta property="article:tag" content="bath"/>
+<meta property="og:image" content="">
+
+  <title>Amit's notes &ndash; Introduction to Matlab: lecture 1</title>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="//amit.visrolia.net/">
+        <img src="//amit.visrolia.net/theme/img/profile.png" alt="Amit" title="Amit">
+      </a>
+      <h1><a href="//amit.visrolia.net/">Amit</a></h1>
+
+<p>Notes, links, and pictures</p>
+      <nav>
+        <ul class="list">
+          <li><a href="//amit.visrolia.net/pages/amit.html#amit">About&nbsp;me</a></li>
+          <li><a href="//amit.visrolia.net/pages/credits.html#credits">Credits</a></li>
+
+        </ul>
+      </nav>
+
+      <form id="tipue_search_form" action="//amit.visrolia.net/search.html" onsubmit="return (this.elements['q'].value.length > 0)">
+        <input id="tipue_search_input" name="q" type="search" autocomplete="off" placeholder="Search" required>
+      </form>
+      
+      <ul class="social">
+        <li><a class="sc-xlinkedin" href="https://uk.linkedin.com/in/amitvisrolia" target="_blank"><i class="fa fa-xlinkedin"></i></a></li>
+        <li><a class="sc-github" href="https://github.com/amitviz" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-rss" href="/feeds/atom.xml" target="_blank"><i class="fa fa-rss"></i></a></li>
+      </ul>
+      
+    </div>
+  </aside>
+  <main>
+
+<article>
+  <header>
+    <h1 id="matlabbasics">Introduction to Matlab: lecture&nbsp;1</h1>
+    <p>
+          Posted on October 31, 2011 in <a href="//amit.visrolia.net/category/notes.html">Notes</a>
+
+
+    </p>
+  </header>
+  <div>
+    <h1>Matlab&nbsp;basics</h1>
+<p>The purpose of these lectures is to introduce the students to the <span class="caps">MATLAB</span> environment, and use it to solve simple beam finite element&nbsp;problems.</p>
+<p>At the end of the lectures, the students should have enough information to be able&nbsp;to:</p>
+<ol>
+<li>Use <span class="caps">MATLAB</span> to write complex programmes using multiple&nbsp;functions</li>
+<li>Use the <span class="caps">MATLAB</span> help to get information on new commands and&nbsp;functions</li>
+<li>Solve the tutorial&nbsp;questions</li>
+</ol>
+<h2>Introduction to&nbsp;Matlab</h2>
+<h3>What is <span class="caps">MATLAB</span>?</h3>
+<ul>
+<li><span class="caps">MATLAB</span> is an interactive calculation environment, designed for working with matrices: the MATrix&nbsp;LABoratory</li>
+<li><span class="caps">MATLAB</span> is also a powerful, but simple and easy-to-use programming&nbsp;language</li>
+<li><span class="caps">MATLAB</span> also provides a number of `toolboxes&#8217; to extend its core&nbsp;functionality</li>
+</ul>
+<p><span class="caps">MATLAB</span> is available to use on the <a href="rdp://gigaterms.campus.bath.ac.uk/"><span class="caps">GIGATERMS</span></a>&nbsp;server.</p>
+<p><span class="caps">MATLAB</span> is also available from the <span class="caps">BUCS</span>&nbsp;website:</p>
+<ul>
+<li>University homepage&gt;Computing Services&gt;Software&gt;<a href="https://isecure.bath.ac.uk/securedownloads/Default.aspx">Secure Downloads&nbsp;Tool</a></li>
+</ul>
+<h3>Why use <span class="caps">MATLAB</span> for finite element&nbsp;analysis?</h3>
+<p>Finite element analysis is a simultaneous equation problem, and we can describe it using&nbsp;matrices:</p>
+<div class="math">$$[K]\{u\} = \{F\}$$</div>
+<p><span class="caps">MATLAB</span> works natively with matrices as a data type. It can solve such a system by typing&nbsp;in:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">u</span><span class="p">=</span><span class="n">K</span><span class="o">\</span><span class="n">F</span>
+</pre></div>
+</td></tr></table>
+
+<p>Many of the steps involved are also matrix operations, such as coordinate transforms, or matrix inversions. A programming language is also useful to perform repeated operations, such as those applied to elements or nodes in a finite element&nbsp;program.</p>
+<h3>The <span class="caps">MATLAB</span> desktop&nbsp;environment</h3>
+<p><img alt="The Matlab desktop" src="/images/matlab_screen_annotated.png" /></p>
+<ul>
+<li><strong>Current directory</strong> This is where <span class="caps">MATLAB</span> first looks for the files that are to be run. Useful to create a new directory for a&nbsp;project.</li>
+<li><strong>Files</strong> A list of all the function and script files in the current&nbsp;directory.</li>
+<li><strong>Command window</strong> This is where commands are entered to <span class="caps">MATLAB</span>, and where the results are printed&nbsp;out.</li>
+<li><strong>Command prompt</strong> The <code matlab="matlab">&gt;&gt;</code> prompt is where data and commands are typed&nbsp;in.</li>
+<li><strong>Variables</strong> A list of all the variables that are currently held in&nbsp;memory.</li>
+</ul>
+<h3>Simple&nbsp;calculations</h3>
+<p>The command window can be used as a simple calculator (<code>&gt;&gt;</code> is the <span class="caps">MATLAB</span> prompt, you don&#8217;t need to type it&nbsp;in!):</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="o">*</span><span class="mi">2</span>             <span class="c">% multiplication</span>
+
+<span class="nb">ans</span> <span class="p">=</span>
+
+    <span class="mi">4</span>
+
+<span class="o">&gt;&gt;</span> <span class="nb">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>       <span class="c">% square-root function</span>
+
+<span class="nb">ans</span> <span class="p">=</span>
+
+    <span class="mf">0.7071</span>
+
+<span class="o">&gt;&gt;</span> <span class="nb">pi</span> <span class="o">*</span> <span class="mi">5</span>^<span class="mi">2</span>        <span class="c">% built-in variable pi</span>
+
+<span class="nb">ans</span> <span class="p">=</span>
+
+<span class="mf">78.5398</span>
+
+<span class="o">&gt;&gt;</span> <span class="nb">cos</span><span class="p">(</span><span class="nb">pi</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>       <span class="c">% trigonometric functions</span>
+
+<span class="nb">ans</span> <span class="p">=</span>
+
+    <span class="mf">0.5000</span>
+</pre></div>
+</td></tr></table>
+
+<h3>Variables</h3>
+<p>Variables can be used to store values for use&nbsp;later</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">clear</span> <span class="n">all</span> <span class="c">% clear existing variables from memory</span>
+<span class="o">&gt;&gt;</span> <span class="n">r</span> <span class="p">=</span> <span class="mi">5</span><span class="p">;</span>    <span class="c">% radius r</span>
+<span class="o">&gt;&gt;</span> <span class="c">% note the semi-colon at the end to suppress MATLAB output</span>
+<span class="o">&gt;&gt;</span> <span class="c">% also note the use of the percent symbol (%) to insert comments</span>
+<span class="o">&gt;&gt;</span> <span class="n">area1</span> <span class="p">=</span> <span class="nb">pi</span> <span class="o">*</span> <span class="n">r</span>^<span class="mi">2</span>
+
+<span class="n">area1</span> <span class="p">=</span>
+
+<span class="mf">78.5398</span>
+
+<span class="o">&gt;&gt;</span> <span class="n">r</span> <span class="p">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="o">&gt;&gt;</span> <span class="n">area2</span> <span class="p">=</span> <span class="nb">pi</span> <span class="o">*</span> <span class="n">r</span>^<span class="mi">2</span>
+
+<span class="n">area2</span> <span class="p">=</span>
+
+<span class="mf">314.1593</span>
+
+<span class="o">&gt;&gt;</span> <span class="n">area2</span> <span class="o">/</span> <span class="n">area1</span>
+
+<span class="nb">ans</span> <span class="p">=</span>
+
+<span class="mi">4</span>
+</pre></div>
+</td></tr></table>
+
+<h3>Types of&nbsp;variables</h3>
+<p>Any type of data can be stored in a variable, <em>e.g.</em></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nb">i</span> <span class="p">=</span> <span class="mi">4</span>              <span class="c">% integer variables</span>
+
+<span class="nb">j</span> <span class="p">=</span> <span class="mf">4.5</span>            <span class="c">% floating point variables</span>
+
+<span class="n">k</span> <span class="p">=</span> <span class="mf">1e-3</span>           <span class="c">% floating point entered in exponential form</span>
+
+<span class="n">l</span> <span class="p">=</span> <span class="s">&#39;some text&#39;</span>    <span class="c">% a string of characters</span>
+</pre></div>
+</td></tr></table>
+
+<p>Matrices can also be stored in&nbsp;variables.</p>
+<p>Note: the <span class="caps">MATLAB</span> notation <code>1e-3</code> is used to represent <span class="math">\(1 \times&nbsp;10^{-3}\)</span></p>
+<h3>What is a&nbsp;matrix?</h3>
+<p>A matrix is just a 2D array of&nbsp;values.</p>
+<p>The matrix can be entered at the command line, surrounding the values with square brackets <code>[ ]</code>. Columns are separated by commas or spaces, rows by semi-colons or line&nbsp;breaks:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">x</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span><span class="p">;</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">]</span>  <span class="c">% entered on a single line</span>
+
+<span class="n">x</span> <span class="p">=</span>
+
+    <span class="mi">1</span>     <span class="mi">2</span>
+    <span class="mi">3</span>     <span class="mi">4</span>
+
+<span class="o">&gt;&gt;</span> <span class="n">y</span> <span class="p">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">;</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">]</span>   <span class="c">% can include commas if this helps readability</span>
+
+<span class="n">y</span> <span class="p">=</span>
+
+    <span class="mi">5</span>     <span class="mi">6</span>
+    <span class="mi">7</span>     <span class="mi">8</span>
+
+<span class="o">&gt;&gt;</span> <span class="n">z</span> <span class="p">=</span> <span class="p">[</span><span class="mi">9</span> <span class="mi">10</span>       <span class="c">% press enter before the matrix is ended</span>
+<span class="mi">11</span> <span class="mi">12</span><span class="p">]</span>             <span class="c">%   with ], and MATLAB starts a new row</span>
+
+<span class="n">z</span> <span class="p">=</span>
+
+    <span class="mi">9</span>    <span class="mi">10</span>
+    <span class="mi">11</span>    <span class="mi">12</span>
+</pre></div>
+</td></tr></table>
+
+<h3>Some useful&nbsp;matrices</h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">x</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>    <span class="c">% a square 2x2 matrix of zeros</span>
+
+<span class="n">x</span> <span class="p">=</span>
+
+    <span class="mi">0</span>     <span class="mi">0</span>
+    <span class="mi">0</span>     <span class="mi">0</span>
+
+<span class="o">&gt;&gt;</span> <span class="n">x</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>  <span class="c">% a rectangular zeros matrix</span>
+                <span class="c">%   note! row, column order </span>
+<span class="n">x</span> <span class="p">=</span>
+
+    <span class="mi">0</span>     <span class="mi">0</span>     <span class="mi">0</span>
+    <span class="mi">0</span>     <span class="mi">0</span>     <span class="mi">0</span>
+
+<span class="o">&gt;&gt;</span> <span class="n">y</span> <span class="p">=</span> <span class="nb">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>     <span class="c">% a matrix of ones (here, 2x2)</span>
+                <span class="c">%   can also be rectangular</span>
+<span class="n">y</span> <span class="p">=</span>
+
+    <span class="mi">1</span>     <span class="mi">1</span>
+    <span class="mi">1</span>     <span class="mi">1</span>
+
+<span class="o">&gt;&gt;</span> <span class="n">z</span> <span class="p">=</span> <span class="nb">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>      <span class="c">% a 2x2 identity matrix, I</span>
+                <span class="c">%   note! this must be square</span>
+<span class="n">z</span> <span class="p">=</span>
+
+    <span class="mi">1</span>     <span class="mi">0</span>
+    <span class="mi">0</span>     <span class="mi">1</span>
+</pre></div>
+</td></tr></table>
+
+<h3>Some&nbsp;terminology</h3>
+<p>Everything is a matrix in <span class="caps">MATLAB</span>!</p>
+<ul>
+<li>a <strong>scalar</strong> (single integer or floating point number) is a <span class="math">\(1\times1\)</span>&nbsp;matrix</li>
+<li>a <strong>vector</strong> or a <strong>list</strong> is simply a matrix where one of the dimensions is 1, <em>e.g.</em> a column vector (<code>zeros(3,1)</code>) or a row vector (<code>zeros(1,3)</code>).</li>
+<li>a <strong>string</strong> is a vector of&nbsp;characters</li>
+<li>an <strong>array</strong> is a term used for a <strong>grid</strong> of values: <em>i.e.</em>, a&nbsp;matrix!</li>
+</ul>
+<p>Some of these terms will be used interchangeably in the remainder of the&nbsp;notes.</p>
+<h3>Addressing&nbsp;matrices</h3>
+<p>Now that we have matrices full of zeros or ones, how do we get some useful information in and out of&nbsp;them?</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">x</span> <span class="p">=</span> <span class="nb">magic</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>    <span class="c">% a built-in function to create a 3x3</span>
+                <span class="c">%   magic-square (all rows, columns and diagonals</span>
+                <span class="c">%   add up to the same value)</span>
+<span class="n">x</span> <span class="p">=</span>
+
+    <span class="mi">8</span>     <span class="mi">1</span>     <span class="mi">6</span>
+    <span class="mi">3</span>     <span class="mi">5</span>     <span class="mi">7</span>
+    <span class="mi">4</span>     <span class="mi">9</span>     <span class="mi">2</span>
+
+<span class="o">&gt;&gt;</span> <span class="n">x</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>          <span class="c">% extracting a certain value (note row, columns</span>
+                <span class="c">%   order again)</span>
+<span class="nb">ans</span> <span class="p">=</span>
+
+    <span class="mi">9</span>
+
+<span class="o">&gt;&gt;</span> <span class="n">x</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="p">=</span> <span class="mi">0</span>      <span class="c">% setting the value of a certain element</span>
+
+<span class="n">x</span> <span class="p">=</span>
+
+    <span class="mi">8</span>     <span class="mi">1</span>     <span class="mi">6</span>
+    <span class="mi">3</span>     <span class="mi">5</span>     <span class="mi">7</span>
+    <span class="mi">4</span>     <span class="mi">0</span>     <span class="mi">2</span>
+</pre></div>
+</td></tr></table>
+
+<h3>Addressing matrices: the colon&nbsp;operator}</h3>
+<p>To address an entire row or column, we can use the colon (<code>:</code>)&nbsp;operator</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">x</span> <span class="p">=</span> <span class="nb">magic</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>   <span class="c">% the same matrix as the previous slide</span>
+<span class="o">&gt;&gt;</span> <span class="n">x</span><span class="p">(</span><span class="mi">3</span><span class="p">,:)</span>          <span class="c">% &#39;3rd row, all the columns&#39;</span>
+
+<span class="nb">ans</span> <span class="p">=</span>
+
+    <span class="mi">4</span>     <span class="mi">9</span>     <span class="mi">2</span>
+
+<span class="o">&gt;&gt;</span> <span class="n">x</span><span class="p">(:,</span><span class="mi">2</span><span class="p">)</span>          <span class="c">% &#39;all the rows, 2nd column&#39;</span>
+
+<span class="nb">ans</span> <span class="p">=</span>
+
+    <span class="mi">1</span>
+    <span class="mi">5</span>
+    <span class="mi">9</span>
+
+<span class="o">&gt;&gt;</span> <span class="n">x</span><span class="p">(</span><span class="mi">3</span><span class="p">,:)</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">]</span><span class="c">% replacing the 3rd row</span>
+
+<span class="n">x</span> <span class="p">=</span>
+
+    <span class="mi">8</span>     <span class="mi">1</span>     <span class="mi">6</span>
+    <span class="mi">3</span>     <span class="mi">5</span>     <span class="mi">7</span>
+    <span class="mi">0</span>     <span class="mi">0</span>     <span class="mi">0</span>
+</pre></div>
+</td></tr></table>
+
+<h3>The colon&nbsp;operator</h3>
+<p>Without any parameters, the colon represents an entire row or column. The colon can also be used with parameters, to represent a range of&nbsp;values.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">x</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">10</span>        <span class="c">% all the numbers in the range from 1-10</span>
+
+<span class="n">x</span> <span class="p">=</span>
+
+    <span class="mi">1</span>     <span class="mi">2</span>     <span class="mi">3</span>     <span class="mi">4</span>     <span class="mi">5</span>     <span class="mi">6</span>     <span class="mi">7</span>     <span class="mi">8</span>     <span class="mi">9</span>    <span class="mi">10</span>
+
+<span class="o">&gt;&gt;</span> <span class="n">y</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">:</span><span class="mi">30</span>      <span class="c">% all the numbers in the range from 1-30, in steps of 3</span>
+
+<span class="n">y</span> <span class="p">=</span>
+
+    <span class="mi">1</span>     <span class="mi">4</span>     <span class="mi">7</span>    <span class="mi">10</span>    <span class="mi">13</span>    <span class="mi">16</span>    <span class="mi">19</span>    <span class="mi">22</span>    <span class="mi">25</span>    <span class="mi">28</span>
+
+<span class="o">&gt;&gt;</span> <span class="n">z</span> <span class="p">=</span> <span class="mi">5</span><span class="p">:</span><span class="o">-</span><span class="mf">0.5</span><span class="p">:</span><span class="mi">1</span>    <span class="c">% the range 5-1, in steps of -0.5</span>
+
+<span class="n">z</span> <span class="p">=</span>
+
+    <span class="mf">5.0000</span>    <span class="mf">4.5000</span>    <span class="mf">4.0000</span>    <span class="mf">3.5000</span>    <span class="mf">3.0000</span>    <span class="mf">2.5000</span>    <span class="mf">2.0000</span>    <span class="mf">1.5000</span>    <span class="mf">1.0000</span>
+</pre></div>
+</td></tr></table>
+
+<h3>Specific matrix addressing with the&nbsp;colon</h3>
+<p>We can combine the &#8216;range&#8217; use of the colon to pick out some specific values from a larger&nbsp;matrix:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">x</span> <span class="p">=</span> <span class="nb">magic</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>    <span class="c">% a 4x4 magic square</span>
+
+<span class="n">x</span> <span class="p">=</span>
+
+    <span class="mi">16</span>     <span class="mi">2</span>     <span class="mi">3</span>    <span class="mi">13</span>
+    <span class="mi">5</span>    <span class="mi">11</span>    <span class="mi">10</span>     <span class="mi">8</span>
+    <span class="mi">9</span>     <span class="mi">7</span>     <span class="mi">6</span>    <span class="mi">12</span>
+    <span class="mi">4</span>    <span class="mi">14</span>    <span class="mi">15</span>     <span class="mi">1</span>
+
+<span class="o">&gt;&gt;</span> <span class="n">y</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span>       <span class="c">% every other number between 1-4</span>
+
+<span class="n">y</span> <span class="p">=</span>
+
+    <span class="mi">1</span>     <span class="mi">3</span>
+
+<span class="o">&gt;&gt;</span> <span class="n">z</span> <span class="p">=</span> <span class="n">x</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>      <span class="c">% pick just these values out from x</span>
+
+<span class="n">z</span> <span class="p">=</span>
+
+    <span class="mi">16</span>     <span class="mi">3</span>
+    <span class="mi">9</span>     <span class="mi">6</span>
+</pre></div>
+</td></tr></table>
+
+<h3>Matrix&nbsp;properties</h3>
+<p>In addition to getting data <em>from</em> the matrix, we can get data <em>about</em> the&nbsp;matrix:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">x</span> <span class="p">=</span> <span class="nb">magic</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>   <span class="c">% as previously</span>
+<span class="o">&gt;&gt;</span> <span class="p">[</span><span class="n">a</span> <span class="n">b</span><span class="p">]</span> <span class="p">=</span> <span class="nb">size</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c">% the size of matrix x</span>
+
+<span class="n">a</span> <span class="p">=</span>
+    <span class="mi">4</span>
+<span class="n">b</span> <span class="p">=</span>
+    <span class="mi">4</span>
+
+<span class="o">&gt;&gt;</span> <span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>          <span class="c">% the minimum value in each column of x</span>
+
+<span class="nb">ans</span> <span class="p">=</span>
+    <span class="mi">4</span>     <span class="mi">2</span>     <span class="mi">3</span>     <span class="mi">1</span>
+
+<span class="o">&gt;&gt;</span> <span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>          <span class="c">% the maximum value in each column of x</span>
+
+<span class="nb">ans</span> <span class="p">=</span>
+    <span class="mi">16</span>    <span class="mi">14</span>    <span class="mi">15</span>    <span class="mi">13</span>
+
+<span class="o">&gt;&gt;</span> <span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>         <span class="c">% the mean value of each column of x</span>
+
+<span class="nb">ans</span> <span class="p">=</span>
+    <span class="mf">8.5000</span>    <span class="mf">8.5000</span>    <span class="mf">8.5000</span>    <span class="mf">8.5000</span>
+</pre></div>
+</td></tr></table>
+
+<h3>More on matrix&nbsp;sizes</h3>
+<p>The size command is very useful, since it will let us write programmes where we don&#8217;t know before hand how large our matrices and vectors will&nbsp;be.</p>
+<p>The <code>size</code> command can be used as&nbsp;follows:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">x</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span> <span class="c">% an example matrix with 5 rows and 2 columns</span>
+<span class="o">&gt;&gt;</span> <span class="p">[</span><span class="n">a</span> <span class="n">b</span><span class="p">]</span> <span class="p">=</span> <span class="nb">size</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c">% as we&#39;ve seen before, we can get the dimensions using size()</span>
+<span class="n">a</span> <span class="p">=</span>
+    <span class="mi">5</span>
+<span class="n">b</span> <span class="p">=</span>
+    <span class="mi">2</span>
+<span class="c">% if we know which dimension we want, we can specify it as an optional argument</span>
+<span class="c">%   to the size function</span>
+<span class="o">&gt;&gt;</span> <span class="nb">size</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>       <span class="c">% the first dimension of x (i.e. number of rows)</span>
+<span class="nb">ans</span> <span class="p">=</span>
+    <span class="mi">5</span>
+<span class="o">&gt;&gt;</span> <span class="nb">size</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>       <span class="c">% the second dimension of x (i.e. number of columns)</span>
+<span class="nb">ans</span> <span class="p">=</span>
+    <span class="mi">2</span>
+<span class="c">% if we have a vector (a matrix with one of the dimensions as 1) we can also use</span>
+<span class="o">&gt;&gt;</span> <span class="n">y</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">);</span> <span class="c">% a row vector</span>
+<span class="o">&gt;&gt;</span> <span class="n">z</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span> <span class="c">% a column vector</span>
+<span class="o">&gt;&gt;</span> <span class="nb">length</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="nb">ans</span> <span class="p">=</span>
+    <span class="mi">6</span>
+<span class="o">&gt;&gt;</span> <span class="nb">length</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+<span class="nb">ans</span> <span class="p">=</span>
+    <span class="mi">8</span>
+</pre></div>
+</td></tr></table>
+
+<h3>Matrix&nbsp;algebra</h3>
+<p>Matrix algebra can be performed with the <span class="caps">MATLAB</span> matrices, e.g. for the system <span class="math">\(Ax = b\)</span>,</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">A</span> <span class="p">=</span> <span class="nb">magic</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>    <span class="c">% a 3x3 magic square</span>
+<span class="n">A</span> <span class="p">=</span>
+    <span class="mi">8</span>     <span class="mi">1</span>     <span class="mi">6</span>
+    <span class="mi">3</span>     <span class="mi">5</span>     <span class="mi">7</span>
+    <span class="mi">4</span>     <span class="mi">9</span>     <span class="mi">2</span>
+<span class="o">&gt;&gt;</span> <span class="n">x</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">;</span><span class="mi">2</span><span class="p">;</span><span class="mi">3</span><span class="p">]</span>     <span class="c">% a column vector x</span>
+<span class="n">x</span> <span class="p">=</span>
+    <span class="mi">1</span>
+    <span class="mi">2</span>
+    <span class="mi">3</span>
+<span class="o">&gt;&gt;</span> <span class="n">b</span> <span class="p">=</span> <span class="n">A</span><span class="o">*</span><span class="n">x</span>         <span class="c">% matrix multiplication to find b</span>
+<span class="n">b</span> <span class="p">=</span>
+    <span class="mi">28</span>
+    <span class="mi">34</span>
+    <span class="mi">28</span>
+<span class="o">&gt;&gt;</span> <span class="n">x</span> <span class="p">=</span> <span class="n">inv</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">*</span><span class="n">b</span>    <span class="c">% if b is known, we can find x by inverting A</span>
+<span class="n">x</span> <span class="p">=</span>
+    <span class="mf">1.0000</span>
+    <span class="mf">2.0000</span>
+    <span class="mf">3.0000</span>
+<span class="o">&gt;&gt;</span> <span class="n">x</span> <span class="p">=</span> <span class="n">A</span><span class="o">\</span><span class="n">b</span>         <span class="c">% more efficient than inverting A is using the backslash operator</span>
+<span class="n">x</span> <span class="p">=</span>
+    <span class="mi">1</span>
+    <span class="mi">2</span>
+    <span class="mi">3</span>
+</pre></div>
+</td></tr></table>
+
+<h3>Matrix algebra <span class="caps">II</span></h3>
+<p>Some of the most useful functions are those to find the <strong>inverse</strong> and <strong>transpose</strong> of a&nbsp;matrix:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">A</span> <span class="p">=</span> <span class="nb">magic</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>    <span class="c">% the 3x3 magic square</span>
+<span class="n">A</span> <span class="p">=</span>
+
+    <span class="mi">8</span>     <span class="mi">1</span>     <span class="mi">6</span>
+    <span class="mi">3</span>     <span class="mi">5</span>     <span class="mi">7</span>
+    <span class="mi">4</span>     <span class="mi">9</span>     <span class="mi">2</span>
+<span class="o">&gt;&gt;</span> <span class="n">inv</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>          <span class="c">% the inverse of matrix A</span>
+<span class="nb">ans</span> <span class="p">=</span>
+    <span class="mf">0.1472</span>   <span class="o">-</span><span class="mf">0.1444</span>    <span class="mf">0.0639</span>
+<span class="o">-</span><span class="mf">0.0611</span>    <span class="mf">0.0222</span>    <span class="mf">0.1056</span>
+<span class="o">-</span><span class="mf">0.0194</span>    <span class="mf">0.1889</span>   <span class="o">-</span><span class="mf">0.1028</span>
+<span class="o">&gt;&gt;</span> <span class="n">A</span><span class="o">&#39;</span>              <span class="c">% the transpose of A, using the inverted comma</span>
+<span class="nb">ans</span> <span class="p">=</span>
+    <span class="mi">8</span>     <span class="mi">3</span>     <span class="mi">4</span>
+    <span class="mi">1</span>     <span class="mi">5</span>     <span class="mi">9</span>
+    <span class="mi">6</span>     <span class="mi">7</span>     <span class="mi">2</span>
+</pre></div>
+</td></tr></table>
+
+<p>Inverting the matrix is a computationally expensive problem. Although a system <span class="math">\(Ax = b\)</span> can be solved as <span class="math">\(x = A^{-1}b\)</span>, the <strong>backslash operator</strong> (<code>A\b</code>) uses Gaussian elimination to solve without explicitly calculating <span class="math">\(A^{-1}\)</span>.</p>
+<h3>Array&nbsp;algebra}</h3>
+<p><span class="caps">MATLAB</span> treats everything as a matrix, but occasionally, we might want to treat a variable as simply a list (or grid) of values, rather than a matrix in the mathematical&nbsp;sense.</p>
+<p><span class="caps">MATLAB</span> behaves as expected when we multiply a &#8216;matrix&#8217; or vector by a scalar, or add two matrices, and also includes a number of <strong>piecewise operators</strong>.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">x</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">;</span>        <span class="c">% x = [1 2 3]</span>
+<span class="o">&gt;&gt;</span> <span class="n">y</span> <span class="p">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span>         <span class="c">% multiply by a scalar</span>
+<span class="n">y</span> <span class="p">=</span>
+    <span class="mi">2</span>     <span class="mi">4</span>     <span class="mi">6</span>
+<span class="o">&gt;&gt;</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span>             <span class="c">% add 2 vectors (1D matrices)</span>
+<span class="nb">ans</span> <span class="p">=</span>
+    <span class="mi">3</span>     <span class="mi">6</span>     <span class="mi">9</span>
+<span class="o">&gt;&gt;</span> <span class="n">x</span> <span class="o">.*</span> <span class="n">y</span>          <span class="c">% perform a piecewise multiplication (note the dot before the *)</span>
+<span class="nb">ans</span> <span class="p">=</span>
+    <span class="mi">2</span>     <span class="mi">8</span>    <span class="mi">18</span>
+<span class="o">&gt;&gt;</span> <span class="n">x</span> <span class="o">./</span> <span class="n">y</span>          <span class="c">% perform a piecewise division (note the dot before the /)</span>
+<span class="nb">ans</span> <span class="p">=</span>
+    <span class="mf">0.5000</span>    <span class="mf">0.5000</span>    <span class="mf">0.5000</span>
+</pre></div>
+</td></tr></table>
+
+<p>Note, matrix algebra rules don&#8217;t allow us to perform ordinary multiplication between two vectors each of size <span class="math">\(1\times3\)</span>. We could however transpose one of the vectors (<em>e.g.</em> <code>y = y'</code>).</p>
+<h3><span class="caps">MATLAB</span>&nbsp;scripting</h3>
+<p>When we want to perform the same actions over and over again, we can save the steps in a <span class="caps">MATLAB</span> script. A <span class="caps">MATLAB</span> script is just a series of commands, exactly as they would appear if they were typed in at the command&nbsp;prompt.</p>
+<p>Here, we shall write a script to solve the roots (<span class="math">\(y=0\)</span>) of the quadratic&nbsp;equation:</p>
+<div class="math">$$
+  y = ax^2 + bx + c
+$$</div>
+<p>A reminder, the solution is given&nbsp;by:</p>
+<div class="math">$$
+  x = \frac{-b\pm\sqrt{b^2 - 4ac}}{2a}
+$$</div>
+<h3><span class="caps">MATLAB</span> scripting&#8212;the&nbsp;editor</h3>
+<p><img alt="Matlab editor" src="/images/matlab_editor_annotated.png" /></p>
+<h3><span class="caps">MATLAB</span>&nbsp;scripting&#8212;example</h3>
+<p>Using the commands that we already know, we can write the&nbsp;script:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>             <span class="c">% the input parameters: note the semi-colon at the end of the</span>
+<span class="n">b</span> <span class="p">=</span><span class="o">-</span><span class="mi">5</span><span class="p">;</span>             <span class="c">%   line to stop MATLAB from printing out these lines</span>
+<span class="n">c</span> <span class="p">=</span> <span class="mi">6</span><span class="p">;</span>
+
+<span class="c">% Here, the calculation is performed.</span>
+<span class="n">x1</span> <span class="p">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">+</span> <span class="nb">sqrt</span><span class="p">(</span><span class="n">b</span>^<span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">c</span><span class="p">))</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span>
+<span class="n">x2</span> <span class="p">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">-</span> <span class="nb">sqrt</span><span class="p">(</span><span class="n">b</span>^<span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">c</span><span class="p">))</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span>
+<span class="c">% Since there&#39;s no semi-colon at the end, the results will be printed out.</span>
+</pre></div>
+</td></tr></table>
+
+<p>If we save this file as <code>quadscript.m</code>, we can run it by typing the name <code>quadscript</code> at the command&nbsp;prompt:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">quadscript</span>
+<span class="n">x1</span> <span class="p">=</span>
+    <span class="mi">3</span>
+<span class="n">x2</span> <span class="p">=</span>
+    <span class="mi">2</span>
+</pre></div>
+</td></tr></table>
+
+<p>We could keep this script, and change the coefficients every time we wanted to solve a different problem, but there is a way we can write a script that we can use for any&nbsp;problem.</p>
+<h3>Adding interactivity to&nbsp;scripts</h3>
+<p>Instead of including the coefficients in the script (<em>hard-coding</em> them) we could instead ask the user using the <code>input</code> function:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nb">disp</span><span class="p">(</span><span class="s">&#39;Solving the equation: ax^2 + bx + c&#39;</span><span class="p">);</span> <span class="c">% display some info for the user</span>
+<span class="n">a</span> <span class="p">=</span> <span class="n">input</span><span class="p">(</span><span class="s">&#39;Please input the value of a:&#39;</span><span class="p">);</span>
+<span class="n">b</span> <span class="p">=</span> <span class="n">input</span><span class="p">(</span><span class="s">&#39;Please input the value of b:&#39;</span><span class="p">);</span>    <span class="c">% get parameters typed in</span>
+<span class="n">c</span> <span class="p">=</span> <span class="n">input</span><span class="p">(</span><span class="s">&#39;Please input the value of c:&#39;</span><span class="p">);</span>
+
+<span class="n">x1</span> <span class="p">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">+</span> <span class="nb">sqrt</span><span class="p">(</span><span class="n">b</span>^<span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">c</span><span class="p">))</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span>            <span class="c">% exactly the same as previously</span>
+<span class="n">x2</span> <span class="p">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">-</span> <span class="nb">sqrt</span><span class="p">(</span><span class="n">b</span>^<span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">c</span><span class="p">))</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span>
+</pre></div>
+</td></tr></table>
+
+<p>Saving as <code>quadscript2.m</code> and&nbsp;running:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">quadscript2</span>
+<span class="n">Solving</span> <span class="n">the</span> <span class="n">equation</span><span class="p">:</span> <span class="n">ax</span>^<span class="mi">2</span> <span class="o">+</span> <span class="n">bx</span> <span class="o">+</span> <span class="n">c</span>
+<span class="n">Please</span> <span class="n">input</span> <span class="n">the</span> <span class="n">value</span> <span class="n">of</span> <span class="n">a</span><span class="p">:</span><span class="mi">1</span>
+<span class="n">Please</span> <span class="n">input</span> <span class="n">the</span> <span class="n">value</span> <span class="n">of</span> <span class="n">b</span><span class="p">:</span><span class="o">-</span><span class="mi">5</span>
+<span class="n">Please</span> <span class="n">input</span> <span class="n">the</span> <span class="n">value</span> <span class="n">of</span> <span class="n">c</span><span class="p">:</span><span class="mi">6</span>
+<span class="n">x1</span> <span class="p">=</span>
+    <span class="mi">3</span>
+<span class="n">x2</span> <span class="p">=</span>
+    <span class="mi">2</span>
+</pre></div>
+</td></tr></table>
+
+<p>This is useful where we want input from the user, but we can&#8217;t run a large programme that stops to ask for each new&nbsp;variable&#8230;</p>
+<h3><span class="caps">MATLAB</span>&nbsp;functions</h3>
+<p>A <strong>function</strong> is a self-contained piece of code that accepts a number of input variables, processes them, and then returns a number of&nbsp;answers.</p>
+<p>We have already seen some of <span class="caps">MATLAB</span>&#8217;s built-in&nbsp;functions:</p>
+<ul>
+<li><code>cos(x)</code> (and similar trigonometric functions): takes an angle <span class="math">\(x\)</span> as its <strong>argument</strong>, or <strong>parameter</strong>, and returns the cosine of the&nbsp;angle</li>
+<li><code>size(x)</code>: takes a matrix <span class="math">\(x\)</span> (remember: everything is a matrix!) and returns <em>two</em> values, the number of rows and the number of columns in the&nbsp;matrix</li>
+</ul>
+<h3>The purpose of&nbsp;functions</h3>
+<p>Functions can be called in a number of ways,&nbsp;e.g.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="nb">cos</span><span class="p">(</span><span class="mf">0.7854</span><span class="p">)</span>     <span class="c">% supplying the argument directly to the function</span>
+<span class="nb">ans</span> <span class="p">=</span>
+    <span class="mf">0.7071</span>
+
+<span class="o">&gt;&gt;</span> <span class="n">theta</span> <span class="p">=</span> <span class="mf">0.7854</span><span class="p">;</span>
+<span class="o">&gt;&gt;</span> <span class="nb">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>      <span class="c">% supplying a variable to the function</span>
+<span class="nb">ans</span> <span class="p">=</span>
+    <span class="mf">0.7071</span>
+
+<span class="o">&gt;&gt;</span> <span class="nb">cos</span><span class="p">(</span><span class="nb">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>       <span class="c">% evaluating an expression as an argument</span>
+<span class="nb">ans</span> <span class="p">=</span>
+    <span class="mf">0.7071</span>
+</pre></div>
+</td></tr></table>
+
+<p>All three methods here are equivalent. When all the input arguments are known, the function can calculate the outputs with no further intervention from the user. The input arguments can even come from another part of the&nbsp;programme.</p>
+<h3>Defining a&nbsp;function</h3>
+<p>A <span class="caps">MATLAB</span> function is created in a file with a <code>.m</code> extension (just as a script). The first line of the script must take the following form, using the keyword <code>function</code>:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span>[outputs] <span class="p">=</span><span class="w"> </span><span class="nf">function_name</span><span class="p">(</span>input_arguments<span class="p">)</span><span class="w"></span>
+</pre></div>
+</td></tr></table>
+
+<p>The function must be saved with the file name matching the function name (here, <code>function_name.m</code>). Somewhere, within the function file, all the outputs must be set. Ideally, the function should also end with <code>return;</code>, to return programme control to wherever the function was <em>called</em>&nbsp;from.</p>
+<h3>An example&nbsp;function</h3>
+<p>The file <code>quadratic.m</code> contains the&nbsp;following:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span>[x1,x2] <span class="p">=</span><span class="w"> </span><span class="nf">quadratic</span><span class="p">(</span>a,b,c<span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="c">% A function to return the roots of a quadratic equation</span>
+
+    <span class="n">x1</span> <span class="p">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">+</span> <span class="nb">sqrt</span><span class="p">(</span><span class="n">b</span>^<span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">c</span><span class="p">))</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">;</span> <span class="c">% note the semi-colon to suppress output: we don&#39;t need</span>
+    <span class="n">x2</span> <span class="p">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">-</span> <span class="nb">sqrt</span><span class="p">(</span><span class="n">b</span>^<span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">c</span><span class="p">))</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">;</span> <span class="c">%  the answer printed every time the function is called</span>
+
+<span class="k">return</span><span class="p">;</span>
+</pre></div>
+</td></tr></table>
+
+<p><span class="math">\(a,b,c\)</span> are the arguments, <span class="math">\(x1,x2\)</span> are the return values. A comment is useful to explain what the function does: you may end up using this function in many other programmes, or it may even be used by many other people in their&nbsp;programmes.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="p">[</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">]</span> <span class="p">=</span> <span class="n">quadratic</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">x1</span> <span class="p">=</span>
+    <span class="mi">3</span>
+<span class="n">x2</span> <span class="p">=</span>
+    <span class="mi">2</span>
+</pre></div>
+</td></tr></table>
+
+<h3>Getting&nbsp;help</h3>
+<p><span class="caps">MATLAB</span> has a comprehensive online help, which details all the functions and how to use&nbsp;them. </p>
+<p><img alt="Matlab help" src="/images/matlab_help.png" /></p>
+<p>Additionally, a free online book, <a href="http://www.mathworks.com/moler/chapters.html">Numerical Computing with <span class="caps">MATLAB</span></a>, is available, written by the inventor of <span class="caps">MATLAB</span>, Cleve&nbsp;Moler.</p>
+<h3>Flow control in&nbsp;functions</h3>
+<p>An important part of a programme is its ability to make decisions based on input, and take actions based on that decision. There are two main ways of doing&nbsp;this:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">condition</span><span class="p">)</span>
+    <span class="c">% actions to perform if condition is true</span>
+<span class="k">elseif</span> <span class="p">(</span><span class="n">condition2</span><span class="p">)</span>
+    <span class="c">% actions to perform if condition2 is true</span>
+<span class="k">else</span>
+    <span class="c">% actions to perform if none of the above were true</span>
+<span class="k">end</span>
+</pre></div>
+</td></tr></table>
+
+<p>or</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">switch</span> <span class="n">condition</span>
+    <span class="k">case</span> <span class="n">condition1</span>
+        <span class="c">% actions to perform if condition==condition1</span>
+    <span class="k">case</span> <span class="n">condition2</span>
+        <span class="c">% actions to perform if condition==condition2</span>
+    <span class="k">otherwise</span>
+        <span class="c">% actions to perform if condition doesn&#39;t match any of the above cases</span>
+<span class="k">end</span>
+</pre></div>
+</td></tr></table>
+
+<p>The conditions in both the <code>if</code> and <code>switch</code> expressions are based on <strong>logical variables</strong>, <em>i.e.</em> those that evaluate to true or&nbsp;false.</p>
+<h3>Logical&nbsp;operators</h3>
+<p>A <strong>logical variable</strong> can have a value of <strong>true</strong> or <strong>false</strong>. Logical variables are normally created as the results of a comparison operation, and used for conditional statements (like <code>if</code>).</p>
+<p>The logical operators and their meanings are as follows - <code>a</code> and <code>b</code> are any type of&nbsp;variable:</p>
+<ul>
+<li><code>a == b</code> a is equal to b (using <code>a = b</code> is the most common error in <code>if</code> statements)</li>
+<li><code>a \~= b</code> a is not equal to&nbsp;b</li>
+<li><code>a &lt; b; a &lt;= b; a &gt; b; a &gt;= b</code> a is less than (or equal to), or greater than (or equal to)&nbsp;b</li>
+</ul>
+<p>And where <code>a</code> and <code>b</code> are already logical variables&nbsp;themselves:</p>
+<ul>
+<li><code>a \&amp;\&amp; b</code>; <code>a \&amp; b</code> both a and b are true (scalar and&nbsp;vector)</li>
+<li><code>a \|\| b</code>; <code>a \| b</code> either one of a or b is true (including both are true) (scalar and&nbsp;vector)</li>
+<li><code>\~a</code> a special negation operator, i.e. <span class="math">\(\sim\)</span>true is false, and <span class="math">\(\sim\)</span>false is&nbsp;true</li>
+</ul>
+<h3>Conditional statement&nbsp;example</h3>
+<p>Here is an example we might use in a finite element code, to detect if our elements meet a failure&nbsp;criteria:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">stress</span><span class="p">)</span> <span class="o">&gt;</span><span class="p">=</span> <span class="n">criticalstress</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">stress</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="c">% The abs() function returns the absolute value (or magnitude) of a variable</span>
+
+    <span class="c">% abs(stress) and criticalstress are numerical variables, the comparison</span>
+    <span class="c">%   will return either TRUE or FALSE (i.e. a logical variable)</span>
+    <span class="c">% Similarly, (stress &gt; 0) will return TRUE or FALSE (i.e. a logical variable)</span>
+    <span class="c">% The &amp;&amp; operator compares the two logical variables</span>
+
+    <span class="c">% Here is the case for TRUE, i.e.</span>
+    <span class="c">%   abs(stress) &gt;= criticalstress       is   TRUE</span>
+    <span class="c">%   stress &gt; 0                          is   TRUE</span>
+    <span class="nb">disp</span><span class="p">(</span><span class="s">&#39;Element fails under tension&#39;</span><span class="p">);</span>
+    <span class="c">% The disp() function displays a string in the command window</span>
+<span class="k">elseif</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">stress</span><span class="p">)</span> <span class="o">&gt;</span><span class="p">=</span> <span class="n">criticalstress</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">stress</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="c">% Here, if the first conditional wasn&#39;t TRUE, we can try another</span>
+    <span class="nb">disp</span><span class="p">(</span><span class="s">&#39;Element fails under compression&#39;</span><span class="p">);</span>
+<span class="k">else</span>
+    <span class="c">% Here, is the default action to carry out if none of the conditions were TRUE</span>
+    <span class="nb">disp</span><span class="p">(</span><span class="s">&#39;Element does not fail&#39;</span><span class="p">);</span>
+<span class="k">end</span>
+</pre></div>
+</td></tr></table>
+
+<h3>Looping in&nbsp;functions</h3>
+<p>In addition to conditional decision making, programmes are useful for repeatedly performing the same operation, or performing an operation on a sequence of&nbsp;variables.</p>
+<p><span class="caps">MATLAB</span> gives us two methods for&nbsp;looping:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">loop_variable</span> <span class="p">=</span> <span class="n">range</span>
+    <span class="c">% actions to perform using the loop_variable</span>
+
+    <span class="c">% use when we want to perform the actions a set number of times</span>
+<span class="k">end</span>
+</pre></div>
+</td></tr></table>
+
+<p>or</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">condition</span>
+    <span class="c">% actions to perform while condition == TRUE (using the logical operators we</span>
+    <span class="c">%   saw earlier</span>
+
+    <span class="c">% use when we don&#39;t know how many times the loop needs to run</span>
+<span class="k">end</span>
+</pre></div>
+</td></tr></table>
+
+<p>Loops are incredibly useful, but there are occasions where their use is unnecessary, and even slows down the&nbsp;programme&#8230;</p>
+<h3>Avoiding&nbsp;loops</h3>
+<p>An example of where we might want to use a loop is in a finite element programme: if we have a vector of the strains in all of our elements, we might want to work out the stress. Using loops, we could&nbsp;do:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="nb">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">strains</span><span class="p">)</span>    <span class="c">% we can let the programme work out how many times</span>
+                            <span class="c">%   it needs to run the loop</span>
+    <span class="c">% i is the loop variable</span>
+    <span class="c">% the i-th stress is calculated by multiplying the i-th strain by the modulus</span>
+    <span class="n">stresses</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="p">=</span> <span class="n">modulus</span> <span class="o">*</span> <span class="n">strains</span><span class="p">(</span><span class="nb">i</span><span class="p">);</span>
+<span class="k">end</span>
+</pre></div>
+</td></tr></table>
+
+<p>But since <span class="caps">MATLAB</span> is designed (and optimized) to work with matrices (including vectors), we could use&nbsp;instead:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c">% if modulus is a scalar (i.e. there is one modulus for all locations)</span>
+<span class="n">stresses</span> <span class="p">=</span> <span class="n">modulus</span> <span class="o">*</span> <span class="n">strains</span><span class="p">;</span>
+
+<span class="c">% even if modulus is a vector with a different value at each location, we can use</span>
+<span class="n">stresses</span> <span class="p">=</span> <span class="n">modulus</span> <span class="o">.*</span> <span class="n">strains</span><span class="p">;</span>
+</pre></div>
+</td></tr></table>
+
+<p><code>stresses</code> and <code>strains</code> are still vectors, but we&#8217;ve made the code much simpler to read, as well as much&nbsp;faster.</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="//amit.visrolia.net/tag/matlab.html">matlab</a>
+      <a href="//amit.visrolia.net/tag/code.html">code</a>
+      <a href="//amit.visrolia.net/tag/teaching.html">teaching</a>
+      <a href="//amit.visrolia.net/tag/bath.html">bath</a>
+    </p>
+  </div>
+
+
+
+</article>
+
+    <footer>
+<p>&copy; Amit Visrolia 2016</p>
+    </footer>
+  </main>
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Amit's notes ",
+  "url" : "//amit.visrolia.net",
+  "image": "",
+  "description": "Amit's notes, links, and pictures"
+}
+</script>
+</body>
+</html>

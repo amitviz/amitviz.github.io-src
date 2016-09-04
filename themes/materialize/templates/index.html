@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block seo %}
+{% include 'common_seo.html' %}
+
+<!-- Index page data -->
+<meta itemprop="name" content="{{ SITENAME }}" />
+<meta name="twitter:title" content="{{ SITENAME }}" />
+<meta name="twitter:url" content="{{ SITEURL }}" />
+<meta property="og:title" content="{{ SITENAME }}" />
+<meta property="og:url" content="{{ SITEURL }}" />
+<meta property="og:type" content="blog" />
+{% if DESCRIPTION %}
+<meta name="description" content="{{ DESCRIPTION }}" />
+<meta itemprop="description" content="{{ DESCRIPTION }}" />
+<meta name="twitter:description" content="{{ DESCRIPTION }}" />
+<meta property="og:description" content="{{ DESCRIPTION }}" />
+{% endif %}
+{% if META_IMAGE %}
+<meta itemprop="image" content="{{ META_IMAGE }}" />
+<meta name="twitter:image" content="{{ META_IMAGE }}" />
+<meta name="twitter:image:src" content="{{ META_IMAGE }}" />
+<meta property="og:image" content="{{ META_IMAGE }}" />
+<meta property="og:image:type" content="{{ META_IMAGE_TYPE }}" />
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<section id="content">
+<h2>
+{% block content_title %}
+{% endblock %}
+</h2>
+
+{% if articles %}
+{% for article in articles_page.object_list %}
+    <article itemtype="//schema.org/BlogPosting" itemscope="itemscope" itemprop="blogPost">
+        <header>
+        <h2><a href="{{ SITEURL }}/{{ article.url }}" itemprop="name" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a></h2>
+        <p class="grey-text"><time datetime="{{ article.date.strftime('%Y-%m-%d') }}" itemprop="datePublished">{{ article.locale_date }}</time> • <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>{% if DISQUS_SITENAME %} • <br class="uk-visible-small"><i class="uk-icon-comment"></i> <a href="{{ SITEURL }}/{{ article.url }}#disqus_thread" itemprop="discussionUrl"></a>{% endif %}</p>
+        </header>
+        <main>
+        {% if (articles_page.number == 1)  and (loop.index == 1) %}
+            <div class="row">
+            <div class="col s12 m10 l9">
+            <section itemprop="articleBody">
+            {{ article.content }}
+            </section>
+            </div>
+            </div>
+        {% else %}
+            <h3 itemprop="description">{{ article.summary|striptags }}</h3>
+            <div class="row">
+            <div class="col s12 m10 l9">
+            <section itemprop="articleBody">
+            {{ ' '.join(article.content.split(' ')[0:75])|striptags }}...
+            </section>
+            </div>
+            </div>
+        {% endif %}
+        </main>
+        <footer>
+        {% if (articles_page.number == 1)  and (loop.index == 1) %}
+            {% if DISQUS_SITENAME %}
+            <a href="{{ SITEURL }}/{{ article.url }}#disqus_thread" class="no-print">Comments</a>
+            {% endif %}
+        {% else %}
+            <a href="{{ SITEURL }}/{{ article.url }}" class="no-print">Read More</a>
+        {% endif %}
+        </footer>
+    </article>
+    <div class="divider"></div>
+{% endfor %}
+{% endif %}
+
+{% if articles_page.has_other_pages() %}
+    {% include 'pagination.html' %}
+{% endif %}
+</section>
+{% endblock content %}

@@ -1,0 +1,81 @@
+ul.pagination {
+    list-style-type: none;
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+
+ul.pagination>li {
+    display: inline;
+    padding: 0 10px 0 10px;
+    border-radius: .25em;
+}
+
+ul.pagination>li:hover {
+    background-color: #FF5A09;
+}
+
+ul.pagination>li:hover>a {
+    color: white;
+}
+
+ul.pagination>li.active {
+    background-color: #D9411E;
+}
+
+ul.pagination>li.active>a {
+    color: white;
+}
+
+ul.pagination>li.disabled>a {
+    color: rgb(153, 153, 153);
+}
+
+ul.pagination>li.disabled:hover {
+    background-color: rgba(0,0,0,0);
+}
+
+.fa-xlinkedin:before {
+    content: "\f0e1";
+} 
+
+ul.social a.sc-xlinkedin {
+    background-color:#3371b7
+}
+
+.imagepost {
+    width: 100%;
+}
+
+.imageitem {
+    display: inline;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border-style: solid;
+    border-color: white;
+    border-width: 5px;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.16), 0px 2px 10px 0px rgba(0, 0, 0, 0.12)
+}
+
+.imageitem.large {
+    width: 98%;
+}
+
+.imageitem.half {
+    width: 49%;
+}
+
+.imageitem.third {
+    width: 32%;
+}
+
+/*
+aside {
+    background-image: url('/images/background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: left top;
+    background-size: cover;
+}
+*/

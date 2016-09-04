@@ -1,0 +1,73 @@
+html {
+  font: 400 14px / 20px "Droid Sans", "Helvetica Neue",Helvetica,Arial,sans-serif; }
+
+.brand-logo {
+    text-transform: uppercase;
+    font-family: "Open Sans", sans-serif;
+    font-style: italic;
+    font-size: 2.5em;
+    color: white;
+    text-decoration: none; }
+  
+.brand-logo:hover {
+    color: white; }
+
+article h2 {
+    font-size: 250%;
+}
+
+article h3 {
+    font-size: 150%;
+}
+
+article h4 {
+    font-size: 130%;
+}
+
+article h5 {
+    font-size: 120%;
+}
+
+article h6 {
+    font-size: 110%;
+}
+
+h2 > a {
+    color: inherit;
+}
+
+h2 > a:hover {
+    text-decoration: underline;
+}
+
+em {
+    color: #d05;
+}
+
+strong {
+    font-weight: bold;
+}
+
+div.highlight pre, code {
+    background-color: #eee
+}
+
+main ul li {
+    list-style-type: initial;
+}
+
+@media only print {
+  * {
+    float: none !important;
+    overflow: visible !important;
+    position: relative; }
+
+  .no-print, .no-print * {
+    display: none !important; }
+
+  main a:after {
+    content: " [" attr(href) "]"; }
+
+    
+    }
+

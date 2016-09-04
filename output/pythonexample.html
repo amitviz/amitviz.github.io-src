@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic'>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="//amit.visrolia.net/theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="//amit.visrolia.net/theme/stylesheet/tipuesearch.css">
+  <link rel="stylesheet" type="text/css" href="//amit.visrolia.net/theme/stylesheet/style.min.css">
+  <link rel="stylesheet" type="text/css" href="//amit.visrolia.net/theme/stylesheet/style.local.css">
+  <link rel='manifest' href='//amit.visrolia.net/manifest.json'>
+
+  <link href="//amit.visrolia.net/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Amit's notes Atom">
+  <link rel="shortcut icon" href="//amit.visrolia.net/favicon.ico" type="image/png">
+  <link rel="icon" href="//amit.visrolia.net/favicon.ico" type="image/png">
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <!-- Chrome, Firefox OS and Opera -->
+  <meta name="theme-color" content="#333333">
+  <!-- Windows Phone -->
+  <meta name="msapplication-navbutton-color" content="#333333">
+  <!-- iOS Safari -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<meta name="author" content="Amit" />
+<meta name="description" content="Syntax highlighting test" />
+<meta name="keywords" content="code, python, pygments">
+<meta property="og:site_name" content="Amit's notes"/>
+<meta property="og:title" content="pygments"/>
+<meta property="og:description" content="Syntax highlighting test"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="//amit.visrolia.net/pythonexample.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2015-11-06 00:00:00+00:00"/>
+<meta property="article:modified_time" content="2015-11-07 00:00:00+00:00"/>
+<meta property="article:author" content="//amit.visrolia.net/author/amit.html">
+<meta property="article:section" content="Notes"/>
+<meta property="article:tag" content="code"/>
+<meta property="article:tag" content="python"/>
+<meta property="article:tag" content="pygments"/>
+<meta property="og:image" content="">
+
+  <title>Amit's notes &ndash; pygments</title>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="//amit.visrolia.net/">
+        <img src="//amit.visrolia.net/theme/img/profile.png" alt="Amit" title="Amit">
+      </a>
+      <h1><a href="//amit.visrolia.net/">Amit</a></h1>
+
+<p>Notes, links, and pictures</p>
+      <nav>
+        <ul class="list">
+          <li><a href="//amit.visrolia.net/pages/amit.html#amit">About&nbsp;me</a></li>
+          <li><a href="//amit.visrolia.net/pages/credits.html#credits">Credits</a></li>
+
+        </ul>
+      </nav>
+
+      <form id="tipue_search_form" action="//amit.visrolia.net/search.html" onsubmit="return (this.elements['q'].value.length > 0)">
+        <input id="tipue_search_input" name="q" type="search" autocomplete="off" placeholder="Search" required>
+      </form>
+      
+      <ul class="social">
+        <li><a class="sc-xlinkedin" href="https://uk.linkedin.com/in/amitvisrolia" target="_blank"><i class="fa fa-xlinkedin"></i></a></li>
+        <li><a class="sc-github" href="https://github.com/amitviz" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-rss" href="/feeds/atom.xml" target="_blank"><i class="fa fa-rss"></i></a></li>
+      </ul>
+      
+    </div>
+  </aside>
+  <main>
+
+<article>
+  <header>
+    <h1 id="pythonexample">pygments</h1>
+    <p>
+          Posted on November 06, 2015 in <a href="//amit.visrolia.net/category/notes.html">Notes</a>
+
+
+    </p>
+  </header>
+  <div>
+    <p>Pygments is included in my installation of Pelican. Here are a couple of code fragments to test that syntax highlighting is working&nbsp;correctly.</p>
+<p>This is an example of a Python file, presented with line&nbsp;numbers:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">unittest</span>
+<span class="k">def</span> <span class="nf">median</span><span class="p">(</span><span class="n">pool</span><span class="p">):</span>
+    <span class="n">copy</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">pool</span><span class="p">)</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">copy</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">size</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">copy</span><span class="p">[(</span><span class="n">size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">copy</span><span class="p">[</span><span class="n">size</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">copy</span><span class="p">[</span><span class="n">size</span><span class="o">/</span><span class="mi">2</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="k">class</span> <span class="nc">TestMedian</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">testMedian</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">failUnlessEqual</span><span class="p">(</span><span class="n">median</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">]),</span> <span class="mi">7</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+</pre></div>
+</td></tr></table>
+
+<p>And here a matlab function, this time without line&nbsp;numbers:</p>
+<div class="highlight"><pre><span></span><span class="k">function</span> <span class="nf">echo_number</span>
+<span class="c">%</span>
+<span class="c">% Ask the user for a number, and then echo it to the screen.</span>
+<span class="c">%   Quit when the number given is -1.</span>
+<span class="c">%   </span>
+<span class="c">% Arguments:</span>
+<span class="c">%      none</span>
+<span class="c">%</span>
+
+<span class="c">% this is the value we&#39;ll use to terminate the loop</span>
+<span class="n">quit_value</span> <span class="p">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+
+<span class="n">done_yet</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">while</span> <span class="p">(</span><span class="n">done_yet</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">user_value</span> <span class="p">=</span> <span class="n">input</span><span class="p">(</span><span class="s">&#39;gimme a number &#39;</span><span class="p">);</span>
+    <span class="n">fprintf</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;you typed %f \n&#39;</span><span class="p">,</span> <span class="n">user_value</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">user_value</span> <span class="o">==</span> <span class="n">quit_value</span><span class="p">)</span>
+    <span class="n">done_yet</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">end</span>
+
+<span class="k">end</span>
+</pre></div>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="//amit.visrolia.net/tag/code.html">code</a>
+      <a href="//amit.visrolia.net/tag/python.html">python</a>
+      <a href="//amit.visrolia.net/tag/pygments.html">pygments</a>
+    </p>
+  </div>
+
+
+
+</article>
+
+    <footer>
+<p>&copy; Amit Visrolia 2016</p>
+    </footer>
+  </main>
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Amit's notes ",
+  "url" : "//amit.visrolia.net",
+  "image": "",
+  "description": "Amit's notes, links, and pictures"
+}
+</script>
+</body>
+</html>

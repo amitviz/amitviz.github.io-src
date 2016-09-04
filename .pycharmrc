@@ -1,0 +1,2 @@
+source ~/.bashrc
+source ~/programming/virtualenvs/pelican/bin/activate
