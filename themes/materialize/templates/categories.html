@@ -1,9 +1,0 @@
-{% extends "base.html" %}
-
-{% block content %}
-<h1>Categories</h1>
-{% for category, articles in categories %}
-<h2><a href="{{ SITEURL }}/{{ category.url}}" class="uk-link-muted">{{ category|capitalize }}</a></h2>
-<hr>
-{% endfor %}
-{% endblock %}
