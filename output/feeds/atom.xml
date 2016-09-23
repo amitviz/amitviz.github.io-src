@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Amit's notes</title><link href="//amit.visrolia.net/" rel="alternate"></link><link href="//amit.visrolia.net/feeds/atom.xml" rel="self"></link><id>//amit.visrolia.net/</id><updated>2016-09-11T00:00:00+01:00</updated><entry><title>Great North Run</title><link href="//amit.visrolia.net/gnr2016.html" rel="alternate"></link><published>2016-09-11T00:00:00+01:00</published><author><name>Amit</name></author><id>tag:amit.visrolia.net,2016-09-11:gnr2016.html</id><summary type="html">&lt;div class="imagepost"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Amit's notes</title><link href="//amit.visrolia.net/" rel="alternate"></link><link href="//amit.visrolia.net/feeds/atom.xml" rel="self"></link><id>//amit.visrolia.net/</id><updated>2016-09-22T00:00:00+01:00</updated><entry><title>Glasgow</title><link href="//amit.visrolia.net/glasgow.html" rel="alternate"></link><published>2016-09-22T00:00:00+01:00</published><author><name>Amit</name></author><id>tag:amit.visrolia.net,2016-09-22:glasgow.html</id><summary type="html">&lt;div class="imagepost"&gt;
+&lt;img src="/images/glasgow.jpg" class="imageitem large" /&gt;
+&lt;/div&gt;</summary><category term="travel"></category><category term="scotland"></category><category term="uk"></category></entry><entry><title>Vienna</title><link href="//amit.visrolia.net/vienna2.html" rel="alternate"></link><published>2016-09-18T00:00:00+01:00</published><author><name>Amit</name></author><id>tag:amit.visrolia.net,2016-09-18:vienna2.html</id><summary type="html">&lt;div class="imagepost"&gt;
+&lt;img src="/images/vienna2.jpg" class="imageitem large" /&gt;
+&lt;/div&gt;</summary><category term="travel"></category><category term="austria"></category></entry><entry><title>Hungary</title><link href="//amit.visrolia.net/hungary.html" rel="alternate"></link><published>2016-09-17T00:00:00+01:00</published><author><name>Amit</name></author><id>tag:amit.visrolia.net,2016-09-17:hungary.html</id><summary type="html">&lt;div class="imagepost"&gt;
+&lt;img src="/images/szombathely1.jpg" class="imageitem large" /&gt;
+&lt;img src="/images/szombathely2.jpg" class="imageitem half" /&gt;
+&lt;img src="/images/szombathely3.jpg" class="imageitem half" /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Wedding in&amp;nbsp;Szombathely&lt;/p&gt;</summary><category term="travel"></category><category term="hungary"></category></entry><entry><title>Great North Run</title><link href="//amit.visrolia.net/gnr2016.html" rel="alternate"></link><published>2016-09-11T00:00:00+01:00</published><author><name>Amit</name></author><id>tag:amit.visrolia.net,2016-09-11:gnr2016.html</id><summary type="html">&lt;div class="imagepost"&gt;
 &lt;img src="/images/gnr.jpg" class="imageitem large" /&gt;
 &lt;/div&gt;</summary><category term="travel"></category><category term="newcastle"></category><category term="running"></category></entry><entry><title>Interleaving two pdf files</title><link href="//amit.visrolia.net/interleavepdf.html" rel="alternate"></link><published>2016-08-28T00:00:00+01:00</published><author><name>Amit</name></author><id>tag:amit.visrolia.net,2016-08-28:interleavepdf.html</id><summary type="html">&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
 2
