@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic'>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="//amit.visrolia.net/theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="//amit.visrolia.net/theme/stylesheet/tipuesearch.css">
+  <link rel="stylesheet" type="text/css" href="//amit.visrolia.net/theme/stylesheet/style.min.css">
+  <link rel="stylesheet" type="text/css" href="//amit.visrolia.net/theme/stylesheet/style.local.css">
+  <link rel='manifest' href='//amit.visrolia.net/manifest.json'>
+
+  <link href="//amit.visrolia.net/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Amit's notes Atom">
+  <link rel="shortcut icon" href="//amit.visrolia.net/favicon.ico" type="image/png">
+  <link rel="icon" href="//amit.visrolia.net/favicon.ico" type="image/png">
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <!-- Chrome, Firefox OS and Opera -->
+  <meta name="theme-color" content="#333333">
+  <!-- Windows Phone -->
+  <meta name="msapplication-navbutton-color" content="#333333">
+  <!-- iOS Safari -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<meta name="author" content="Amit" />
+<meta name="description" content="create local repo: git init add files to version tracking (‘stage’): git add . commit files to repo: git commit -m "Comment" automatically commit modified files: git commit -a (does NOT add new files) add changed files (inc. deleted files): git add -A . list branches: git branch (default is master) create ..." />
+<meta name="keywords" content="code">
+<meta property="og:site_name" content="Amit's notes"/>
+<meta property="og:title" content="Git basics"/>
+<meta property="og:description" content="create local repo: git init add files to version tracking (‘stage’): git add . commit files to repo: git commit -m "Comment" automatically commit modified files: git commit -a (does NOT add new files) add changed files (inc. deleted files): git add -A . list branches: git branch (default is master) create ..."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="//amit.visrolia.net/gitbasics.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2011-11-29 00:00:00+00:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="//amit.visrolia.net/author/amit.html">
+<meta property="article:section" content="Notes"/>
+<meta property="article:tag" content="code"/>
+<meta property="og:image" content="">
+
+  <title>Amit's notes &ndash; Git basics</title>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="//amit.visrolia.net/">
+        <img src="//amit.visrolia.net/theme/img/profile.png" alt="Amit" title="Amit">
+      </a>
+      <h1><a href="//amit.visrolia.net/">Amit</a></h1>
+
+<p>Notes, links, and pictures</p>
+      <nav>
+        <ul class="list">
+          <li><a href="//amit.visrolia.net/pages/amit.html#amit">About&nbsp;me</a></li>
+          <li><a href="//amit.visrolia.net/pages/credits.html#credits">Credits</a></li>
+
+        </ul>
+      </nav>
+
+      <form id="tipue_search_form" action="//amit.visrolia.net/search.html" onsubmit="return (this.elements['q'].value.length > 0)">
+        <input id="tipue_search_input" name="q" type="search" autocomplete="off" placeholder="Search" required>
+      </form>
+      
+      <ul class="social">
+        <li><a class="sc-xlinkedin" href="https://uk.linkedin.com/in/amitvisrolia" target="_blank"><i class="fa fa-xlinkedin"></i></a></li>
+        <li><a class="sc-github" href="https://github.com/amitviz" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-rss" href="/feeds/atom.xml" target="_blank"><i class="fa fa-rss"></i></a></li>
+      </ul>
+      
+    </div>
+  </aside>
+  <main>
+
+<article>
+  <header>
+    <h1 id="gitbasics">Git&nbsp;basics</h1>
+    <p>
+          Posted on November 29, 2011 in <a href="//amit.visrolia.net/category/notes.html">Notes</a>
+
+
+    </p>
+  </header>
+  <div>
+    <p>create local&nbsp;repo:</p>
+<div class="highlight"><pre><span></span>git init
+</pre></div>
+
+
+<p>add files to version tracking&nbsp;(&#8216;stage&#8217;):</p>
+<div class="highlight"><pre><span></span>git add .
+</pre></div>
+
+
+<p>commit files to&nbsp;repo:</p>
+<div class="highlight"><pre><span></span>git commit -m &quot;Comment&quot;
+</pre></div>
+
+
+<p>automatically commit modified&nbsp;files:</p>
+<div class="highlight"><pre><span></span>git commit -a (does NOT add new files)
+</pre></div>
+
+
+<p>add changed files (inc. deleted&nbsp;files): </p>
+<div class="highlight"><pre><span></span>git add -A .
+</pre></div>
+
+
+<p>list&nbsp;branches: </p>
+<div class="highlight"><pre><span></span>git branch (default is master)
+</pre></div>
+
+
+<p>create new&nbsp;branch: </p>
+<div class="highlight"><pre><span></span>git branch &lt;branchname&gt;
+</pre></div>
+
+
+<p>switch to&nbsp;branch: </p>
+<div class="highlight"><pre><span></span>git checkout &lt;branchname&gt;
+</pre></div>
+
+
+<p>push to remote&nbsp;repo: </p>
+<div class="highlight"><pre><span></span>git push git://*.git
+</pre></div>
+
+
+<p>define a remote&nbsp;repo: </p>
+<div class="highlight"><pre><span></span>git remote add &lt;reponame&gt; git://*.git (default repo name is origin)
+</pre></div>
+
+
+<p>push to remote&nbsp;repo: </p>
+<div class="highlight"><pre><span></span>git push &lt;reponame&gt;
+</pre></div>
+
+
+<p>push to a specific&nbsp;branch: </p>
+<div class="highlight"><pre><span></span>git push &lt;reponame&gt; &lt;branchname&gt;
+</pre></div>
+
+
+<p>alt: </p>
+<div class="highlight"><pre><span></span>git push &lt;reponame&gt; &lt;localbranchname&gt;:&lt;remotebranchname&gt;
+</pre></div>
+
+
+<p>list remote&nbsp;repos: </p>
+<div class="highlight"><pre><span></span>git remote
+</pre></div>
+
+
+<p>clone&nbsp;repo: </p>
+<div class="highlight"><pre><span></span>git clone git://*.git
+</pre></div>
+
+
+<p>create local branch clone of remote&nbsp;branch: </p>
+<div class="highlight"><pre><span></span>git checkout -b &lt;branchname&gt; origin/&lt;remotebranchname&gt;
+</pre></div>
+
+
+<p>list all branches (inc&nbsp;remote): </p>
+<div class="highlight"><pre><span></span>git branch -a
+</pre></div>
+
+
+<p>get the latest updates from the remote&nbsp;repo: </p>
+<div class="highlight"><pre><span></span>git pull &lt;reponame&gt;
+</pre></div>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="//amit.visrolia.net/tag/code.html">code</a>
+    </p>
+  </div>
+
+
+
+</article>
+
+    <footer>
+<p>&copy; Amit Visrolia 2016</p>
+    </footer>
+  </main>
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Amit's notes ",
+  "url" : "//amit.visrolia.net",
+  "image": "",
+  "description": "Amit's notes, links, and pictures"
+}
+</script>
+</body>
+</html>

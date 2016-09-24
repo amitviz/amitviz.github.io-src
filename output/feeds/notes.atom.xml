@@ -367,7 +367,206 @@ Cognitive: beliefs&amp;nbsp;(culture)&lt;/p&gt;</summary><category term="mooc"><
 &lt;li&gt;Vary intonation, volume and pitch when&amp;nbsp;communicating!&lt;/li&gt;
 &lt;li&gt;Smiling&lt;/li&gt;
 &lt;li&gt;Open body&amp;nbsp;posture&lt;/li&gt;
-&lt;/ul&gt;</summary><category term="mooc"></category><category term="management"></category><category term="leadership"></category></entry><entry><title>Introduction to Matlab: lecture 1</title><link href="//amit.visrolia.net/matlabbasics.html" rel="alternate"></link><published>2011-10-31T00:00:00+00:00</published><author><name>Amit</name></author><id>tag:amit.visrolia.net,2011-10-31:matlabbasics.html</id><summary type="html">&lt;h1&gt;Matlab&amp;nbsp;basics&lt;/h1&gt;
+&lt;/ul&gt;</summary><category term="mooc"></category><category term="management"></category><category term="leadership"></category></entry><entry><title>Remove security from a PDF file</title><link href="//amit.visrolia.net/pdfsecurity.html" rel="alternate"></link><published>2013-07-31T00:00:00+01:00</published><author><name>Amit</name></author><id>tag:amit.visrolia.net,2013-07-31:pdfsecurity.html</id><summary type="html">&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;gs -q -dNOPAUSE -dBATCH -sDEVICE&lt;span class="o"&gt;=&lt;/span&gt;pdfwrite -sOutputFile&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$output&lt;/span&gt; -c .setpdfwrite -f &lt;span class="nv"&gt;$1&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</summary><category term="code"></category><category term="pdf"></category></entry><entry><title>adb backup</title><link href="//amit.visrolia.net/adb.html" rel="alternate"></link><published>2013-01-22T00:00:00+00:00</published><author><name>Amit</name></author><id>tag:amit.visrolia.net,2013-01-22:adb.html</id><summary type="html">&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;adb backup &lt;span class="o"&gt;[&lt;/span&gt;-f &amp;lt;file&amp;gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;-apk&lt;span class="p"&gt;|&lt;/span&gt;-noapk&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;-shared&lt;span class="p"&gt;|&lt;/span&gt;-noshared&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;-all&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;-system&lt;span class="p"&gt;|&lt;/span&gt;nosystem&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;&amp;lt;packages...&amp;gt;&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;-f specify&amp;nbsp;filename&lt;/p&gt;
+&lt;p&gt;-apk|noapk include&amp;nbsp;apks&lt;/p&gt;
+&lt;p&gt;-all backup all apps (rather than specify individual&amp;nbsp;packages)&lt;/p&gt;
+&lt;p&gt;-shared|noshared backup shared storage partition (i.e.&amp;nbsp;sdcard)&lt;/p&gt;
+&lt;p&gt;-system include system&amp;nbsp;packages&lt;/p&gt;
+&lt;p&gt;&lt;packages&gt; specify package names to&amp;nbsp;backup&lt;/p&gt;
+&lt;p&gt;To backup and restore to a different &lt;span class="caps"&gt;ROM&lt;/span&gt;,&amp;nbsp;usually:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;abd backup -f ~/backup.ab -apk -all -noshared -nosystem
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;To&amp;nbsp;restore:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;adb restore ~/backup.ab
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Convert to tar (only if backup was&amp;nbsp;unencrypted):&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;dd &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;backup.ab &lt;span class="nv"&gt;bs&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;24&lt;/span&gt; &lt;span class="nv"&gt;skip&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; openssl zlip -d &amp;gt; backup.tar
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</summary><category term="code"></category><category term="android"></category></entry><entry><title>Offline email back-up using OfflineIMAP</title><link href="//amit.visrolia.net/imapbackup.html" rel="alternate"></link><published>2011-12-01T00:00:00+00:00</published><author><name>Amit</name></author><id>tag:amit.visrolia.net,2011-12-01:imapbackup.html</id><summary type="html">&lt;p&gt;&lt;a href="http://offlineimap.org/"&gt;OfflineIMAP&lt;/a&gt;&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo zypper in offlineimap
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Create&amp;nbsp;~/.offlineimaprc:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;[general]&lt;/span&gt;
+&lt;span class="na"&gt;accounts&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;ACCOUNT_NAME1,ACCOUNT_NAME2&lt;/span&gt;
+&lt;span class="na"&gt;maxsyncaccounts&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;2&lt;/span&gt;
+&lt;span class="na"&gt;socktimeout&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;60&lt;/span&gt;
+
+&lt;span class="k"&gt;[Account ACCOUNT_NAME1]&lt;/span&gt;
+&lt;span class="na"&gt;localrepository&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;local-ACCOUNT_NAME1&lt;/span&gt;
+&lt;span class="na"&gt;remoterepository&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;remote-ACCOUNT_NAME1&lt;/span&gt;
+
+&lt;span class="k"&gt;[Account ACCOUNT_NAME2]&lt;/span&gt;
+&lt;span class="na"&gt;localrepository&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;local-ACCOUNT_NAME2&lt;/span&gt;
+&lt;span class="na"&gt;remoterepository&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;remote-ACCOUNT_NAME2&lt;/span&gt;
+
+&lt;span class="k"&gt;[Repository local-ACCOUNT_NAME1]&lt;/span&gt;
+&lt;span class="na"&gt;type&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;Maildir&lt;/span&gt;
+&lt;span class="na"&gt;localfolders&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;YOUR_ARCHIVE_PATH1&lt;/span&gt;
+
+&lt;span class="k"&gt;[Repository remote-ACCOUNT_NAME1]&lt;/span&gt;
+&lt;span class="na"&gt;type&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;IMAP&lt;/span&gt;
+&lt;span class="na"&gt;remotehost&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;imap.gmail.com&lt;/span&gt;
+&lt;span class="na"&gt;remoteuser&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;YOUR_USER_NAME1&lt;/span&gt;
+&lt;span class="na"&gt;remotepass&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;YOUR_PASSWORD1&lt;/span&gt;
+&lt;span class="na"&gt;ssl&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;yes&lt;/span&gt;
+&lt;span class="na"&gt;maxconnections&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;1&lt;/span&gt;
+&lt;span class="na"&gt;realdelete&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;no&lt;/span&gt;
+
+&lt;span class="k"&gt;[Repository local-ACCOUNT_NAME2]&lt;/span&gt;
+&lt;span class="na"&gt;type&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;Maildir&lt;/span&gt;
+&lt;span class="na"&gt;localfolders&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;YOUR_ARCHIVE_PATH2&lt;/span&gt;
+
+&lt;span class="k"&gt;[Repository remote-ACCOUNT_NAME2]&lt;/span&gt;
+&lt;span class="na"&gt;type&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;IMAP&lt;/span&gt;
+&lt;span class="na"&gt;remotehost&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;imap.gmail.com&lt;/span&gt;
+&lt;span class="na"&gt;remoteuser&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;YOUR_USER_NAME2&lt;/span&gt;
+&lt;span class="na"&gt;remotepass&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;YOUR_PASSWORD2&lt;/span&gt;
+&lt;span class="na"&gt;ssl&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;yes&lt;/span&gt;
+&lt;span class="na"&gt;maxconnections&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;1&lt;/span&gt;
+&lt;span class="na"&gt;realdelete&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;no&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Setup a cron job to run&amp;nbsp;periodically:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;offlineimap -u Noninteractive.Quiet
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</summary><category term="code"></category></entry><entry><title>Git basics</title><link href="//amit.visrolia.net/gitbasics.html" rel="alternate"></link><published>2011-11-29T00:00:00+00:00</published><author><name>Amit</name></author><id>tag:amit.visrolia.net,2011-11-29:gitbasics.html</id><summary type="html">&lt;p&gt;create local&amp;nbsp;repo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git init
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;add files to version tracking&amp;nbsp;(&amp;#8216;stage&amp;#8217;):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git add .
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;commit files to&amp;nbsp;repo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git commit -m &amp;quot;Comment&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;automatically commit modified&amp;nbsp;files:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git commit -a (does NOT add new files)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;add changed files (inc. deleted&amp;nbsp;files): &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git add -A .
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;list&amp;nbsp;branches: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git branch (default is master)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;create new&amp;nbsp;branch: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git branch &amp;lt;branchname&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;switch to&amp;nbsp;branch: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git checkout &amp;lt;branchname&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;push to remote&amp;nbsp;repo: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push git://*.git
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;define a remote&amp;nbsp;repo: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git remote add &amp;lt;reponame&amp;gt; git://*.git (default repo name is origin)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;push to remote&amp;nbsp;repo: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push &amp;lt;reponame&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;push to a specific&amp;nbsp;branch: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push &amp;lt;reponame&amp;gt; &amp;lt;branchname&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;alt: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push &amp;lt;reponame&amp;gt; &amp;lt;localbranchname&amp;gt;:&amp;lt;remotebranchname&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;list remote&amp;nbsp;repos: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git remote
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;clone&amp;nbsp;repo: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone git://*.git
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;create local branch clone of remote&amp;nbsp;branch: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git checkout -b &amp;lt;branchname&amp;gt; origin/&amp;lt;remotebranchname&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;list all branches (inc&amp;nbsp;remote): &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git branch -a
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;get the latest updates from the remote&amp;nbsp;repo: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git pull &amp;lt;reponame&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="code"></category></entry><entry><title>Introduction to Matlab: lecture 1</title><link href="//amit.visrolia.net/matlabbasics.html" rel="alternate"></link><published>2011-10-31T00:00:00+00:00</published><author><name>Amit</name></author><id>tag:amit.visrolia.net,2011-10-31:matlabbasics.html</id><summary type="html">&lt;h1&gt;Matlab&amp;nbsp;basics&lt;/h1&gt;
 &lt;p&gt;The purpose of these lectures is to introduce the students to the &lt;span class="caps"&gt;MATLAB&lt;/span&gt; environment, and use it to solve simple beam finite element&amp;nbsp;problems.&lt;/p&gt;
 &lt;p&gt;At the end of the lectures, the students should have enough information to be able&amp;nbsp;to:&lt;/p&gt;
 &lt;ol&gt;

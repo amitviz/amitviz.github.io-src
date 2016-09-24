@@ -192,6 +192,172 @@ Power is the potential ability to influence people. Power is ...</p>
 </article>
 <article>
   <header>
+    <h2><a href="//amit.visrolia.net/pdfsecurity.html#pdfsecurity">Remove security from a <span class="caps">PDF</span>&nbsp;file</a></h2>
+    <p>
+          Posted on July 31, 2013 in <a href="//amit.visrolia.net/category/notes.html">Notes</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="//amit.visrolia.net/tag/code.html">code</a>,              <a href="//amit.visrolia.net/tag/pdf.html">pdf</a>
+    </p>
+  </header>
+  <div>
+      <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>gs -q -dNOPAUSE -dBATCH -sDEVICE<span class="o">=</span>pdfwrite -sOutputFile<span class="o">=</span><span class="nv">$output</span> -c .setpdfwrite -f <span class="nv">$1</span>
+</pre></div>
+</td></tr></table>
+      <br>
+      <a class="btn" href="//amit.visrolia.net/pdfsecurity.html#pdfsecurity">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="//amit.visrolia.net/adb.html#adb">adb&nbsp;backup</a></h2>
+    <p>
+          Posted on January 22, 2013 in <a href="//amit.visrolia.net/category/notes.html">Notes</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="//amit.visrolia.net/tag/code.html">code</a>,              <a href="//amit.visrolia.net/tag/android.html">android</a>
+    </p>
+  </header>
+  <div>
+      <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>adb backup <span class="o">[</span>-f &lt;file&gt;<span class="o">]</span> <span class="o">[</span>-apk<span class="p">|</span>-noapk<span class="o">]</span> <span class="o">[</span>-shared<span class="p">|</span>-noshared<span class="o">]</span> <span class="o">[</span>-all<span class="o">]</span> <span class="o">[</span>-system<span class="p">|</span>nosystem<span class="o">]</span> <span class="o">[</span>&lt;packages...&gt;<span class="o">]</span>
+</pre></div>
+</td></tr></table>
+
+<p>-f specify&nbsp;filename</p>
+<p>-apk|noapk include&nbsp;apks</p>
+<p>-all backup all apps (rather than specify individual&nbsp;packages)</p>
+<p>-shared|noshared backup shared storage partition (i.e.&nbsp;sdcard)</p>
+<p>-system include system&nbsp;packages</p>
+<p><packages> specify package names to&nbsp;backup</p>
+<p>To backup and ...</p>
+      <br>
+      <a class="btn" href="//amit.visrolia.net/adb.html#adb">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="//amit.visrolia.net/imapbackup.html#imapbackup">Offline email back-up using&nbsp;OfflineIMAP</a></h2>
+    <p>
+          Posted on December 01, 2011 in <a href="//amit.visrolia.net/category/notes.html">Notes</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="//amit.visrolia.net/tag/code.html">code</a>
+    </p>
+  </header>
+  <div>
+      <p><a href="http://offlineimap.org/">OfflineIMAP</a></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>sudo zypper in offlineimap
+</pre></div>
+</td></tr></table>
+
+<p>Create&nbsp;~/.offlineimaprc:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">[general]</span>
+<span class="na">accounts</span> <span class="o">=</span> <span class="s">ACCOUNT_NAME1,ACCOUNT_NAME2 ...</span></pre></div></td></tr></table>
+      <br>
+      <a class="btn" href="//amit.visrolia.net/imapbackup.html#imapbackup">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="//amit.visrolia.net/gitbasics.html#gitbasics">Git&nbsp;basics</a></h2>
+    <p>
+          Posted on November 29, 2011 in <a href="//amit.visrolia.net/category/notes.html">Notes</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="//amit.visrolia.net/tag/code.html">code</a>
+    </p>
+  </header>
+  <div>
+      <p>create local&nbsp;repo:</p>
+<div class="highlight"><pre><span></span>git init
+</pre></div>
+
+
+<p>add files to version tracking&nbsp;(&#8216;stage&#8217;):</p>
+<div class="highlight"><pre><span></span>git add .
+</pre></div>
+
+
+<p>commit files to&nbsp;repo:</p>
+<div class="highlight"><pre><span></span>git commit -m &quot;Comment&quot;
+</pre></div>
+
+
+<p>automatically commit modified&nbsp;files:</p>
+<div class="highlight"><pre><span></span>git commit -a (does NOT add new files)
+</pre></div>
+
+
+<p>add changed files (inc. deleted&nbsp;files): </p>
+<div class="highlight"><pre><span></span>git add -A .
+</pre></div>
+
+
+<p>list&nbsp;branches: </p>
+<div class="highlight"><pre><span></span>git branch (default is master)
+</pre></div>
+
+
+<p>create ...</p>
+      <br>
+      <a class="btn" href="//amit.visrolia.net/gitbasics.html#gitbasics">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
     <h2><a href="//amit.visrolia.net/matlabbasics.html#matlabbasics">Introduction to Matlab: lecture&nbsp;1</a></h2>
     <p>
           Posted on October 31, 2011 in <a href="//amit.visrolia.net/category/notes.html">Notes</a>
