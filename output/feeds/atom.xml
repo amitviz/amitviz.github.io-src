@@ -1,5 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Amit's notes</title><link href="//amit.visrolia.net/" rel="alternate"></link><link href="//amit.visrolia.net/feeds/atom.xml" rel="self"></link><id>//amit.visrolia.net/</id><updated>2016-10-07T00:00:00+01:00</updated><entry><title>virtualenv and VTK</title><link href="//amit.visrolia.net/vtk.html" rel="alternate"></link><published>2016-10-07T00:00:00+01:00</published><author><name>Amit</name></author><id>tag:amit.visrolia.net,2016-10-07:vtk.html</id><summary type="html">&lt;p&gt;For whatever reason, I can&amp;#8217;t get &lt;a href="http://www.vtk.org/Wiki/VTK/Examples/Python"&gt;&lt;span class="caps"&gt;VTK&lt;/span&gt;&lt;/a&gt; to install in my virtualenv. So, the horrible hack I am using is to symlink the system package to my&amp;nbsp;virtualenv:&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Amit's notes</title><link href="//amit.visrolia.net/" rel="alternate"></link><link href="//amit.visrolia.net/feeds/atom.xml" rel="self"></link><id>//amit.visrolia.net/</id><updated>2016-10-10T00:00:00+01:00</updated><entry><title>Anaconda environments</title><link href="//amit.visrolia.net/anaconda.html" rel="alternate"></link><published>2016-10-10T00:00:00+01:00</published><author><name>Amit</name></author><id>tag:amit.visrolia.net,2016-10-10:anaconda.html</id><summary type="html">&lt;p&gt;&lt;a href="https://www.continuum.io/downloads#linux"&gt;Anaconda&lt;/a&gt; is a Python distribution and package manager that might be a bit nicer than using &lt;code&gt;virtualenv&lt;/code&gt;s and &lt;code&gt;pip&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;To set up a new environment using&amp;nbsp;Anaconda:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;conda create --name &amp;lt;envname&amp;gt; &lt;span class="nv"&gt;python&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;3.5
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;The environment is created in the Anaconda installation directory. To activate and deactivate the&amp;nbsp;environment:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;source&lt;/span&gt; activate &amp;lt;envname&amp;gt;
+&lt;span class="nb"&gt;source&lt;/span&gt; deactivate &amp;lt;envname&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;In the terminal, the prompt will be preceded by &lt;code&gt;&amp;lt;envname&amp;gt;&lt;/code&gt; when the environment is&amp;nbsp;active.&lt;/p&gt;
+&lt;p&gt;If you want to delete the environment, find out the name of it and&amp;nbsp;remove:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;conda info --envs
+conda remove --name &amp;lt;envname&amp;gt; --all
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;The useful thing about Anaconda environments is that they can be exported and shared with&amp;nbsp;code: &lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;conda env &lt;span class="nb"&gt;export&lt;/span&gt; &amp;gt; environment.yml
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Then, someone else doing development on the same code base can set up an identical&amp;nbsp;environment: &lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;conda env create -f environment.yml
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;When the environment is active, packages can be searched for and installed as&amp;nbsp;follows:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;conda search numpy
+conda install numpy
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;The packages within the Anaconda environment can be listed&amp;nbsp;by: &lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;conda list
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;To update any of the&amp;nbsp;packages:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;conda update &amp;lt;packagename&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;where &lt;code&gt;&amp;lt;packagename&amp;gt;&lt;/code&gt; is any of the listed packages, including &lt;code&gt;python&lt;/code&gt;.&lt;/p&gt;</summary><category term="python"></category><category term="conda"></category><category term="virtualenv"></category></entry><entry><title>virtualenv and VTK</title><link href="//amit.visrolia.net/vtk.html" rel="alternate"></link><published>2016-10-07T00:00:00+01:00</published><author><name>Amit</name></author><id>tag:amit.visrolia.net,2016-10-07:vtk.html</id><summary type="html">&lt;p&gt;For whatever reason, I can&amp;#8217;t get &lt;a href="http://www.vtk.org/Wiki/VTK/Examples/Python"&gt;&lt;span class="caps"&gt;VTK&lt;/span&gt;&lt;/a&gt; to install in my virtualenv. So, the horrible hack I am using is to symlink the system package to my&amp;nbsp;virtualenv:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ln -s /usr/lib64/python3.5/site-packages/vtk ~/PATH/TO/VIRTUALENV/lib64/python3.5/site-packages/
 &lt;/pre&gt;&lt;/div&gt;</summary><category term="code"></category><category term="python"></category></entry><entry><title>Glasgow</title><link href="//amit.visrolia.net/glasgow.html" rel="alternate"></link><published>2016-09-22T00:00:00+01:00</published><author><name>Amit</name></author><id>tag:amit.visrolia.net,2016-09-22:glasgow.html</id><summary type="html">&lt;div class="imagepost"&gt;
 &lt;img src="/images/glasgow.jpg" class="imageitem large" /&gt;
