@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic'>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="//amit.visrolia.net/theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="//amit.visrolia.net/theme/stylesheet/tipuesearch.css">
+  <link rel="stylesheet" type="text/css" href="//amit.visrolia.net/theme/stylesheet/style.min.css">
+  <link rel="stylesheet" type="text/css" href="//amit.visrolia.net/theme/stylesheet/style.local.css">
+  <link rel='manifest' href='//amit.visrolia.net/manifest.json'>
+
+  <link href="//amit.visrolia.net/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Amit's notes Atom">
+  <link rel="shortcut icon" href="//amit.visrolia.net/favicon.ico" type="image/png">
+  <link rel="icon" href="//amit.visrolia.net/favicon.ico" type="image/png">
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <!-- Chrome, Firefox OS and Opera -->
+  <meta name="theme-color" content="#333333">
+  <!-- Windows Phone -->
+  <meta name="msapplication-navbutton-color" content="#333333">
+  <!-- iOS Safari -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<meta name="author" content="Amit" />
+<meta name="description" content="Using hdparm, to determine the current state: hdparm -B /dev/sda To set the parameters: hdparm -B 127 -S 36 -M /dev/sda -B sets advanced pover management: values below 128 permit spin-down -S sets the spin-down time, in multiples of 5 seconds. 36 here represents 3 minutes -M sets ..." />
+<meta name="keywords" content="code, linux">
+<meta property="og:site_name" content="Amit's notes"/>
+<meta property="og:title" content="Spin down hard disk drives in Linux"/>
+<meta property="og:description" content="Using hdparm, to determine the current state: hdparm -B /dev/sda To set the parameters: hdparm -B 127 -S 36 -M /dev/sda -B sets advanced pover management: values below 128 permit spin-down -S sets the spin-down time, in multiples of 5 seconds. 36 here represents 3 minutes -M sets ..."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="//amit.visrolia.net/drafts/hdparm.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2016-10-30 00:00:00+01:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="//amit.visrolia.net/author/amit.html">
+<meta property="article:section" content="Notes"/>
+<meta property="article:tag" content="code"/>
+<meta property="article:tag" content="linux"/>
+<meta property="og:image" content="">
+
+  <title>Amit's notes &ndash; Spin down hard disk drives in Linux</title>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="//amit.visrolia.net/">
+        <img src="//amit.visrolia.net/theme/img/profile.png" alt="Amit" title="Amit">
+      </a>
+      <h1><a href="//amit.visrolia.net/">Amit</a></h1>
+
+<p>Notes, links, and pictures</p>
+      <nav>
+        <ul class="list">
+          <li><a href="//amit.visrolia.net/pages/amit.html#amit">About&nbsp;me</a></li>
+          <li><a href="//amit.visrolia.net/pages/credits.html#credits">Credits</a></li>
+
+        </ul>
+      </nav>
+
+      <form id="tipue_search_form" action="//amit.visrolia.net/search.html" onsubmit="return (this.elements['q'].value.length > 0)">
+        <input id="tipue_search_input" name="q" type="search" autocomplete="off" placeholder="Search" required>
+      </form>
+      
+      <ul class="social">
+        <li><a class="sc-xlinkedin" href="https://uk.linkedin.com/in/amitvisrolia" target="_blank"><i class="fa fa-xlinkedin"></i></a></li>
+        <li><a class="sc-github" href="https://github.com/amitviz" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-rss" href="/feeds/atom.xml" target="_blank"><i class="fa fa-rss"></i></a></li>
+      </ul>
+      
+    </div>
+  </aside>
+  <main>
+
+<article>
+  <header>
+    <h1 id="hdparm">Spin down hard disk drives in&nbsp;Linux</h1>
+    <p>
+          Posted on October 30, 2016 in <a href="//amit.visrolia.net/category/notes.html">Notes</a>
+
+
+    </p>
+  </header>
+  <div>
+    <p>Using <code>hdparm</code>, to determine the current&nbsp;state: </p>
+<div class="highlight"><pre><span></span>hdparm -B /dev/sda
+</pre></div>
+
+
+<p>To set the&nbsp;parameters: </p>
+<div class="highlight"><pre><span></span>hdparm -B <span class="m">127</span> -S <span class="m">36</span> -M /dev/sda
+</pre></div>
+
+
+<ul>
+<li><code>-B</code> sets advanced pover management: values below 128 permit&nbsp;spin-down</li>
+<li><code>-S</code> sets the spin-down time, in multiples of 5 seconds. 36 here represents 3&nbsp;minutes</li>
+<li>-M sets Automatic Acoustic Management (if the feature is supported on the <span class="caps">HDD</span>)</li>
+</ul>
+<p>To set these values persistently, add a <code>udev</code> rule, e.g. <code>/etc/udev/rules.d/50-hdparm.rules</code>:</p>
+<div class="highlight"><pre><span></span><span class="nv">ACTION</span><span class="o">==</span><span class="s2">&quot;add&quot;</span>, <span class="nv">SUBSYSTEM</span><span class="o">==</span><span class="s2">&quot;block&quot;</span>, <span class="nv">KERNEL</span><span class="o">==</span><span class="s2">&quot;sda&quot;</span>, RUN+<span class="o">=</span><span class="s2">&quot;/usr/bin/hdparm -B 127 -S 36 -M /dev/sda&quot;</span>
+</pre></div>
+
+
+<p>This will set the <span class="caps">APM</span> level on boot, but it might get reset after sleeping. To get around this, add a systemd service <code>/etc/systemd/system/apm.service</code>:</p>
+<div class="highlight"><pre><span></span><span class="o">[</span>Unit<span class="o">]</span>
+<span class="nv">Description</span><span class="o">=</span>Local system resume actions
+<span class="nv">After</span><span class="o">=</span>suspend.target hybrid-sleep.target hibernate.target
+
+<span class="o">[</span>Service<span class="o">]</span>
+<span class="nv">Type</span><span class="o">=</span>simple
+<span class="nv">ExecStart</span><span class="o">=</span>/usr/bin/hdparm -B <span class="m">254</span> /dev/sda
+
+<span class="o">[</span>Install<span class="o">]</span>
+<span class="nv">WantedBy</span><span class="o">=</span>sleep.target
+</pre></div>
+
+
+<p>Then either start the service (for this&nbsp;session):</p>
+<div class="highlight"><pre><span></span>systemctl start apm.service
+</pre></div>
+
+
+<p>or enable the service to automatically start for all&nbsp;sessions:</p>
+<div class="highlight"><pre><span></span>systemctl <span class="nb">enable</span> apm.service
+</pre></div>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="//amit.visrolia.net/tag/code.html">code</a>
+      <a href="//amit.visrolia.net/tag/linux.html">linux</a>
+    </p>
+  </div>
+
+
+
+</article>
+
+    <footer>
+<p>&copy; Amit Visrolia 2016</p>
+    </footer>
+  </main>
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Amit's notes ",
+  "url" : "//amit.visrolia.net",
+  "image": "",
+  "description": "Amit's notes, links, and pictures"
+}
+</script>
+</body>
+</html>

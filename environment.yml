@@ -24,6 +24,7 @@ dependencies:
 - pip:
   - blinker==1.4
   - feedgenerator==1.9
+  - pelican==3.6.3
   - pytz==2016.7
   - smartypants==1.8.6
   - typogrify==2.0.7
