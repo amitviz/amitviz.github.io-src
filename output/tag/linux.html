@@ -72,6 +72,39 @@
 
 <article>
   <header>
+    <h2><a href="//amit.visrolia.net/hdparm.html#hdparm">Spin down hard disk drives in&nbsp;Linux</a></h2>
+    <p>
+          Posted on October 30, 2016 in <a href="//amit.visrolia.net/category/notes.html">Notes</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="//amit.visrolia.net/tag/code.html">code</a>,              <a href="//amit.visrolia.net/tag/linux.html">linux</a>
+    </p>
+  </header>
+  <div>
+      <p>Using <code>hdparm</code>, to determine the current&nbsp;state: </p>
+<div class="highlight"><pre><span></span>hdparm -B /dev/sda
+</pre></div>
+
+
+<p>To set the&nbsp;parameters: </p>
+<div class="highlight"><pre><span></span>hdparm -B <span class="m">127</span> -S <span class="m">36</span> -M /dev/sda
+</pre></div>
+
+
+<ul>
+<li><code>-B</code> sets advanced pover management: values below 128 permit&nbsp;spin-down</li>
+<li><code>-S</code> sets the spin-down time, in multiples of 5 seconds. 36 here represents 3&nbsp;minutes</li>
+<li><code>-M</code> sets ...</li></ul>
+      <br>
+      <a class="btn" href="//amit.visrolia.net/hdparm.html#hdparm">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
     <h2><a href="//amit.visrolia.net/rsync.html#rsync">Do-It-Yourself Backup System Using&nbsp;Rsync</a></h2>
     <p>
           Posted on March 02, 2010 in <a href="//amit.visrolia.net/category/links.html">Links</a>

@@ -34,7 +34,7 @@
 <meta property="og:title" content="Spin down hard disk drives in Linux"/>
 <meta property="og:description" content="Using hdparm, to determine the current state: hdparm -B /dev/sda To set the parameters: hdparm -B 127 -S 36 -M /dev/sda -B sets advanced pover management: values below 128 permit spin-down -S sets the spin-down time, in multiples of 5 seconds. 36 here represents 3 minutes -M sets ..."/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="//amit.visrolia.net/drafts/hdparm.html"/>
+<meta property="og:url" content="//amit.visrolia.net/hdparm.html"/>
 <meta property="og:type" content="article"/>
 <meta property="article:published_time" content="2016-10-30 00:00:00+01:00"/>
 <meta property="article:modified_time" content=""/>
@@ -100,7 +100,7 @@
 <ul>
 <li><code>-B</code> sets advanced pover management: values below 128 permit&nbsp;spin-down</li>
 <li><code>-S</code> sets the spin-down time, in multiples of 5 seconds. 36 here represents 3&nbsp;minutes</li>
-<li>-M sets Automatic Acoustic Management (if the feature is supported on the <span class="caps">HDD</span>)</li>
+<li><code>-M</code> sets Automatic Acoustic Management (if the feature is supported on the <span class="caps">HDD</span>)</li>
 </ul>
 <p>To set these values persistently, add a <code>udev</code> rule, e.g. <code>/etc/udev/rules.d/50-hdparm.rules</code>:</p>
 <div class="highlight"><pre><span></span><span class="nv">ACTION</span><span class="o">==</span><span class="s2">&quot;add&quot;</span>, <span class="nv">SUBSYSTEM</span><span class="o">==</span><span class="s2">&quot;block&quot;</span>, <span class="nv">KERNEL</span><span class="o">==</span><span class="s2">&quot;sda&quot;</span>, RUN+<span class="o">=</span><span class="s2">&quot;/usr/bin/hdparm -B 127 -S 36 -M /dev/sda&quot;</span>

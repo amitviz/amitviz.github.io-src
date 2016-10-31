@@ -1,5 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Amit's notes</title><link href="//amit.visrolia.net/" rel="alternate"></link><link href="//amit.visrolia.net/feeds/atom.xml" rel="self"></link><id>//amit.visrolia.net/</id><updated>2016-10-10T00:00:00+01:00</updated><entry><title>Anaconda environments</title><link href="//amit.visrolia.net/anaconda.html" rel="alternate"></link><published>2016-10-10T00:00:00+01:00</published><updated>2016-10-10T00:00:00+01:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2016-10-10:anaconda.html</id><summary type="html">&lt;p&gt;&lt;a href="https://www.continuum.io/downloads#linux"&gt;Anaconda&lt;/a&gt; is a Python distribution and package manager that might be a bit nicer than using &lt;code&gt;virtualenv&lt;/code&gt;s and &lt;code&gt;pip&lt;/code&gt;.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Amit's notes</title><link href="//amit.visrolia.net/" rel="alternate"></link><link href="//amit.visrolia.net/feeds/atom.xml" rel="self"></link><id>//amit.visrolia.net/</id><updated>2016-10-30T00:00:00+01:00</updated><entry><title>Spin down hard disk drives in Linux</title><link href="//amit.visrolia.net/hdparm.html" rel="alternate"></link><published>2016-10-30T00:00:00+01:00</published><updated>2016-10-30T00:00:00+01:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2016-10-30:hdparm.html</id><summary type="html">&lt;p&gt;Using &lt;code&gt;hdparm&lt;/code&gt;, to determine the current&amp;nbsp;state: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;hdparm -B /dev/sda
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;To set the&amp;nbsp;parameters: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;hdparm -B &lt;span class="m"&gt;127&lt;/span&gt; -S &lt;span class="m"&gt;36&lt;/span&gt; -M /dev/sda
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-B&lt;/code&gt; sets advanced pover management: values below 128 permit&amp;nbsp;spin-down&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-S&lt;/code&gt; sets the spin-down time, in multiples of 5 seconds. 36 here represents 3&amp;nbsp;minutes&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-M&lt;/code&gt; sets Automatic Acoustic Management (if the feature is supported on the &lt;span class="caps"&gt;HDD&lt;/span&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To set these values persistently, add a &lt;code&gt;udev&lt;/code&gt; rule, e.g. &lt;code&gt;/etc/udev/rules.d/50-hdparm.rules&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;ACTION&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;add&amp;quot;&lt;/span&gt;, &lt;span class="nv"&gt;SUBSYSTEM&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;block&amp;quot;&lt;/span&gt;, &lt;span class="nv"&gt;KERNEL&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;sda&amp;quot;&lt;/span&gt;, RUN+&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/usr/bin/hdparm -B 127 -S 36 -M /dev/sda&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This will set the &lt;span class="caps"&gt;APM&lt;/span&gt; level on boot, but it might get reset after sleeping. To get around this, add a systemd service &lt;code&gt;/etc/systemd/system/apm.service&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;Unit&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;span class="nv"&gt;Description&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;Local system resume actions
+&lt;span class="nv"&gt;After&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;suspend.target hybrid-sleep.target hibernate.target
+
+&lt;span class="o"&gt;[&lt;/span&gt;Service&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;span class="nv"&gt;Type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;simple
+&lt;span class="nv"&gt;ExecStart&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/usr/bin/hdparm -B &lt;span class="m"&gt;254&lt;/span&gt; /dev/sda
+
+&lt;span class="o"&gt;[&lt;/span&gt;Install&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;span class="nv"&gt;WantedBy&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;sleep.target
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Then either start the service (for this&amp;nbsp;session):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;systemctl start apm.service
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;or enable the service to automatically start for all&amp;nbsp;sessions:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;systemctl &lt;span class="nb"&gt;enable&lt;/span&gt; apm.service
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="code"></category><category term="linux"></category></entry><entry><title>Anaconda environments</title><link href="//amit.visrolia.net/anaconda.html" rel="alternate"></link><published>2016-10-10T00:00:00+01:00</published><updated>2016-10-10T00:00:00+01:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2016-10-10:anaconda.html</id><summary type="html">&lt;p&gt;&lt;a href="https://www.continuum.io/downloads#linux"&gt;Anaconda&lt;/a&gt; is a Python distribution and package manager that might be a bit nicer than using &lt;code&gt;virtualenv&lt;/code&gt;s and &lt;code&gt;pip&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;To set up a new environment using&amp;nbsp;Anaconda:&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;conda create --name &amp;lt;envname&amp;gt; &lt;span class="nv"&gt;python&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;3.5
 &lt;/pre&gt;&lt;/div&gt;

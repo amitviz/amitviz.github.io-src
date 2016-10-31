@@ -4,7 +4,6 @@ Category: Notes
 Tags: code, linux
 Slug: 
 Authors: Amit
-Status: draft
 
 Using `hdparm`, to determine the current state: 
 
@@ -18,7 +17,7 @@ To set the parameters:
     
 * `-B` sets advanced pover management: values below 128 permit spin-down
 * `-S` sets the spin-down time, in multiples of 5 seconds. 36 here represents 3 minutes
-* -M sets Automatic Acoustic Management (if the feature is supported on the HDD)
+* `-M` sets Automatic Acoustic Management (if the feature is supported on the HDD)
 
 To set these values persistently, add a `udev` rule, e.g. `/etc/udev/rules.d/50-hdparm.rules`:
 
