@@ -15,7 +15,7 @@
 &lt;li&gt;&lt;code&gt;-M&lt;/code&gt; sets Automatic Acoustic Management (if the feature is supported on the &lt;span class="caps"&gt;HDD&lt;/span&gt;)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;To set these values persistently, add a &lt;code&gt;udev&lt;/code&gt; rule, e.g. &lt;code&gt;/etc/udev/rules.d/50-hdparm.rules&lt;/code&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;ACTION&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;add&amp;quot;&lt;/span&gt;, &lt;span class="nv"&gt;SUBSYSTEM&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;block&amp;quot;&lt;/span&gt;, &lt;span class="nv"&gt;KERNEL&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;sda&amp;quot;&lt;/span&gt;, RUN+&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/usr/bin/hdparm -B 127 -S 36 -M /dev/sda&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;ACTION&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;add&amp;quot;&lt;/span&gt;, &lt;span class="nv"&gt;SUBSYSTEM&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;block&amp;quot;&lt;/span&gt;, &lt;span class="nv"&gt;KERNEL&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;sda&amp;quot;&lt;/span&gt;, RUN+&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/sbin/hdparm -B 127 -S 36 -M /dev/sda&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -26,7 +26,7 @@
 
 &lt;span class="o"&gt;[&lt;/span&gt;Service&lt;span class="o"&gt;]&lt;/span&gt;
 &lt;span class="nv"&gt;Type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;simple
-&lt;span class="nv"&gt;ExecStart&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/usr/bin/hdparm -B &lt;span class="m"&gt;254&lt;/span&gt; /dev/sda
+&lt;span class="nv"&gt;ExecStart&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/sbin/hdparm -B &lt;span class="m"&gt;127&lt;/span&gt; -S &lt;span class="m"&gt;36&lt;/span&gt; -M /dev/sda
 
 &lt;span class="o"&gt;[&lt;/span&gt;Install&lt;span class="o"&gt;]&lt;/span&gt;
 &lt;span class="nv"&gt;WantedBy&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;sleep.target

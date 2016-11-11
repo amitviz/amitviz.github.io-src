@@ -22,7 +22,7 @@ To set the parameters:
 To set these values persistently, add a `udev` rule, e.g. `/etc/udev/rules.d/50-hdparm.rules`:
 
     :::bash
-    ACTION=="add", SUBSYSTEM=="block", KERNEL=="sda", RUN+="/usr/bin/hdparm -B 127 -S 36 -M /dev/sda"
+    ACTION=="add", SUBSYSTEM=="block", KERNEL=="sda", RUN+="/sbin/hdparm -B 127 -S 36 -M /dev/sda"
 
 This will set the APM level on boot, but it might get reset after sleeping. To get around this, add a systemd service `/etc/systemd/system/apm.service`:
 
@@ -33,7 +33,7 @@ This will set the APM level on boot, but it might get reset after sleeping. To g
 
     [Service]
     Type=simple
-    ExecStart=/usr/bin/hdparm -B 254 /dev/sda
+    ExecStart=/sbin/hdparm -B 127 -S 36 -M /dev/sda
 
     [Install]
     WantedBy=sleep.target

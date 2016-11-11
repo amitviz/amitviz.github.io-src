@@ -103,7 +103,7 @@
 <li><code>-M</code> sets Automatic Acoustic Management (if the feature is supported on the <span class="caps">HDD</span>)</li>
 </ul>
 <p>To set these values persistently, add a <code>udev</code> rule, e.g. <code>/etc/udev/rules.d/50-hdparm.rules</code>:</p>
-<div class="highlight"><pre><span></span><span class="nv">ACTION</span><span class="o">==</span><span class="s2">&quot;add&quot;</span>, <span class="nv">SUBSYSTEM</span><span class="o">==</span><span class="s2">&quot;block&quot;</span>, <span class="nv">KERNEL</span><span class="o">==</span><span class="s2">&quot;sda&quot;</span>, RUN+<span class="o">=</span><span class="s2">&quot;/usr/bin/hdparm -B 127 -S 36 -M /dev/sda&quot;</span>
+<div class="highlight"><pre><span></span><span class="nv">ACTION</span><span class="o">==</span><span class="s2">&quot;add&quot;</span>, <span class="nv">SUBSYSTEM</span><span class="o">==</span><span class="s2">&quot;block&quot;</span>, <span class="nv">KERNEL</span><span class="o">==</span><span class="s2">&quot;sda&quot;</span>, RUN+<span class="o">=</span><span class="s2">&quot;/sbin/hdparm -B 127 -S 36 -M /dev/sda&quot;</span>
 </pre></div>
 
 
@@ -114,7 +114,7 @@
 
 <span class="o">[</span>Service<span class="o">]</span>
 <span class="nv">Type</span><span class="o">=</span>simple
-<span class="nv">ExecStart</span><span class="o">=</span>/usr/bin/hdparm -B <span class="m">254</span> /dev/sda
+<span class="nv">ExecStart</span><span class="o">=</span>/sbin/hdparm -B <span class="m">127</span> -S <span class="m">36</span> -M /dev/sda
 
 <span class="o">[</span>Install<span class="o">]</span>
 <span class="nv">WantedBy</span><span class="o">=</span>sleep.target
