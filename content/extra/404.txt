@@ -4,14 +4,14 @@
 <head>
 <meta charset="utf-8">
 <title>404</title>
-<link rel="stylesheet" href="/theme/css/404.css">
+<link rel="stylesheet" href="/theme/stylesheet/404.css">
 <!--[if lt IE 9]>
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 </head>
 
 <body>
-<div id="background"></div>
+
 </body>
 
 </html>
