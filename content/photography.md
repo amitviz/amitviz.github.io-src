@@ -1,6 +1,7 @@
 Title: Photography rules-of-thunb
 Date: 2011-11-08
-Tags: 
+Category: Notes
+Tags: photography
 Slug: 
 Authors: Amit
 
