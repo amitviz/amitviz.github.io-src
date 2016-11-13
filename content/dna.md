@@ -37,9 +37,9 @@ Another paper from the same issue of Nature, immediately following the Watson an
 A couple of months afer the 3 works above were published in Nature, Franklin and Gosling offer evidence of the structure of DNA, by correlating a number of features of the X-ray images to those expected from the structure proposed by Watson and Crick. This includes the double helix structure and helix angle, the dimensions of specific features, and the positioning of phosphate groups.
 
 
-[nih]: https://profiles.nlm.nih.gov/SC/Views/Exhibit/narrative/doublehelix.html
-[fg1]: /pdf/franklingosling.pdf
-[fg2]: /pdf/franklingosling2.pdf
-[mcmc]: /pdf/macLeodmccarty.pdf
-[wc]: /pdf/watsoncrick.pdf
-[w]: /pdf/wilkins.pdf
+[nih]: //profiles.nlm.nih.gov/SC/Views/Exhibit/narrative/doublehelix.html
+[fg1]: {filename}/pdf/franklingosling.pdf
+[fg2]: {filename}/pdf/franklingosling2.pdf
+[mcmc]: {filename}/pdf/macLeodmccarty.pdf
+[wc]: {filename}/pdf/watsoncrick.pdf
+[w]: {filename}/pdf/wilkins.pdf
