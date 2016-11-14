@@ -64,9 +64,9 @@ SOCIAL = (('xlinkedin', 'https://uk.linkedin.com/in/amitvisrolia'),
           #('google', 'https://google.com/+AmitVisrolia'),
           ('rss', '/feeds/atom.xml'))
 
-MENUITEMS = (('Archives', '/archives.html'),
-             ('Categories', '/categories.html'),
-             ('Tags', '/tags.html'),)
+MENUITEMS = (('Categories', '/categories.html'),
+             ('Tags', '/tags.html'),
+             ('Archives', '/archives.html'),)
 
 DEFAULT_PAGINATION = 10
 
