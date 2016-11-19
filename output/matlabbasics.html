@@ -115,11 +115,13 @@
 </ul>
 <h3>Why use <span class="caps">MATLAB</span> for finite element&nbsp;analysis?</h3>
 <p>Finite element analysis is a simultaneous equation problem, and we can describe it using&nbsp;matrices:</p>
-<div class="math">$$[K]\{u\} = \{F\}$$</div>
+<div class="math">\begin{align}
+[K]\{u\} = \{F\}
+\end{align}</div>
 <p><span class="caps">MATLAB</span> works natively with matrices as a data type. It can solve such a system by typing&nbsp;in:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">u</span><span class="p">=</span><span class="n">K</span><span class="o">\</span><span class="n">F</span>
+<div class="highlight"><pre><span></span><span class="n">u</span><span class="p">=</span><span class="n">K</span><span class="o">\</span><span class="n">F</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>Many of the steps involved are also matrix operations, such as coordinate transforms, or matrix inversions. A programming language is also useful to perform repeated operations, such as those applied to elements or nodes in a finite element&nbsp;program.</p>
 <h3>The <span class="caps">MATLAB</span> desktop&nbsp;environment</h3>
@@ -133,29 +135,7 @@
 </ul>
 <h3>Simple&nbsp;calculations</h3>
 <p>The command window can be used as a simple calculator (<code>&gt;&gt;</code> is the <span class="caps">MATLAB</span> prompt, you don&#8217;t need to type it&nbsp;in!):</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="o">*</span><span class="mi">2</span>             <span class="c">% multiplication</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="o">*</span><span class="mi">2</span>             <span class="c">% multiplication</span>
 
 <span class="nb">ans</span> <span class="p">=</span>
 
@@ -179,32 +159,11 @@
 
     <span class="mf">0.5000</span>
 </pre></div>
-</td></tr></table>
+
 
 <h3>Variables</h3>
 <p>Variables can be used to store values for use&nbsp;later</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">clear</span> <span class="n">all</span> <span class="c">% clear existing variables from memory</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">clear</span> <span class="n">all</span> <span class="c">% clear existing variables from memory</span>
 <span class="o">&gt;&gt;</span> <span class="n">r</span> <span class="p">=</span> <span class="mi">5</span><span class="p">;</span>    <span class="c">% radius r</span>
 <span class="o">&gt;&gt;</span> <span class="c">% note the semi-colon at the end to suppress MATLAB output</span>
 <span class="o">&gt;&gt;</span> <span class="c">% also note the use of the percent symbol (%) to insert comments</span>
@@ -227,17 +186,11 @@
 
 <span class="mi">4</span>
 </pre></div>
-</td></tr></table>
+
 
 <h3>Types of&nbsp;variables</h3>
 <p>Any type of data can be stored in a variable, <em>e.g.</em></p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nb">i</span> <span class="p">=</span> <span class="mi">4</span>              <span class="c">% integer variables</span>
+<div class="highlight"><pre><span></span><span class="nb">i</span> <span class="p">=</span> <span class="mi">4</span>              <span class="c">% integer variables</span>
 
 <span class="nb">j</span> <span class="p">=</span> <span class="mf">4.5</span>            <span class="c">% floating point variables</span>
 
@@ -245,34 +198,14 @@
 
 <span class="n">l</span> <span class="p">=</span> <span class="s">&#39;some text&#39;</span>    <span class="c">% a string of characters</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>Matrices can also be stored in&nbsp;variables.</p>
 <p>Note: the <span class="caps">MATLAB</span> notation <code>1e-3</code> is used to represent <span class="math">\(1 \times&nbsp;10^{-3}\)</span></p>
 <h3>What is a&nbsp;matrix?</h3>
 <p>A matrix is just a 2D array of&nbsp;values.</p>
 <p>The matrix can be entered at the command line, surrounding the values with square brackets <code>[ ]</code>. Columns are separated by commas or spaces, rows by semi-colons or line&nbsp;breaks:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">x</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span><span class="p">;</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">]</span>  <span class="c">% entered on a single line</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">x</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span><span class="p">;</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">]</span>  <span class="c">% entered on a single line</span>
 
 <span class="n">x</span> <span class="p">=</span>
 
@@ -294,36 +227,10 @@
     <span class="mi">9</span>    <span class="mi">10</span>
     <span class="mi">11</span>    <span class="mi">12</span>
 </pre></div>
-</td></tr></table>
+
 
 <h3>Some useful&nbsp;matrices</h3>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">x</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>    <span class="c">% a square 2x2 matrix of zeros</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">x</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>    <span class="c">% a square 2x2 matrix of zeros</span>
 
 <span class="n">x</span> <span class="p">=</span>
 
@@ -351,7 +258,7 @@
     <span class="mi">1</span>     <span class="mi">0</span>
     <span class="mi">0</span>     <span class="mi">1</span>
 </pre></div>
-</td></tr></table>
+
 
 <h3>Some&nbsp;terminology</h3>
 <p>Everything is a matrix in <span class="caps">MATLAB</span>!</p>
@@ -364,28 +271,7 @@
 <p>Some of these terms will be used interchangeably in the remainder of the&nbsp;notes.</p>
 <h3>Addressing&nbsp;matrices</h3>
 <p>Now that we have matrices full of zeros or ones, how do we get some useful information in and out of&nbsp;them?</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">x</span> <span class="p">=</span> <span class="nb">magic</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>    <span class="c">% a built-in function to create a 3x3</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">x</span> <span class="p">=</span> <span class="nb">magic</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>    <span class="c">% a built-in function to create a 3x3</span>
                 <span class="c">%   magic-square (all rows, columns and diagonals</span>
                 <span class="c">%   add up to the same value)</span>
 <span class="n">x</span> <span class="p">=</span>
@@ -408,32 +294,11 @@
     <span class="mi">3</span>     <span class="mi">5</span>     <span class="mi">7</span>
     <span class="mi">4</span>     <span class="mi">0</span>     <span class="mi">2</span>
 </pre></div>
-</td></tr></table>
+
 
 <h3>Addressing matrices: the colon&nbsp;operator}</h3>
 <p>To address an entire row or column, we can use the colon (<code>:</code>)&nbsp;operator</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">x</span> <span class="p">=</span> <span class="nb">magic</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>   <span class="c">% the same matrix as the previous slide</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">x</span> <span class="p">=</span> <span class="nb">magic</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>   <span class="c">% the same matrix as the previous slide</span>
 <span class="o">&gt;&gt;</span> <span class="n">x</span><span class="p">(</span><span class="mi">3</span><span class="p">,:)</span>          <span class="c">% &#39;3rd row, all the columns&#39;</span>
 
 <span class="nb">ans</span> <span class="p">=</span>
@@ -456,27 +321,11 @@
     <span class="mi">3</span>     <span class="mi">5</span>     <span class="mi">7</span>
     <span class="mi">0</span>     <span class="mi">0</span>     <span class="mi">0</span>
 </pre></div>
-</td></tr></table>
+
 
 <h3>The colon&nbsp;operator</h3>
 <p>Without any parameters, the colon represents an entire row or column. The colon can also be used with parameters, to represent a range of&nbsp;values.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">x</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">10</span>        <span class="c">% all the numbers in the range from 1-10</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">x</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">10</span>        <span class="c">% all the numbers in the range from 1-10</span>
 
 <span class="n">x</span> <span class="p">=</span>
 
@@ -494,31 +343,11 @@
 
     <span class="mf">5.0000</span>    <span class="mf">4.5000</span>    <span class="mf">4.0000</span>    <span class="mf">3.5000</span>    <span class="mf">3.0000</span>    <span class="mf">2.5000</span>    <span class="mf">2.0000</span>    <span class="mf">1.5000</span>    <span class="mf">1.0000</span>
 </pre></div>
-</td></tr></table>
+
 
 <h3>Specific matrix addressing with the&nbsp;colon</h3>
 <p>We can combine the &#8216;range&#8217; use of the colon to pick out some specific values from a larger&nbsp;matrix:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">x</span> <span class="p">=</span> <span class="nb">magic</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>    <span class="c">% a 4x4 magic square</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">x</span> <span class="p">=</span> <span class="nb">magic</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>    <span class="c">% a 4x4 magic square</span>
 
 <span class="n">x</span> <span class="p">=</span>
 
@@ -540,32 +369,11 @@
     <span class="mi">16</span>     <span class="mi">3</span>
     <span class="mi">9</span>     <span class="mi">6</span>
 </pre></div>
-</td></tr></table>
+
 
 <h3>Matrix&nbsp;properties</h3>
 <p>In addition to getting data <em>from</em> the matrix, we can get data <em>about</em> the&nbsp;matrix:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">x</span> <span class="p">=</span> <span class="nb">magic</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>   <span class="c">% as previously</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">x</span> <span class="p">=</span> <span class="nb">magic</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>   <span class="c">% as previously</span>
 <span class="o">&gt;&gt;</span> <span class="p">[</span><span class="n">a</span> <span class="n">b</span><span class="p">]</span> <span class="p">=</span> <span class="nb">size</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c">% the size of matrix x</span>
 
 <span class="n">a</span> <span class="p">=</span>
@@ -588,34 +396,12 @@
 <span class="nb">ans</span> <span class="p">=</span>
     <span class="mf">8.5000</span>    <span class="mf">8.5000</span>    <span class="mf">8.5000</span>    <span class="mf">8.5000</span>
 </pre></div>
-</td></tr></table>
+
 
 <h3>More on matrix&nbsp;sizes</h3>
 <p>The size command is very useful, since it will let us write programmes where we don&#8217;t know before hand how large our matrices and vectors will&nbsp;be.</p>
 <p>The <code>size</code> command can be used as&nbsp;follows:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">x</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span> <span class="c">% an example matrix with 5 rows and 2 columns</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">x</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span> <span class="c">% an example matrix with 5 rows and 2 columns</span>
 <span class="o">&gt;&gt;</span> <span class="p">[</span><span class="n">a</span> <span class="n">b</span><span class="p">]</span> <span class="p">=</span> <span class="nb">size</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c">% as we&#39;ve seen before, we can get the dimensions using size()</span>
 <span class="n">a</span> <span class="p">=</span>
     <span class="mi">5</span>
@@ -639,35 +425,11 @@
 <span class="nb">ans</span> <span class="p">=</span>
     <span class="mi">8</span>
 </pre></div>
-</td></tr></table>
+
 
 <h3>Matrix&nbsp;algebra</h3>
 <p>Matrix algebra can be performed with the <span class="caps">MATLAB</span> matrices, e.g. for the system <span class="math">\(Ax = b\)</span>,</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">A</span> <span class="p">=</span> <span class="nb">magic</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>    <span class="c">% a 3x3 magic square</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">A</span> <span class="p">=</span> <span class="nb">magic</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>    <span class="c">% a 3x3 magic square</span>
 <span class="n">A</span> <span class="p">=</span>
     <span class="mi">8</span>     <span class="mi">1</span>     <span class="mi">6</span>
     <span class="mi">3</span>     <span class="mi">5</span>     <span class="mi">7</span>
@@ -693,26 +455,11 @@
     <span class="mi">2</span>
     <span class="mi">3</span>
 </pre></div>
-</td></tr></table>
+
 
 <h3>Matrix algebra <span class="caps">II</span></h3>
 <p>Some of the most useful functions are those to find the <strong>inverse</strong> and <strong>transpose</strong> of a&nbsp;matrix:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">A</span> <span class="p">=</span> <span class="nb">magic</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>    <span class="c">% the 3x3 magic square</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">A</span> <span class="p">=</span> <span class="nb">magic</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>    <span class="c">% the 3x3 magic square</span>
 <span class="n">A</span> <span class="p">=</span>
 
     <span class="mi">8</span>     <span class="mi">1</span>     <span class="mi">6</span>
@@ -729,25 +476,13 @@
     <span class="mi">1</span>     <span class="mi">5</span>     <span class="mi">9</span>
     <span class="mi">6</span>     <span class="mi">7</span>     <span class="mi">2</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>Inverting the matrix is a computationally expensive problem. Although a system <span class="math">\(Ax = b\)</span> can be solved as <span class="math">\(x = A^{-1}b\)</span>, the <strong>backslash operator</strong> (<code>A\b</code>) uses Gaussian elimination to solve without explicitly calculating <span class="math">\(A^{-1}\)</span>.</p>
-<h3>Array&nbsp;algebra}</h3>
+<h3>Array&nbsp;algebra</h3>
 <p><span class="caps">MATLAB</span> treats everything as a matrix, but occasionally, we might want to treat a variable as simply a list (or grid) of values, rather than a matrix in the mathematical&nbsp;sense.</p>
 <p><span class="caps">MATLAB</span> behaves as expected when we multiply a &#8216;matrix&#8217; or vector by a scalar, or add two matrices, and also includes a number of <strong>piecewise operators</strong>.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">x</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">;</span>        <span class="c">% x = [1 2 3]</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">x</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">;</span>        <span class="c">% x = [1 2 3]</span>
 <span class="o">&gt;&gt;</span> <span class="n">y</span> <span class="p">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span>         <span class="c">% multiply by a scalar</span>
 <span class="n">y</span> <span class="p">=</span>
     <span class="mi">2</span>     <span class="mi">4</span>     <span class="mi">6</span>
@@ -761,19 +496,19 @@
 <span class="nb">ans</span> <span class="p">=</span>
     <span class="mf">0.5000</span>    <span class="mf">0.5000</span>    <span class="mf">0.5000</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>Note, matrix algebra rules don&#8217;t allow us to perform ordinary multiplication between two vectors each of size <span class="math">\(1\times3\)</span>. We could however transpose one of the vectors (<em>e.g.</em> <code>y = y'</code>).</p>
 <h3><span class="caps">MATLAB</span>&nbsp;scripting</h3>
 <p>When we want to perform the same actions over and over again, we can save the steps in a <span class="caps">MATLAB</span> script. A <span class="caps">MATLAB</span> script is just a series of commands, exactly as they would appear if they were typed in at the command&nbsp;prompt.</p>
 <p>Here, we shall write a script to solve the roots (<span class="math">\(y=0\)</span>) of the quadratic&nbsp;equation:</p>
-<div class="math">$$
+<div class="math">\begin{align}
   y = ax^2 + bx + c
-$$</div>
+\end{align}</div>
 <p>A reminder, the solution is given&nbsp;by:</p>
-<div class="math">$$
+<div class="math">\begin{align}
   x = \frac{-b\pm\sqrt{b^2 - 4ac}}{2a}
-$$</div>
+\end{align}</div>
 <h3><span class="caps">MATLAB</span> scripting&#8212;the&nbsp;editor</h3>
 <p><img alt="Matlab editor" src="/images/matlab_editor_annotated.png" /></p>
 <h3><span class="caps">MATLAB</span>&nbsp;scripting&#8212;example</h3>
@@ -797,17 +532,13 @@ $$</div>
 </td></tr></table>
 
 <p>If we save this file as <code>quadscript.m</code>, we can run it by typing the name <code>quadscript</code> at the command&nbsp;prompt:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">quadscript</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">quadscript</span>
 <span class="n">x1</span> <span class="p">=</span>
     <span class="mi">3</span>
 <span class="n">x2</span> <span class="p">=</span>
     <span class="mi">2</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>We could keep this script, and change the coefficients every time we wanted to solve a different problem, but there is a way we can write a script that we can use for any&nbsp;problem.</p>
 <h3>Adding interactivity to&nbsp;scripts</h3>
@@ -829,15 +560,7 @@ $$</div>
 </td></tr></table>
 
 <p>Saving as <code>quadscript2.m</code> and&nbsp;running:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">quadscript2</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">quadscript2</span>
 <span class="n">Solving</span> <span class="n">the</span> <span class="n">equation</span><span class="p">:</span> <span class="n">ax</span>^<span class="mi">2</span> <span class="o">+</span> <span class="n">bx</span> <span class="o">+</span> <span class="n">c</span>
 <span class="n">Please</span> <span class="n">input</span> <span class="n">the</span> <span class="n">value</span> <span class="n">of</span> <span class="n">a</span><span class="p">:</span><span class="mi">1</span>
 <span class="n">Please</span> <span class="n">input</span> <span class="n">the</span> <span class="n">value</span> <span class="n">of</span> <span class="n">b</span><span class="p">:</span><span class="o">-</span><span class="mi">5</span>
@@ -847,7 +570,7 @@ $$</div>
 <span class="n">x2</span> <span class="p">=</span>
     <span class="mi">2</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>This is useful where we want input from the user, but we can&#8217;t run a large programme that stops to ask for each new&nbsp;variable&#8230;</p>
 <h3><span class="caps">MATLAB</span>&nbsp;functions</h3>
@@ -859,18 +582,7 @@ $$</div>
 </ul>
 <h3>The purpose of&nbsp;functions</h3>
 <p>Functions can be called in a number of ways,&nbsp;e.g.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="nb">cos</span><span class="p">(</span><span class="mf">0.7854</span><span class="p">)</span>     <span class="c">% supplying the argument directly to the function</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="nb">cos</span><span class="p">(</span><span class="mf">0.7854</span><span class="p">)</span>     <span class="c">% supplying the argument directly to the function</span>
 <span class="nb">ans</span> <span class="p">=</span>
     <span class="mf">0.7071</span>
 
@@ -883,7 +595,7 @@ $$</div>
 <span class="nb">ans</span> <span class="p">=</span>
     <span class="mf">0.7071</span>
 </pre></div>
-</td></tr></table>
+
 
 <p>All three methods here are equivalent. When all the input arguments are known, the function can calculate the outputs with no further intervention from the user. The input arguments can even come from another part of the&nbsp;programme.</p>
 <h3>Defining a&nbsp;function</h3>
@@ -912,17 +624,13 @@ $$</div>
 </td></tr></table>
 
 <p><span class="math">\(a,b,c\)</span> are the arguments, <span class="math">\(x1,x2\)</span> are the return values. A comment is useful to explain what the function does: you may end up using this function in many other programmes, or it may even be used by many other people in their&nbsp;programmes.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="p">[</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">]</span> <span class="p">=</span> <span class="n">quadratic</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="p">[</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">]</span> <span class="p">=</span> <span class="n">quadratic</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
 <span class="n">x1</span> <span class="p">=</span>
     <span class="mi">3</span>
 <span class="n">x2</span> <span class="p">=</span>
     <span class="mi">2</span>
 </pre></div>
-</td></tr></table>
+
 
 <h3>Getting&nbsp;help</h3>
 <p><span class="caps">MATLAB</span> has a comprehensive online help, which details all the functions and how to use&nbsp;them. </p>

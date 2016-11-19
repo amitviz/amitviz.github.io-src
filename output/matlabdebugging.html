@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic'>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="//amit.visrolia.net/theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="//amit.visrolia.net/theme/stylesheet/tipuesearch.css">
+  <link rel="stylesheet" type="text/css" href="//amit.visrolia.net/theme/stylesheet/style.min.css">
+  <link rel="stylesheet" type="text/css" href="//amit.visrolia.net/theme/stylesheet/style.local.css">
+  <link rel='manifest' href='//amit.visrolia.net/manifest.json'>
+
+  <link href="//amit.visrolia.net/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Amit's notes Atom">
+  <link rel="shortcut icon" href="//amit.visrolia.net/favicon.ico" type="image/png">
+  <link rel="icon" href="//amit.visrolia.net/favicon.ico" type="image/png">
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <!-- Chrome, Firefox OS and Opera -->
+  <meta name="theme-color" content="#333333">
+  <!-- Windows Phone -->
+  <meta name="msapplication-navbutton-color" content="#333333">
+  <!-- iOS Safari -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<meta name="author" content="Amit" />
+<meta name="description" content="Debugging The last lectures introduced MATLAB, then focussed on developing the structure of the solver part of the finite element programme. This lecture, we look at the process of debugging a programme in MATLAB. By the end of this lecture, the students should be able to: Debug scripts and functions ..." />
+<meta name="keywords" content="matlab, code, teaching, bath">
+<meta property="og:site_name" content="Amit's notes"/>
+<meta property="og:title" content="Introduction to Matlab: lecture 3"/>
+<meta property="og:description" content="Debugging The last lectures introduced MATLAB, then focussed on developing the structure of the solver part of the finite element programme. This lecture, we look at the process of debugging a programme in MATLAB. By the end of this lecture, the students should be able to: Debug scripts and functions ..."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="//amit.visrolia.net/matlabdebugging.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2011-11-14 00:00:00+00:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="//amit.visrolia.net/author/amit.html">
+<meta property="article:section" content="Notes"/>
+<meta property="article:tag" content="matlab"/>
+<meta property="article:tag" content="code"/>
+<meta property="article:tag" content="teaching"/>
+<meta property="article:tag" content="bath"/>
+<meta property="og:image" content="">
+
+  <title>Amit's notes &ndash; Introduction to Matlab: lecture 3</title>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="//amit.visrolia.net/">
+        <img src="//amit.visrolia.net/theme/img/profile.png" alt="Amit" title="Amit">
+      </a>
+      <h1><a href="//amit.visrolia.net/">Amit</a></h1>
+
+      <!--<p>Notes, links, and pictures</p>-->
+      
+      <p><a href="//amit.visrolia.net/category/notes.html" alt="Notes">Notes</a>, <a href="//amit.visrolia.net/category/links.html" alt="Links">links</a>, and <a href="//amit.visrolia.net/category/pictures.html" alt="Pictures">pictures</a></p>
+
+      <nav>
+        <ul class="list">
+          <li><a href="//amit.visrolia.net/pages/amit.html#amit">About&nbsp;me</a></li>
+          <li><a href="//amit.visrolia.net/pages/credits.html#credits">Credits</a></li>
+
+        </ul>
+      </nav>
+
+      <form id="tipue_search_form" action="//amit.visrolia.net/search.html" onsubmit="return (this.elements['q'].value.length > 0)">
+        <input id="tipue_search_input" name="q" type="search" autocomplete="off" placeholder="Search" required>
+      </form>
+      
+      <ul class="social">
+        <li><a class="sc-xlinkedin" href="https://uk.linkedin.com/in/amitvisrolia" target="_blank"><i class="fa fa-xlinkedin"></i></a></li>
+        <li><a class="sc-github" href="https://github.com/amitviz" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-rss" href="/feeds/atom.xml" target="_blank"><i class="fa fa-rss"></i></a></li>
+      </ul>
+    
+      
+    </div>
+  </aside>
+  <main>
+
+<article>
+  <header>
+    <h1 id="matlabdebugging">Introduction to Matlab: lecture&nbsp;3</h1>
+    <p>
+          Posted on November 14, 2011 in <a href="//amit.visrolia.net/category/notes.html">Notes</a>
+
+
+    </p>
+  </header>
+  <div>
+    <h1>Debugging</h1>
+<p>The last lectures introduced <span class="caps">MATLAB</span>, then focussed on developing the structure of the solver part of the finite element&nbsp;programme.</p>
+<p>This lecture, we look at the process of debugging a programme in <span class="caps">MATLAB</span>.</p>
+<p>By the end of this lecture, the students should be able&nbsp;to:</p>
+<ul>
+<li>Debug scripts and functions written in <span class="caps">MATLAB</span></li>
+</ul>
+<h2>Debugging <span class="caps">MATLAB</span> scripts and&nbsp;functions</h2>
+<p>It&#8217;s unlikely that the <span class="caps">MATLAB</span> scripts and functions that you write will work perfectly first time: they will have <strong>bugs</strong>.</p>
+<p>The process of identifying and eliminating these is called <strong>debugging</strong>, and <span class="caps">MATLAB</span> has some useful tools to&nbsp;help.</p>
+<h3>Bugs</h3>
+<p>The easiest type of bug to find is one that prevents <span class="caps">MATLAB</span> from running your&nbsp;programme. </p>
+<p><span class="caps">MATLAB</span> presents an error message in the command window, along with an explanation of why it has stopped, and where the error&nbsp;is.</p>
+<div class="highlight"><pre><span></span>??? <span class="n">Attempted</span> <span class="n">to</span> <span class="n">access</span> <span class="n">nodes</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span> <span class="n">index</span> <span class="n">out</span> <span class="n">of</span> <span class="n">bounds</span> <span class="n">because</span> <span class="nb">size</span><span class="p">(</span><span class="n">nodes</span><span class="p">)=[</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">].</span>
+
+<span class="n">Error</span> <span class="n">in</span> <span class="o">==&gt;</span> <span class="n">elementL</span> <span class="n">at</span> <span class="mi">3</span>
+<span class="n">dy</span> <span class="p">=</span> <span class="n">nodes</span><span class="p">(</span><span class="n">elements</span><span class="p">(</span><span class="n">e</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">nodes</span><span class="p">(</span><span class="n">elements</span><span class="p">(</span><span class="n">e</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="mi">2</span><span class="p">);</span>
+
+<span class="n">Error</span> <span class="n">in</span> <span class="o">==&gt;</span> <span class="n">globalK</span> <span class="n">at</span> <span class="mi">6</span>
+    <span class="n">L</span> <span class="p">=</span> <span class="n">elementL</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span><span class="n">elements</span><span class="p">,</span><span class="n">el</span><span class="p">);</span>
+</pre></div>
+
+
+<p>If <span class="caps">MATLAB</span> knows where the error is, you can click on the script or function name to open the <span class="caps">MATLAB</span> Editor and go to the correct line in the appropriate file to make the&nbsp;corrections.</p>
+<p><span class="caps">MATLAB</span> also traces the error: here, the error is in function <code>elementL</code>, which was called by another function, <code>globalK</code>.</p>
+<p>More difficult to track down are bugs that don&#8217;t prevent <span class="caps">MATLAB</span> from running your code, but which produce incorrect&nbsp;answers.</p>
+<p>To use the debugging tools, we should have some idea of where the bug might be, and which line(s) of code that we are interested in. Then, we can set a <strong>breakpoint</strong> in the&nbsp;code.</p>
+<ul>
+<li>A breakpoint is a point in the code where instead of continuing as <span class="caps">MATLAB</span> would normally do, <span class="caps">MATLAB</span> will pause. This allows examining of the variables that are in memory at this&nbsp;point.</li>
+</ul>
+<h3>Setting breakpoints for a&nbsp;run</h3>
+<p>A breakpoint is set in a <span class="caps">MATLAB</span> file from the <span class="caps">MATLAB</span> editor. Any line that can have a breakpoint set has a little <code>-</code> next to the line&nbsp;number.</p>
+<p>The breakpoint is set or cleared by either clicking on the <code>-</code>, or clicking on the <img alt="Set breakpoint icon" src="/images/matlab_db2.png" />&nbsp;icon</p>
+<p><img alt="Setting the breakpoint" src="/images/set_breakpoint.png" /></p>
+<p>The code is run by using the function name at the command line as usual, or by clicking on the <img alt="Play icon" src="/images/matlab_db1.png" />&nbsp;icon.</p>
+<p>When <span class="caps">MATLAB</span> reaches the breakpoint, it pauses, and indicates which step it is at with a little green arrow next to the&nbsp;line:</p>
+<p><img alt="The program paused at the breakpoint" src="/images/run_breakpoint.png" /></p>
+<h3>During a&nbsp;breakpoint</h3>
+<p>When <span class="caps">MATLAB</span> pauses for a breakpoint, it returns control to the user in the command window.  The Command prompt is slightly different to the normal&nbsp;one:</p>
+<div class="highlight"><pre><span></span><span class="mi">3</span>   <span class="n">dy</span> <span class="p">=</span> <span class="n">nodes</span><span class="p">(</span><span class="n">elements</span><span class="p">(</span><span class="n">e</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">nodes</span><span class="p">(</span><span class="n">elements</span><span class="p">(</span><span class="n">e</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">K</span><span class="o">&gt;&gt;</span>
+</pre></div>
+
+
+<ul>
+<li>The first line gives the line number in the file at which <span class="caps">MATLAB</span> has paused (and a copy of the&nbsp;line).</li>
+<li>The <code>K&gt;&gt;</code> is the <span class="caps">MATLAB</span> debug&nbsp;prompt</li>
+</ul>
+<p>From here, all the usual <span class="caps">MATLAB</span> commands are available. Additionally, you have access to all the variables that are in memory at this point in the programme: they are listed in the <em>Workspace</em> pane in <span class="caps">MATLAB</span>. At this point, it&#8217;s worth checking that the variables contain what you expect them to&nbsp;contain!</p>
+<p>Once we&#8217;re done inspecting the programme at it&#8217;s current state, there are a few&nbsp;options:</p>
+<ul>
+<li><img alt="Step icon" src="/images/matlab_db4.png" /> Using the `Step&#8217; button, <span class="caps">MATLAB</span> will run the current line, and pause at the next line. Using this option, we can run a function one line at a time, checking that each step does what you expect it&nbsp;to.</li>
+<li><img alt="Step in icon" src="/images/matlab_db5.png" /> With the `Step in&#8217; button, instead of just stepping to the next line in a function or script file, we can follow the flow of our programme into another script&nbsp;file.</li>
+<li><img alt="Step out icon" src="/images/matlab_db6.png" /> If we decide that the bug is not within the current function, the `Step out&#8217; button runs the remainder of the function, and pauses in whatever the parent function&nbsp;was.</li>
+<li><img alt="Continue icon" src="/images/matlab_db7.png" /> If we want to skip over a lot of code, we can run it to the next breakpoint (or if there are none, to the end of the&nbsp;programme).</li>
+<li><img alt="Exit debug icon" src="/images/matlab_db8.png" /> Exit debug mode, without running the rest of the&nbsp;programme.</li>
+</ul>
+<h3>Summary of Debugging&nbsp;commands</h3>
+<ul>
+<li><img alt="Play icon" src="/images/matlab_db1.png" /> Run&nbsp;file</li>
+<li><img alt="Set breakpoint icon" src="/images/matlab_db2.png" /> Set or Clear&nbsp;breakpoint</li>
+<li><img alt="Clear all breakpoints icon" src="/images/matlab_db3.png" /> Clear all breakpoints in all&nbsp;files</li>
+<li><img alt="Exit debug icon" src="/images/matlab_db8.png" /> Exit debug&nbsp;mode</li>
+<li><img alt="Step icon" src="/images/matlab_db4.png" /> Step (to the next&nbsp;line)</li>
+<li><img alt="Step in icon" src="/images/matlab_db5.png" /> Step in (to a function&nbsp;file)</li>
+<li><img alt="Step out icon" src="/images/matlab_db6.png" /> Step out (of the function&nbsp;file)</li>
+<li><img alt="Continue icon" src="/images/matlab_db7.png" /> Continue (to the next&nbsp;breakpoint)</li>
+</ul>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="//amit.visrolia.net/tag/matlab.html">matlab</a>
+      <a href="//amit.visrolia.net/tag/code.html">code</a>
+      <a href="//amit.visrolia.net/tag/teaching.html">teaching</a>
+      <a href="//amit.visrolia.net/tag/bath.html">bath</a>
+    </p>
+  </div>
+
+
+
+</article>
+
+    <footer>
+<p>&copy; Amit Visrolia 2016</p>
+    </footer>
+  </main>
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Amit's notes ",
+  "url" : "//amit.visrolia.net",
+  "image": "",
+  "description": "Amit's notes, links, and pictures"
+}
+</script>
+</body>
+</html>

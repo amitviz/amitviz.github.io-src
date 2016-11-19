@@ -31,11 +31,13 @@ MATLAB is also available from the BUCS website:
 ### Why use MATLAB for finite element analysis?
 Finite element analysis is a simultaneous equation problem, and we can describe it using matrices:
 
-$$[K]\{u\} = \{F\}$$
+\begin{align}
+[K]\{u\} = \{F\}
+\end{align}
  
 MATLAB works natively with matrices as a data type. It can solve such a system by typing in:
 
-    #!matlab
+    :::matlab
     u=K\F
 
 Many of the steps involved are also matrix operations, such as coordinate transforms, or matrix inversions. A programming language is also useful to perform repeated operations, such as those applied to elements or nodes in a finite element program.
@@ -52,7 +54,7 @@ Many of the steps involved are also matrix operations, such as coordinate transf
 ### Simple calculations
 The command window can be used as a simple calculator (`>>` is the MATLAB prompt, you don't need to type it in!):
 
-    #!matlab
+    :::matlab
     >> 2*2             % multiplication
 
     ans =
@@ -80,7 +82,7 @@ The command window can be used as a simple calculator (`>>` is the MATLAB prompt
 ### Variables
 Variables can be used to store values for use later
 
-    #!matlab
+    :::matlab
     >> clear all % clear existing variables from memory
     >> r = 5;    % radius r
     >> % note the semi-colon at the end to suppress MATLAB output
@@ -107,7 +109,7 @@ Variables can be used to store values for use later
 ### Types of variables
 Any type of data can be stored in a variable, *e.g.*
 
-    #!matlab
+    :::matlab
     i = 4              % integer variables
 
     j = 4.5            % floating point variables
@@ -125,7 +127,7 @@ A matrix is just a 2D array of values.
 
 The matrix can be entered at the command line, surrounding the values with square brackets `[ ]`. Columns are separated by commas or spaces, rows by semi-colons or line breaks:
 
-    #!matlab
+    :::matlab
     >> x = [1 2; 3 4]  % entered on a single line
 
     x =
@@ -151,7 +153,7 @@ The matrix can be entered at the command line, surrounding the values with squar
 
 ### Some useful matrices
 
-    #!matlab
+    :::matlab
     >> x = zeros(2)    % a square 2x2 matrix of zeros
 
     x =
@@ -194,7 +196,7 @@ Some of these terms will be used interchangeably in the remainder of the notes.
 ### Addressing matrices
 Now that we have matrices full of zeros or ones, how do we get some useful information in and out of them?
 
-    #!matlab
+    :::matlab
     >> x = magic(3)    % a built-in function to create a 3x3
                     %   magic-square (all rows, columns and diagonals
                     %   add up to the same value)
@@ -221,7 +223,7 @@ Now that we have matrices full of zeros or ones, how do we get some useful infor
 ### Addressing matrices: the colon operator}
 To address an entire row or column, we can use the colon (`:`) operator
 
-    #!matlab
+    :::matlab
     >> x = magic(3);   % the same matrix as the previous slide
     >> x(3,:)          % '3rd row, all the columns'
 
@@ -248,7 +250,7 @@ To address an entire row or column, we can use the colon (`:`) operator
 ### The colon operator
 Without any parameters, the colon represents an entire row or column. The colon can also be used with parameters, to represent a range of values.
 
-    #!matlab
+    :::matlab
     >> x = 1:10        % all the numbers in the range from 1-10
 
     x =
@@ -270,7 +272,7 @@ Without any parameters, the colon represents an entire row or column. The colon 
 ### Specific matrix addressing with the colon
 We can combine the 'range' use of the colon to pick out some specific values from a larger matrix:
 
-    #!matlab
+    :::matlab
     >> x = magic(4)    % a 4x4 magic square
 
     x =
@@ -296,7 +298,7 @@ We can combine the 'range' use of the colon to pick out some specific values fro
 ### Matrix properties
 In addition to getting data *from* the matrix, we can get data *about* the matrix:
 
-    #!matlab
+    :::matlab
     >> x = magic(4);   % as previously
     >> [a b] = size(x) % the size of matrix x
 
@@ -325,7 +327,7 @@ The size command is very useful, since it will let us write programmes where we 
 
 The `size` command can be used as follows:
 
-    #!matlab
+    :::matlab
     >> x = zeros(5,2); % an example matrix with 5 rows and 2 columns
     >> [a b] = size(x) % as we've seen before, we can get the dimensions using size()
     a =
@@ -353,7 +355,7 @@ The `size` command can be used as follows:
 ### Matrix algebra
 Matrix algebra can be performed with the MATLAB matrices, e.g. for the system $Ax = b$,
 
-    #!matlab
+    :::matlab
     >> A = magic(3)    % a 3x3 magic square
     A =
         8     1     6
@@ -384,7 +386,7 @@ Matrix algebra can be performed with the MATLAB matrices, e.g. for the system $A
 ### Matrix algebra II
 Some of the most useful functions are those to find the **inverse** and **transpose** of a matrix:
 
-    #!matlab
+    :::matlab
     >> A = magic(3)    % the 3x3 magic square
     A =
 
@@ -405,12 +407,12 @@ Some of the most useful functions are those to find the **inverse** and **transp
 Inverting the matrix is a computationally expensive problem. Although a system $Ax = b$ can be solved as $x = A^{-1}b$, the **backslash operator** (`A\b`) uses Gaussian elimination to solve without explicitly calculating $A^{-1}$.
 
 
-### Array algebra}
+### Array algebra
 MATLAB treats everything as a matrix, but occasionally, we might want to treat a variable as simply a list (or grid) of values, rather than a matrix in the mathematical sense.
 
 MATLAB behaves as expected when we multiply a 'matrix' or vector by a scalar, or add two matrices, and also includes a number of **piecewise operators**.
 
-    #!matlab
+    :::matlab
     >> x = 1:3;        % x = [1 2 3]
     >> y = 2*x         % multiply by a scalar
     y =
@@ -432,15 +434,15 @@ When we want to perform the same actions over and over again, we can save the st
 
 Here, we shall write a script to solve the roots ($y=0$) of the quadratic equation:
 
-$$
+\begin{align}
   y = ax^2 + bx + c
-$$
+\end{align}
 
 A reminder, the solution is given by:
 
-$$
+\begin{align}
   x = \frac{-b\pm\sqrt{b^2 - 4ac}}{2a}
-$$
+\end{align}
 
 
 ### MATLAB scripting--the editor
@@ -461,7 +463,7 @@ Using the commands that we already know, we can write the script:
     
 If we save this file as `quadscript.m`, we can run it by typing the name `quadscript` at the command prompt:
 
-    #!matlab
+    :::matlab
     >> quadscript
     x1 =
         3
@@ -485,7 +487,7 @@ Instead of including the coefficients in the script (*hard-coding* them) we coul
     
 Saving as `quadscript2.m` and running:
 
-    #!matlab
+    :::matlab
     >> quadscript2
     Solving the equation: ax^2 + bx + c
     Please input the value of a:1
@@ -510,7 +512,7 @@ We have already seen some of MATLAB's built-in functions:
 ### The purpose of functions
 Functions can be called in a number of ways, e.g.
 
-    #!matlab
+    :::matlab
     >> cos(0.7854)     % supplying the argument directly to the function
     ans =
         0.7071
@@ -549,7 +551,7 @@ The file `quadratic.m` contains the following:
 
 $a,b,c$ are the arguments, $x1,x2$ are the return values. A comment is useful to explain what the function does: you may end up using this function in many other programmes, or it may even be used by many other people in their programmes.
 
-    #!matlab
+    :::matlab
     >> [x1,x2] = quadratic(1,-5,6)
     x1 =
         3
