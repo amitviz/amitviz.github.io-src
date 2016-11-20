@@ -816,7 +816,383 @@ In the next section I explain how I used technology to help track my progress. N
 
 &lt;p&gt;get the latest updates from the remote&amp;nbsp;repo: &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git pull &amp;lt;reponame&amp;gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="code"></category></entry><entry><title>Introduction to Matlab: lecture 3</title><link href="//amit.visrolia.net/matlabdebugging.html" rel="alternate"></link><published>2011-11-14T00:00:00+00:00</published><updated>2011-11-14T00:00:00+00:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2011-11-14:matlabdebugging.html</id><summary type="html">&lt;h1&gt;Debugging&lt;/h1&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="code"></category></entry><entry><title>Introduction to Matlab: lecture 4</title><link href="//amit.visrolia.net/matlabbeamfe2.html" rel="alternate"></link><published>2011-11-15T00:00:00+00:00</published><updated>2011-11-15T00:00:00+00:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2011-11-15:matlabbeamfe2.html</id><summary type="html">&lt;h2&gt;Completing the beam &lt;span class="caps"&gt;FE&lt;/span&gt;&amp;nbsp;program&lt;/h2&gt;
+&lt;p&gt;In the previous lectures, we developed a basic truss finite element program. In this lecture, we&amp;#8217;ll extend that program, first by adding in aligned boundary conditions, and then by adding more advanced element types (frame and beam elements). We&amp;#8217;ll also look at plotting in Matlab and see how to use these tools to produce a graphuc&amp;nbsp;postprocessor.&lt;/p&gt;
+&lt;p&gt;By the end of this lecture, the students should be able&amp;nbsp;to:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Apply aligned boundary conditions to the&amp;nbsp;solver&lt;/li&gt;
+&lt;li&gt;Calculate shape functions to be used for &amp;#8216;frame&amp;#8217;&amp;nbsp;elements&lt;/li&gt;
+&lt;li&gt;Create plots in Matlab, including a plot of a truss finite element mesh and its&amp;nbsp;results&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This is the last of this series of lectures, so I hope that by the end, the students will have an appreciation of the process of creating a Matlab&amp;nbsp;program.&lt;/p&gt;
+&lt;h2&gt;Aligned boundary conditions in the&amp;nbsp;solver&lt;/h2&gt;
+&lt;p&gt;The code developed for the solver in the previous lecture applied boundary conditions only in the global coordinate system (&lt;span class="math"&gt;\(u=0\)&lt;/span&gt; or &lt;span class="math"&gt;\(v=0\)&lt;/span&gt;). To make the code a bit more general, we should handle aligned supports (&lt;span class="math"&gt;\(u'=0\)&lt;/span&gt; or &lt;span class="math"&gt;\(v'=0\)&lt;/span&gt;).&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Aligned boundary conditions" src="/images/alignedbc.png" /&gt;&lt;/p&gt;
+&lt;h3&gt;Solution&amp;nbsp;vector&lt;/h3&gt;
+&lt;p&gt;Instead of solving for the a solution vector of the&amp;nbsp;form:&lt;/p&gt;
+&lt;div class="math"&gt;\begin{align}
+  \mathbf{u} &amp;amp;= 
+  \begin{Bmatrix}
+    u_1\\v_1\\u_2\\v_2\\u_3\\v_3
+  \end{Bmatrix}
+ \end{align}&lt;/div&gt;
+&lt;p&gt;we can look first for a solution of the&amp;nbsp;form:&lt;/p&gt;
+&lt;div class="math"&gt;\begin{align}
+  \mathbf{u^\ast} &amp;amp;=
+  \begin{Bmatrix}
+    u_1\\v_1\\u_2\\v_2\\u'_3\\v'_3
+  \end{Bmatrix}
+ \end{align}&lt;/div&gt;
+&lt;p&gt;where &lt;span class="math"&gt;\(\mathbf{u^\ast} = \mathbf{T}\mathbf{u}\)&lt;/span&gt;,&amp;nbsp;and &lt;/p&gt;
+&lt;div class="math"&gt;\begin{align}
+  \mathbf{T} &amp;amp;= \begin{bmatrix}
+         I &amp;amp; 0 &amp;amp; 0 \\
+         0 &amp;amp; I &amp;amp; 0 \\
+         0 &amp;amp; 0 &amp;amp; t_3
+       \end{bmatrix}
+\end{align}&lt;/div&gt;
+&lt;p&gt;and &lt;span class="math"&gt;\(t_3\)&lt;/span&gt; is the transformation matrix for the orientation of the third node. We already have a function that calculates the transformation&amp;nbsp;matrix.&lt;/p&gt;
+&lt;h3&gt;Implementing the boundary&amp;nbsp;conditions&lt;/h3&gt;
+&lt;p&gt;The information required for aligned boundary conditions&amp;nbsp;is:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;the&amp;nbsp;node&lt;/li&gt;
+&lt;li&gt;the&amp;nbsp;orientation&lt;/li&gt;
+&lt;li&gt;the restrained degrees of&amp;nbsp;freedom&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Instead of listing all the nodes as we have done previously for globally oriented boundary conditions, we can list just the required&amp;nbsp;information:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;aligned_boundary_conditions&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;element&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;local_node_number&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+                            &lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;                              &lt;span class="p"&gt;];&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;em&gt;e.g.&lt;/em&gt; to constrain node 2 of element 3 to only move in the &lt;span class="math"&gt;\(x'\)&lt;/span&gt;&amp;nbsp;direction:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;aligned_boundary_conditions&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Writing the &lt;span class="caps"&gt;MATLAB&lt;/span&gt;&amp;nbsp;code&lt;/h3&gt;
+&lt;p&gt;Writing the &lt;span class="caps"&gt;MATLAB&lt;/span&gt; code should be easy: we&amp;#8217;ve already covered the loops and logic, and some of the functions (e.g. the transform matrix) already exist. Some other elements that need to change&amp;nbsp;are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span class="math"&gt;\(\mathbf{F^\ast} =&amp;nbsp;\mathbf{T}\mathbf{F}\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class="math"&gt;\(\mathbf{K^\ast} =&amp;nbsp;\mathbf{T}\mathbf{K}\mathbf{T}^T\)&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Remember, we&amp;#8217;re now solving the&amp;nbsp;system:&lt;/p&gt;
+&lt;div class="math"&gt;\begin{align}
+  \mathbf{K^\ast}\mathbf{u^\ast} &amp;amp;= \mathbf{F^\ast}
+\end{align}&lt;/div&gt;
+&lt;p&gt;for the unknown vector &lt;span class="math"&gt;\(\mathbf{u^\ast}\)&lt;/span&gt;: to get the global displacements (&lt;span class="math"&gt;\(\mathbf{u}\)&lt;/span&gt;) back, we need to&amp;nbsp;calculate:&lt;/p&gt;
+&lt;div class="math"&gt;\begin{align}
+  \mathbf{u} &amp;amp;= \mathbf{T}^T\mathbf{u^\ast}
+\end{align}&lt;/div&gt;
+&lt;p&gt;
+(recall that &lt;span class="math"&gt;\(\mathbf{T}^{-1} = \mathbf{T}^T\)&lt;/span&gt;) &lt;/p&gt;
+&lt;h2&gt;&lt;span class="quo"&gt;&amp;#8216;&lt;/span&gt;Frame&amp;#8217; elements and shape&amp;nbsp;functions&lt;/h2&gt;
+&lt;p&gt;A frame element can sustain a bending moment or a transverse load. (Unlike the truss&amp;nbsp;element.)&lt;/p&gt;
+&lt;p&gt;Each node on the frame element has 3 degrees of&amp;nbsp;freedom:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;displacement in &lt;span class="math"&gt;\(x\)&lt;/span&gt;-direction (&lt;span class="math"&gt;\(u\)&lt;/span&gt;)&lt;/li&gt;
+&lt;li&gt;displacement in &lt;span class="math"&gt;\(y\)&lt;/span&gt;-direction (&lt;span class="math"&gt;\(v\)&lt;/span&gt;)&lt;/li&gt;
+&lt;li&gt;rotation (&lt;span class="math"&gt;\(\phi\)&lt;/span&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="Frame element in the local coordinate system" src="/images/frameelementlocal.png" /&gt;&lt;/p&gt;
+&lt;h3&gt;Frame element stiffness&amp;nbsp;matrix&lt;/h3&gt;
+&lt;p&gt;The terms in the stiffness matrix can still be calculated&amp;nbsp;directly.&lt;/p&gt;
+&lt;p&gt;The stiffness matrix for a 2-node frame element, with a solution vector of the form &lt;span class="math"&gt;\(\mathbf{u}'_e = [u'_1, v'_1, \phi_1, u'_2, v'_2, \phi_2]^T\)&lt;/span&gt;&amp;nbsp;is:&lt;/p&gt;
+&lt;div class="math"&gt;\begin{align}
+   \mathbf{K}'_{e} = 
+   \begin{bmatrix}
+      k_{r} &amp;amp;  0       &amp;amp;  0           &amp;amp; -k_{r} &amp;amp;  0       &amp;amp; 0           \\
+      0     &amp;amp;  12k_{b} &amp;amp;  6Lk_{b}     &amp;amp;  0     &amp;amp; -12k_{b} &amp;amp; 6Lk_{b}     \\
+      0     &amp;amp;  6k_{b}  &amp;amp;  4L^{2}k_{b} &amp;amp;  0     &amp;amp;  -6k_{b} &amp;amp; 2L^{2}k_{b} \\
+     -k_{r} &amp;amp;  0       &amp;amp;  0           &amp;amp;  k_{r} &amp;amp;  0       &amp;amp; 0           \\
+      0     &amp;amp; -12k_{b} &amp;amp; -6Lk_{b}     &amp;amp;  0     &amp;amp;  12k_{b} &amp;amp; -6Lk_{b}    \\
+      0     &amp;amp;  6k_{b}  &amp;amp;  2L^{2}k_{b} &amp;amp;  0     &amp;amp;  -6k_{b} &amp;amp; 4L^{2}k_{b}
+   \end{bmatrix}
+ \end{align}&lt;/div&gt;
+&lt;p&gt;where&lt;/p&gt;
+&lt;div class="math"&gt;\begin{align}
+  k_{r} &amp;amp;= \frac{AE}{L} &amp;amp; k_{b} &amp;amp;= \frac{EI}{L^3}
+ \end{align}&lt;/div&gt;
+&lt;h3&gt;Solution of frame element&amp;nbsp;system&lt;/h3&gt;
+&lt;p&gt;The global stiffness matrix is formed in the same way it was for the truss element: only now, each node has 3&amp;nbsp;degrees-of-freedom.&lt;/p&gt;
+&lt;p&gt;The element local displacement and element global force vectors take the&amp;nbsp;form:&lt;/p&gt;
+&lt;div class="math"&gt;\begin{align}
+  \mathbf{u}'_e &amp;amp;= \begin{Bmatrix}u'_1 \\ v'_1 \\ \phi_1 \\ u'_2 \\ v'_2 \\ \phi_2\end{Bmatrix}
+  &amp;amp;
+  \mathbf{F}_e &amp;amp;= \begin{Bmatrix}F_x \\ F_y \\ M \\ F_x \\ F_y \\ M\end{Bmatrix}
+ \end{align}&lt;/div&gt;
+&lt;p&gt;The transformation matrix &lt;span class="math"&gt;\(\mathbf{T}\)&lt;/span&gt; needs to be modified to account for this extra degree of freedom. A rotational transform to the global coordinate system does not affect the nodal rotations or applied moments (i.e. &lt;span class="math"&gt;\(\phi = \phi'\)&lt;/span&gt;, &lt;span class="math"&gt;\(M = M'\)&lt;/span&gt;), so we can just insert the identity (i.e. &lt;span class="math"&gt;\(1\)&lt;/span&gt;) in the relevant&amp;nbsp;degrees-of-freedom.&lt;/p&gt;
+&lt;h3&gt;Postprocessing frame&amp;nbsp;elements&lt;/h3&gt;
+&lt;p&gt;The truss element exhibits uniform strain, &lt;em&gt;i.e.&lt;/em&gt; the strain does not vary with &lt;span class="math"&gt;\(x'\)&lt;/span&gt;. The frame element is capable of varying the strain along its length. Additionally, the element defines displacement (and hence strains) in the &lt;span class="math"&gt;\(y'\)&lt;/span&gt; direction. To determine displacement (and other derived quantities) at a point, we require the use of shape&amp;nbsp;functions.&lt;/p&gt;
+&lt;p&gt;If &lt;span class="math"&gt;\(\xi\)&lt;/span&gt; is a parametric coordinate along the length of the element, the displacements at any value of &lt;span class="math"&gt;\(\xi\)&lt;/span&gt; can be given&amp;nbsp;by:&lt;/p&gt;
+&lt;div class="math"&gt;\begin{align}
+  u'_{x}(\xi) &amp;amp;= \sum_{i=1}^{n} N_{i}(\xi) u'_{x,n}\\
+  \mathbf{u}'(\xi) &amp;amp;= \mathbf{N}(\xi)\mathbf{u}'_e \\
+  \begin{Bmatrix}u'(\xi) \\ v'(\xi)\end{Bmatrix} &amp;amp;=
+  \begin{bmatrix}
+   N_{1x} &amp;amp; 0 &amp;amp; 0 &amp;amp; N_{2x} &amp;amp; 0 &amp;amp; 0 \\
+   0 &amp;amp; N_{1y} &amp;amp; N_{1\theta} &amp;amp; 0 &amp;amp; N_{2y} &amp;amp; N_{2\theta} 
+  \end{bmatrix}
+  \begin{Bmatrix}
+   u'_1 \\ v'_1 \\ \phi_1 \\ u'_2 \\ v'_2 \\ \phi_2
+  \end{Bmatrix} \label{eq:shapefunction}
+ \end{align}&lt;/div&gt;
+&lt;h3&gt;Shape functions for frame&amp;nbsp;elements&lt;/h3&gt;
+&lt;p&gt;The shape functions for a frame element are defined for &lt;span class="math"&gt;\(-1\le\xi\le1\)&lt;/span&gt;, and requires the length of the element &lt;span class="math"&gt;\(L\)&lt;/span&gt;:&lt;/p&gt;
+&lt;div class="math"&gt;\begin{align}
+  N_{1x}(\xi) &amp;amp;= (1-\xi)/2 \nonumber \\
+  N_{1y}(\xi) &amp;amp;= [1-\xi(3-\xi^2)/2]/2 \nonumber \\
+  N_{1\theta}(\xi) &amp;amp;= \frac{L(1-\xi^2)}{8}(1-\xi) \nonumber \\
+  N_{2x}(\xi) &amp;amp;= (1+\xi)/2 \nonumber \\
+  N_{2y}(\xi) &amp;amp;= [1+\xi(3-\xi^2)/2]/2 \nonumber \\
+  N_{2\theta}(\xi) &amp;amp;= \frac{-L(1-\xi^2)}{8}(1+\xi) \label{eq:shapefunctions}
+ \end{align}&lt;/div&gt;
+&lt;p&gt;In &lt;span class="caps"&gt;MATLAB&lt;/span&gt;, we can write a function to return the shape function&amp;nbsp;matrix:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;function&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;[N] &lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;shapefunction&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;xi,L&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="c"&gt;...&lt;/span&gt;
+&lt;span class="k"&gt;return&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;h3&gt;Determining the displacement in &lt;span class="caps"&gt;MATLAB&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;Once the shape function matrix &lt;span class="math"&gt;\(\mathbf{N}\)&lt;/span&gt; is known, the displacements at any point can be&amp;nbsp;determined.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;displacement&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;shapefunction&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;xi&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;L&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;element&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;ue_local&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;where &lt;code&gt;ue_local&lt;/code&gt; are the element nodal displacements. &lt;code&gt;ue_local&lt;/code&gt; is determined by picking out the relevant nodal displacements for the element of interest from the global solution vector, and transforming back to the element&amp;#8217;s local coordinate system &lt;span class="math"&gt;\((x',y')\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;To get displacements along the element, we can increment &lt;span class="math"&gt;\(\xi\)&lt;/span&gt;, e.g. &lt;code&gt;xi = -1:0.1:1&lt;/code&gt;.&lt;/p&gt;
+&lt;h3&gt;Derived&amp;nbsp;quantities&lt;/h3&gt;
+&lt;p&gt;Once displacements are known, the derived quantities (strains and stresses) can be calculated. The strain and bending moment are given&amp;nbsp;by:&lt;/p&gt;
+&lt;div class="math"&gt;\begin{align}
+  \varepsilon_{x'}(x',\bar{y}) &amp;amp;= \frac{\mathrm{d}u'}{\mathrm{d}x'} -\bar{y}\frac{\mathrm{d}^2v'}{\mathrm{d}x'^2} \label{eq:strain} \\
+  M(x') &amp;amp;= EI \frac{\mathrm{d}^2v'}{\mathrm{d}x'^2} \label{eq:bendingmoment}
+ \end{align}&lt;/div&gt;
+&lt;p&gt;&lt;img alt="Strains in beam bending" src="/images/neutralaxis.png" /&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span class="math"&gt;\(\bar{y}\)&lt;/span&gt; is the distance from the neutral&amp;nbsp;axis&lt;/li&gt;
+&lt;li&gt;&lt;span class="math"&gt;\(\frac{\mathrm{d}u'}{\mathrm{d}x'}\)&lt;/span&gt; is the mean axial strain&amp;#8212;-this is the same as it is for the truss element (previous&amp;nbsp;lecture)&lt;/li&gt;
+&lt;li&gt;&lt;span class="math"&gt;\(-\bar{y}\frac{\mathrm{d}^2v'}{\mathrm{d}x'^2}\)&lt;/span&gt; is the bending&amp;nbsp;strain&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Once the strains are known, calculating the stress is&amp;nbsp;trivial.&lt;/p&gt;
+&lt;h3&gt;Differentiating the&amp;nbsp;displacements&lt;/h3&gt;
+&lt;p&gt;We know the displacements in terms of the parametric coordinate, &lt;span class="math"&gt;\(\xi\)&lt;/span&gt;, from equation \eqref{eq:shapefunction}. This parametric coordinate is a transform of the element coordinate&amp;nbsp;system:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The range &lt;span class="math"&gt;\(0 \le x' \le L\)&lt;/span&gt; is mapped to &lt;span class="math"&gt;\(-1 \le \xi \le&amp;nbsp;+1\)&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;i.e.&lt;/em&gt;&lt;/p&gt;
+&lt;div class="math"&gt;\begin{align}
+ \xi(x') &amp;amp;= 2\frac{x'}{L} - 1 \label{eq:xixtransform}
+\end{align}&lt;/div&gt;
+&lt;p&gt;if&lt;/p&gt;
+&lt;div class="math"&gt;\begin{align}
+ \mathbf{u}'(\xi) &amp;amp;= \mathbf{N}(\xi) \mathbf{u}'_{e}
+\end{align}&lt;/div&gt;
+&lt;p&gt;then&lt;/p&gt;
+&lt;div class="math"&gt;\begin{align}
+ \frac{\mathrm{d}\mathbf{u}'(\xi)}{\mathrm{d}x'} &amp;amp;= \frac{\mathrm{d}\mathbf{N}(\xi)}{\mathrm{d}x'} \mathbf{u}'_{e}
+\end{align}&lt;/div&gt;
+&lt;p&gt;(&lt;span class="math"&gt;\(\mathbf{u}'_e\)&lt;/span&gt; are the discrete (nodal) values of the displacement, they are not a differentiable&amp;nbsp;function.)&lt;/p&gt;
+&lt;h3&gt;Differentiating the shape&amp;nbsp;function&lt;/h3&gt;
+&lt;p&gt;The shape functions, given in equations \eqref{eq:shapefunctions}, are given in terms of &lt;span class="math"&gt;\(\xi\)&lt;/span&gt;. To differentiate with respect to the local coordinate system (&lt;span class="math"&gt;\(x'\)&lt;/span&gt;):&lt;/p&gt;
+&lt;div class="math"&gt;\begin{align}
+ \frac{\mathrm{d}\mathbf{N}}{\mathrm{d}x'} &amp;amp;= \frac{\mathrm{d}\mathbf{N}}{\mathrm{d}\xi} \frac{\mathrm{d}\xi}{\mathrm{d}x'}
+\end{align}&lt;/div&gt;
+&lt;p&gt;where &lt;span class="math"&gt;\(\mathrm{d}\xi/\mathrm{d}x'\)&lt;/span&gt; is given by differentiating \eqref{eq:xixtransform}, and is known as the Jacobian (&lt;span class="math"&gt;\(J\)&lt;/span&gt;) of the&amp;nbsp;transform. &lt;/p&gt;
+&lt;p&gt;Similarly, 
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{align}
+ \frac{\mathrm{d}^2\mathbf{N}}{\mathrm{d}x'^2} &amp;amp;= \frac{\mathrm{d}}{\mathrm{d}x'} \frac{\mathrm{d}\mathbf{N}}{\mathrm{d}x'} \nonumber \\
+ &amp;amp;= \frac{\mathrm{d}}{\mathrm{d}x'} \frac{\mathrm{d}\mathbf{N}}{\mathrm{d}\xi} \frac{\mathrm{d}\xi}{\mathrm{d}x'} \nonumber \\
+ &amp;amp;= \frac{\mathrm{d}}{\mathrm{d}\xi} \frac{\mathrm{d}\mathbf{N}}{\mathrm{d}\xi} \frac{\mathrm{d}\xi}{\mathrm{d}x'} \frac{\mathrm{d}\xi}{\mathrm{d}x'} \nonumber \\
+ &amp;amp;= \frac{\mathrm{d}^2\mathbf{N}}{\mathrm{d}\xi^2} \left( \frac{\mathrm{d}\xi}{\mathrm{d}x'} \right)  ^2
+\end{align}&lt;/div&gt;
+&lt;h3&gt;Postprocessing in &lt;span class="caps"&gt;MATLAB&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;We could write some functions,&amp;nbsp;perhaps&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;function N1 = shapefunction_derivative_1(xi,L)&lt;/code&gt; and&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;function N2 = shapefunction_derivative_2(xi,L)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;to return the shape function derivative matrices. Since the shape functions are functions of &lt;span class="math"&gt;\(L\)&lt;/span&gt;, they will need to be calculated for each element&amp;nbsp;individually.&lt;/p&gt;
+&lt;p&gt;The Jacobian is also a function of &lt;span class="math"&gt;\(L\)&lt;/span&gt;, so will also be calculated for each&amp;nbsp;element.&lt;/p&gt;
+&lt;p&gt;Then the derivatives can be calculated in the same form as equation&amp;nbsp;\eqref{eq:shapefunction}:&lt;/p&gt;
+&lt;div class="math"&gt;\begin{align}
+ \frac{\mathrm{d}\mathbf{u}'}{\mathrm{d}x'} &amp;amp;= J \cdot \mathbf{N}^{(1)} \mathbf{u}'_{e} \\
+ \frac{\mathrm{d}^{2}\mathbf{u}'}{\mathrm{d}x'^{2}} &amp;amp;= J^2 \cdot \mathbf{N}^{(2)} \mathbf{u}'_{e}
+\end{align}&lt;/div&gt;
+&lt;p&gt;where &lt;span class="math"&gt;\(J\)&lt;/span&gt; is the Jacobian, and bracketed superscripts denote derivative with respect to the parametric coordinate&amp;nbsp;system.&lt;/p&gt;
+&lt;p&gt;We now have sufficient information to calculate strains (and stresses) from equation&amp;nbsp;\eqref{eq:strain}&lt;/p&gt;
+&lt;h2&gt;Postprocessor and&amp;nbsp;plotting&lt;/h2&gt;
+&lt;p&gt;In the previous lecture, the results of the analysis were presented as a &lt;span class="caps"&gt;MATLAB&lt;/span&gt; vector of&amp;nbsp;values.&lt;/p&gt;
+&lt;p&gt;&lt;span class="caps"&gt;MATLAB&lt;/span&gt; has some powerful plotting functions, so we can try to visualize these results to make them easier to&amp;nbsp;understand.&lt;/p&gt;
+&lt;h3&gt;The&amp;nbsp;problem&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="Tutorial example with truss elements" src="/images/truss_tutorial.png" /&gt;&lt;/p&gt;
+&lt;h3&gt;Saving the&amp;nbsp;results&lt;/h3&gt;
+&lt;p&gt;So that we don&amp;#8217;t have to re-run the whole model every time we want to create a plot, we can save the results to a&amp;nbsp;file. &lt;/p&gt;
+&lt;p&gt;This step isn&amp;#8217;t necessary for the type of problems we might be solving, but when the models become larger and take a significant amount of time to run, it is useful to be able to keep a copy of the solution vector so that it can be processed at a later&amp;nbsp;date.&lt;/p&gt;
+&lt;p&gt;&lt;span class="caps"&gt;MATLAB&lt;/span&gt; has a function to allow any variable in memory to be saved to a &lt;code&gt;.mat&lt;/code&gt; file:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;variable1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;variable2&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,.&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="p"&gt;.);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Any string can be given as the filename (&lt;em&gt;i.e.&lt;/em&gt; &lt;code&gt;filename&lt;/code&gt; should be the name of a string variable, or the string variable itself, enclosed in &lt;code&gt;'inverted commas'&lt;/code&gt;). If an extension for the filename isn&amp;#8217;t specified, most versions of &lt;span class="caps"&gt;MATLAB&lt;/span&gt; will add a &lt;code&gt;.mat&lt;/code&gt; at the&amp;nbsp;end.&lt;/p&gt;
+&lt;p&gt;These variables can be re-read back into memory with the&amp;nbsp;command:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;load&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;-mat&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;The figure&amp;nbsp;window&lt;/h3&gt;
+&lt;p&gt;The &lt;span class="caps"&gt;MATLAB&lt;/span&gt; command &lt;code&gt;figure&lt;/code&gt; creates a new window for a figure (or&amp;nbsp;plot). &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;All of the plotting commands create their own figure windows, so it&amp;#8217;s not necessary to explicitly create a&amp;nbsp;&amp;#8216;figure&amp;#8217;.&lt;/li&gt;
+&lt;li&gt;However, it&amp;#8217;s useful to use this command to ensure that a plot is created on a new figure window, and not an existing&amp;nbsp;window.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="Blank Matlab figure window" src="/images/matlab_figure_blank.png" /&gt;&lt;/p&gt;
+&lt;h3&gt;The plot&amp;nbsp;command&lt;/h3&gt;
+&lt;p&gt;The plot command in its simplest form takes two arguments: a vector of &lt;span class="math"&gt;\(x\)&lt;/span&gt;-values and a vector of &lt;span class="math"&gt;\(y\)&lt;/span&gt;-values, &lt;em&gt;e.g.&lt;/em&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;.^&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="Plot of the function x-squared" src="/images/x2.png" /&gt;&lt;/p&gt;
+&lt;h3&gt;Formatting the&amp;nbsp;plot&lt;/h3&gt;
+&lt;p&gt;A third argument is used in the plot command to control the appearance of the plotted line. Some common options&amp;nbsp;are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-&lt;/code&gt; -&amp;nbsp;default&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--&lt;/code&gt; -&amp;nbsp;dashed&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;:&lt;/code&gt; -&amp;nbsp;dotted&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-.&lt;/code&gt; -&amp;nbsp;dash-dot&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;o&lt;/code&gt; - circle&amp;nbsp;markers&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;+&lt;/code&gt; - plus sign&amp;nbsp;markers&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;*&lt;/code&gt; - star&amp;nbsp;markers&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;x&lt;/code&gt; - cross&amp;nbsp;markers&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;r,g,y,b,k&lt;/code&gt; - colour: red, green, yellow, blue,&amp;nbsp;black&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Using plot&amp;nbsp;styles&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nodal_coordinates&lt;/span&gt;&lt;span class="p"&gt;(:,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="n"&gt;nodal_coordinates&lt;/span&gt;&lt;span class="p"&gt;(:,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="c"&gt;...&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;#39;ko&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;MarkerSize&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;MarkerFaceColor&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;k&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="The nodes of the structure plotted" src="/images/truss_nodes.png" /&gt;&lt;/p&gt;
+&lt;p&gt;The full details on the capability of the &lt;code&gt;plot&lt;/code&gt; command are given by typing &lt;code&gt;help plot&lt;/code&gt; at the &lt;span class="caps"&gt;MATLAB&lt;/span&gt; command&amp;nbsp;prompt.&lt;/p&gt;
+&lt;h3&gt;Plot&amp;nbsp;lines&lt;/h3&gt;
+&lt;p&gt;To plot the elements, we can use the &lt;code&gt;line&lt;/code&gt; command. Before we do this, we use the&amp;nbsp;command&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;hold&lt;/span&gt; &lt;span class="n"&gt;on&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;to &amp;#8216;hold&amp;#8217; the plot, i.e. use the same figure for the next lines rather than creating a new figure&amp;nbsp;window.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;line&lt;/code&gt; command is similar to the &lt;code&gt;plot&lt;/code&gt; command in that it takes a list of &lt;span class="math"&gt;\(x\)&lt;/span&gt; and &lt;span class="math"&gt;\(y\)&lt;/span&gt; coordinates.
+We can use it in a loop, to plot one &lt;code&gt;line&lt;/code&gt; (with two pairs of &lt;span class="math"&gt;\((x,y)\)&lt;/span&gt; coordinates) for every&amp;nbsp;element:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;x1&lt;/span&gt; &lt;span class="n"&gt;x2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,[&lt;/span&gt;&lt;span class="n"&gt;y1&lt;/span&gt; &lt;span class="n"&gt;y2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="The elements of the structure plotted" src="/images/truss_mesh.png" /&gt;&lt;/p&gt;
+&lt;h3&gt;Adding&amp;nbsp;colour&lt;/h3&gt;
+&lt;p&gt;The &lt;code&gt;line&lt;/code&gt; function also takes an argument &lt;code&gt;color&lt;/code&gt; (note the incorrect spelling).
+Instead of giving the lines colours like &amp;#8216;b&amp;#8217; for blue or &amp;#8216;r&amp;#8217; for red, we can be more specific about the colour: the red, green and blue components can be specified as a row vector, using values between 0&amp;#8212;1. Some examples&amp;nbsp;are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;[0,0,0]&lt;/code&gt; -&amp;nbsp;black&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[1,0,0]&lt;/code&gt; -&amp;nbsp;red&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[0,1,0]&lt;/code&gt; -&amp;nbsp;green&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[0,0,1]&lt;/code&gt; -&amp;nbsp;blue&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[1,0,1]&lt;/code&gt; -&amp;nbsp;purple&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[1,1,1]&lt;/code&gt; -&amp;nbsp;white&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[0.5,0,0.5]&lt;/code&gt; - dark&amp;nbsp;purple&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We could use the colour to represent one of the postprocressed results, &lt;em&gt;e.g.&lt;/em&gt; stress or&amp;nbsp;strain.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;color&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;The finished postprocessor with&amp;nbsp;displacements&lt;/h3&gt;
+&lt;p&gt;This is what we&amp;#8217;re aiming&amp;nbsp;for: &lt;/p&gt;
+&lt;p&gt;&lt;img alt="The structure plotted with displacements and stresses" src="/images/truss_output.png" /&gt;&lt;/p&gt;
+&lt;p&gt;The displacement is shown by plotting &lt;span class="math"&gt;\(\mathbf{x} + s\mathbf{u}\)&lt;/span&gt;, where &lt;span class="math"&gt;\(s\)&lt;/span&gt; is a scaling factor.
+The colour represents the stress in the elements: blue is the lowest stress, red is the&amp;nbsp;highest.&lt;/p&gt;
+&lt;h3&gt;The displacements for frame&amp;nbsp;elements&lt;/h3&gt;
+&lt;p&gt;If the displacements are interpolated using the shape functions (at &lt;em&gt;e.g.&lt;/em&gt; &lt;code&gt;xi = -1:0.1:1&lt;/code&gt;), we can determine the displacements and plot the shape of a frame element. When plotting the line using &lt;code&gt;line(x,y)&lt;/code&gt;, the parameters &lt;code&gt;x&lt;/code&gt; and &lt;code&gt;y&lt;/code&gt; will both be&amp;nbsp;vectors.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="The frame structure plotted with displacements and stresses" src="/images/frame_output.png" /&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The line command does not allow for change in colour along the length of a single line, so we can&amp;#8217;t use this command to plot variables that are a function of &lt;span class="math"&gt;\(x'\)&lt;/span&gt;, such as bending&amp;nbsp;moment. &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Conclusions&lt;/h2&gt;
+&lt;p&gt;We now have a pretty complete programme for performing both truss and frame&amp;nbsp;analysis:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;it can incorporate boundary conditions aligned in the global or the element coordinate&amp;nbsp;systems&lt;/li&gt;
+&lt;li&gt;it can also calculate the derived quantities in the postprocessor using shape functions and their&amp;nbsp;derivatives&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We should have an idea of the process of writing a &lt;span class="caps"&gt;MATLAB&lt;/span&gt; programme, including how to step through the code using the debugger to look for errors, and we can also use &lt;span class="caps"&gt;MATLAB&lt;/span&gt; to create graphical output to help with the interpretation of&amp;nbsp;results&lt;/p&gt;
+&lt;h3&gt;Author contact&amp;nbsp;details&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Amit&amp;nbsp;Visrolia&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://people.bath.ac.uk/av236"&gt;http://people.bath.ac.uk/av236&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2E-4.9, Mechanical Engineering, University of&amp;nbsp;Bath&lt;/li&gt;
+&lt;li&gt;&lt;a href="mailto:a.visrolia@bath.ac.uk"&gt;a.visrolia@bath.ac.uk&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' &amp;&amp; location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><category term="matlab"></category><category term="code"></category><category term="teaching"></category><category term="bath"></category></entry><entry><title>Introduction to Matlab: lecture 3</title><link href="//amit.visrolia.net/matlabdebugging.html" rel="alternate"></link><published>2011-11-14T00:00:00+00:00</published><updated>2011-11-14T00:00:00+00:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2011-11-14:matlabdebugging.html</id><summary type="html">&lt;h1&gt;Debugging&lt;/h1&gt;
 &lt;p&gt;The last lectures introduced &lt;span class="caps"&gt;MATLAB&lt;/span&gt;, then focussed on developing the structure of the solver part of the finite element&amp;nbsp;programme.&lt;/p&gt;
 &lt;p&gt;This lecture, we look at the process of debugging a programme in &lt;span class="caps"&gt;MATLAB&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;By the end of this lecture, the students should be able&amp;nbsp;to:&lt;/p&gt;
@@ -2218,7 +2594,7 @@ Global stiffness&amp;nbsp;matrix:
 &lt;li&gt;&lt;a href="//amit.visrolia.net/matlabbasics.html"&gt;Lecture 1: Matlab&amp;nbsp;basics&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="//amit.visrolia.net/matlabbeamfe.html"&gt;Lecture 2: Beam finite element&amp;nbsp;analysis&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="//amit.visrolia.net/matlabdebugging.html"&gt;Lecture 3: Debugging in&amp;nbsp;Matlab&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="//amit.visrolia.net/drafts/matlabbeamfe2.html"&gt;Lecture 4: Beam finite element analysis 2:&amp;nbsp;postprocessing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="//amit.visrolia.net/matlabbeamfe2.html"&gt;Lecture 4: Beam finite element analysis 2:&amp;nbsp;postprocessing&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;The completed code is available from my Github&amp;nbsp;for:&lt;/p&gt;
 &lt;ul&gt;
