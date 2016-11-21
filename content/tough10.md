@@ -7,6 +7,7 @@ Authors: Amit
 
 <div class="imagepost">
 <img src="/images/tough10.jpg" class="imageitem large" />
+<img src="/images/tough10_2.jpg" class="imageitem large" />
 </div>
 
 Margam Country Park, South Wales

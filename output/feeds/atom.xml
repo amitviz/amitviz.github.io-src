@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Amit's notes</title><link href="//amit.visrolia.net/" rel="alternate"></link><link href="//amit.visrolia.net/feeds/atom.xml" rel="self"></link><id>//amit.visrolia.net/</id><updated>2016-11-20T00:00:00+00:00</updated><entry><title>Cancer Research Tough 10</title><link href="//amit.visrolia.net/tough10.html" rel="alternate"></link><published>2016-11-20T00:00:00+00:00</published><updated>2016-11-20T00:00:00+00:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2016-11-20:tough10.html</id><summary type="html">&lt;div class="imagepost"&gt;
 &lt;img src="/images/tough10.jpg" class="imageitem large" /&gt;
+&lt;img src="/images/tough10_2.jpg" class="imageitem large" /&gt;
 &lt;/div&gt;
 
 &lt;p&gt;Margam Country Park, South&amp;nbsp;Wales&lt;/p&gt;
@@ -2764,7 +2765,7 @@ Global stiffness&amp;nbsp;matrix:
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="matlab"></category><category term="code"></category><category term="teaching"></category><category term="bath"></category></entry><entry><title>Introduction to Matlab</title><link href="//amit.visrolia.net/matlabintro.html" rel="alternate"></link><published>2011-10-30T00:00:00+01:00</published><updated>2011-10-30T00:00:00+01:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2011-10-30:matlabintro.html</id><summary type="html">&lt;p&gt;These &lt;strong&gt;Introduction to Matlab&lt;/strong&gt; notes are the leacures I gave to the undergrad mechanical engineering finite element course at the University of Bath in 2010 and&amp;nbsp;2011. &lt;/p&gt;
+&lt;/script&gt;</summary><category term="matlab"></category><category term="code"></category><category term="teaching"></category><category term="bath"></category></entry><entry><title>Introduction to Matlab</title><link href="//amit.visrolia.net/matlabintro.html" rel="alternate"></link><published>2011-10-30T00:00:00+01:00</published><updated>2011-10-30T00:00:00+01:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2011-10-30:matlabintro.html</id><summary type="html">&lt;p&gt;These &lt;strong&gt;Introduction to Matlab&lt;/strong&gt; notes are the lectures I gave to the undergrad mechanical engineering finite element course at the University of Bath in 2010 and&amp;nbsp;2011. &lt;/p&gt;
 &lt;p&gt;There are four lectures, beginning with an introduction to Matlab for complete beginners, right up to developing a beam finite element solver and postprocessor, and learning along the way how to&amp;nbsp;debug.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="//amit.visrolia.net/matlabbasics.html"&gt;Lecture 1: Matlab&amp;nbsp;basics&lt;/a&gt;&lt;/li&gt;

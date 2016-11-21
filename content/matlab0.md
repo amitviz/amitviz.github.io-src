@@ -5,7 +5,7 @@ Tags: matlab, code, teaching, bath
 Slug: matlabintro
 Authors: Amit
 
-These **Introduction to Matlab** notes are the leacures I gave to the undergrad mechanical engineering finite element course at the University of Bath in 2010 and 2011. 
+These **Introduction to Matlab** notes are the lectures I gave to the undergrad mechanical engineering finite element course at the University of Bath in 2010 and 2011. 
 
 There are four lectures, beginning with an introduction to Matlab for complete beginners, right up to developing a beam finite element solver and postprocessor, and learning along the way how to debug.
 
