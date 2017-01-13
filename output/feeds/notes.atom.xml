@@ -94,7 +94,72 @@ conda install numpy
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
-&lt;p&gt;where &lt;code&gt;&amp;lt;packagename&amp;gt;&lt;/code&gt; is any of the listed packages, including &lt;code&gt;python&lt;/code&gt;.&lt;/p&gt;</summary><category term="python"></category><category term="conda"></category><category term="virtualenv"></category></entry><entry><title>virtualenv and VTK</title><link href="//amit.visrolia.net/vtk.html" rel="alternate"></link><published>2016-10-07T00:00:00+01:00</published><updated>2016-10-07T00:00:00+01:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2016-10-07:vtk.html</id><summary type="html">&lt;p&gt;For whatever reason, I can&amp;#8217;t get &lt;a href="http://www.vtk.org/Wiki/VTK/Examples/Python"&gt;&lt;span class="caps"&gt;VTK&lt;/span&gt;&lt;/a&gt; to install in my virtualenv. So, the horrible hack I am using is to symlink the system package to my&amp;nbsp;virtualenv:&lt;/p&gt;
+&lt;p&gt;where &lt;code&gt;&amp;lt;packagename&amp;gt;&lt;/code&gt; is any of the listed packages, including &lt;code&gt;python&lt;/code&gt;.&lt;/p&gt;</summary><category term="python"></category><category term="conda"></category><category term="virtualenv"></category></entry><entry><title>Thermoplastic crystallization</title><link href="//amit.visrolia.net/tpcrystallization.html" rel="alternate"></link><published>2016-10-10T00:00:00+01:00</published><updated>2016-10-10T00:00:00+01:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2016-10-10:tpcrystallization.html</id><summary type="html">&lt;p&gt;&lt;span class="math"&gt;\(\alpha(t)\)&lt;/span&gt; - degree of&amp;nbsp;crystallization&lt;/p&gt;
+&lt;div class="math"&gt;$$\alpha = \frac{\text{crystallized volume}}{\text{ultimate crystallizable volume}} = \frac{x_c(t,T)}{x_\infty}$$&lt;/div&gt;
+&lt;p&gt;The &lt;a href="https://en.wikipedia.org/wiki/Avrami_equation"&gt;Avrami equation&lt;/a&gt; describes how solids transform from one phase (state of matter) to another at constant temperature. It can specifically describe the kinetics of crystallisation, but can be applied generally to other changes of phase in materials, like chemical reaction&amp;nbsp;rates:&lt;/p&gt;
+&lt;div class="math"&gt;$$\alpha(t) = 1 - \exp\left[ -k(T).t^n \right] $$&lt;/div&gt;
+&lt;p&gt;where n is the Avrami&amp;nbsp;exponent. &lt;/p&gt;
+&lt;p&gt;For non-isothermal processes, the Nakamura equation can be&amp;nbsp;used:&lt;/p&gt;
+&lt;div class="math"&gt;$$\alpha(t) = 1 - \exp\left[ -\left\{ \int_0^t k(T,\tau) \mathrm{d}\tau \right\}^n \right] $$&lt;/div&gt;
+&lt;p&gt;or:&lt;/p&gt;
+&lt;div class="math"&gt;$$\frac{\mathrm{d}\alpha}{\mathrm{d}t} = nk(T)(1-\alpha) \left[ \ln\left( \frac{1}{1-\alpha} \right) \right]^{(n-1)/n} $$&lt;/div&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' &amp;&amp; location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><category term="simulation"></category></entry><entry><title>virtualenv and VTK</title><link href="//amit.visrolia.net/vtk.html" rel="alternate"></link><published>2016-10-07T00:00:00+01:00</published><updated>2016-10-07T00:00:00+01:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2016-10-07:vtk.html</id><summary type="html">&lt;p&gt;For whatever reason, I can&amp;#8217;t get &lt;a href="http://www.vtk.org/Wiki/VTK/Examples/Python"&gt;&lt;span class="caps"&gt;VTK&lt;/span&gt;&lt;/a&gt; to install in my virtualenv. So, the horrible hack I am using is to symlink the system package to my&amp;nbsp;virtualenv:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ln -s /usr/lib64/python3.5/site-packages/vtk ~/PATH/TO/VIRTUALENV/lib64/python3.5/site-packages/
 &lt;/pre&gt;&lt;/div&gt;</summary><category term="code"></category><category term="python"></category></entry><entry><title>Brain-training programs</title><link href="//amit.visrolia.net/braintraining.html" rel="alternate"></link><published>2016-10-01T00:00:00+01:00</published><updated>2016-10-01T00:00:00+01:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2016-10-01:braintraining.html</id><summary type="html">&lt;p&gt;There are a number of &amp;#8220;games&amp;#8221; available, both casual downloadable games and those that purport to be more &amp;#8220;scientific&amp;#8221;, that make the claim that they are a way to either improve cognitive function, or to decrease the rate of cognitive&amp;nbsp;decline. &lt;/p&gt;
 &lt;p&gt;In this fairly comprehensive work, &lt;a href="//amit.visrolia.net/pdf/brain_training.pdf"&gt;&lt;em&gt;Do &amp;#8220;brain-training&amp;#8221; programs work?&lt;/em&gt;&lt;/a&gt;, a review is conducted of the literature which has previously found countering claims of the efficiacy or otherwise of these&amp;nbsp;games. &lt;/p&gt;

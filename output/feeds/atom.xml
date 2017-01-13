@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Amit's notes</title><link href="//amit.visrolia.net/" rel="alternate"></link><link href="//amit.visrolia.net/feeds/atom.xml" rel="self"></link><id>//amit.visrolia.net/</id><updated>2017-01-06T00:00:00+00:00</updated><entry><title>Stargazing places in Brecon Beacons</title><link href="//amit.visrolia.net/brecon.html" rel="alternate"></link><published>2017-01-06T00:00:00+00:00</published><updated>2017-01-06T00:00:00+00:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2017-01-06:brecon.html</id><summary type="html">&lt;p&gt;&lt;a href="http://www.breconbeacons.org/stargazing-ten-places"&gt;Ten places to go stargazing in the Brecon Beacons National Park dark sky&amp;nbsp;reserve&lt;/a&gt;&lt;/p&gt;</summary><category term="travel"></category><category term="uk"></category><category term="wales"></category></entry><entry><title>Enclaves and exclaves</title><link href="//amit.visrolia.net/enclaves.html" rel="alternate"></link><published>2016-12-08T00:00:00+00:00</published><updated>2016-12-08T00:00:00+00:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2016-12-08:enclaves.html</id><summary type="html">&lt;p&gt;An &lt;a href="https://en.m.wikipedia.org/wiki/Enclave_and_exclave"&gt;enclave&lt;/a&gt; is a territory, or a part of a territory, that is entirely surrounded by the territory of one other state. An exclave is a portion of a state or territory geographically separated from the main part by surrounding alien territory (of one or more&amp;nbsp;states).&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Amit's notes</title><link href="//amit.visrolia.net/" rel="alternate"></link><link href="//amit.visrolia.net/feeds/atom.xml" rel="self"></link><id>//amit.visrolia.net/</id><updated>2017-01-13T00:00:00+00:00</updated><entry><title>What makes a material function?</title><link href="//amit.visrolia.net/eumaterial.html" rel="alternate"></link><published>2017-01-13T00:00:00+00:00</published><updated>2017-01-13T00:00:00+00:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2017-01-13:eumaterial.html</id><summary type="html">&lt;p&gt;&lt;a href="https://bookshop.europa.eu/en/what-makes-a-material-function--pbKI0616197/"&gt;What makes a material&amp;nbsp;function?&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;This Review of Materials Modelling describes modelling of materials, their properties and use in industrial applications illustrated by H2020 &lt;span class="caps"&gt;LEIT&lt;/span&gt; &lt;span class="caps"&gt;NMBP&lt;/span&gt; Materials projects. The future of the European industry is associated with a strong modelling capacity. An efficient modelling approach is needed to shorten the development process of materials-enabled products. This Review of Materials Modelling shows that industry is a very active player both in modelling for production and in modelling research areas. Industry identifies the specifications for material properties and the modelling then finds which material composition can meet the specs and how production can be done. This &amp;#8220;Materials by Design&amp;#8221; approach has been supported during the last decade in the &lt;span class="caps"&gt;EU&lt;/span&gt; Framework Programmes. Application areas of modelling span all industrial sectors. The bulk of the projects are applying existing models to new materials, which shows that the current state of the art of modelling can be characterised as&amp;nbsp;&amp;#8220;mature&amp;#8221;.&lt;/p&gt;</summary><category term="simulation"></category></entry><entry><title>Learning numpy</title><link href="//amit.visrolia.net/numpy.html" rel="alternate"></link><published>2017-01-09T00:00:00+00:00</published><updated>2017-01-09T00:00:00+00:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2017-01-09:numpy.html</id><summary type="html">&lt;p&gt;&lt;a href="https://scottsievert.com/blog/2015/09/01/matlab-to-python/"&gt;Stepping from Matlab to&amp;nbsp;Python&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.labri.fr/perso/nrougier/from-python-to-numpy/"&gt;From Python to Numpy&lt;/a&gt; (&lt;a href="https://github.com/rougier/from-python-to-numpy"&gt;source&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://docs.scipy.org/doc/numpy-dev/user/numpy-for-matlab-users.html"&gt;Numpy for Matlab&amp;nbsp;users&lt;/a&gt;&lt;/p&gt;</summary><category term="python"></category><category term="code"></category></entry><entry><title>Stargazing places in Brecon Beacons</title><link href="//amit.visrolia.net/brecon.html" rel="alternate"></link><published>2017-01-06T00:00:00+00:00</published><updated>2017-01-06T00:00:00+00:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2017-01-06:brecon.html</id><summary type="html">&lt;p&gt;&lt;a href="http://www.breconbeacons.org/stargazing-ten-places"&gt;Ten places to go stargazing in the Brecon Beacons National Park dark sky&amp;nbsp;reserve&lt;/a&gt;&lt;/p&gt;</summary><category term="travel"></category><category term="uk"></category><category term="wales"></category></entry><entry><title>Enclaves and exclaves</title><link href="//amit.visrolia.net/enclaves.html" rel="alternate"></link><published>2016-12-08T00:00:00+00:00</published><updated>2016-12-08T00:00:00+00:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2016-12-08:enclaves.html</id><summary type="html">&lt;p&gt;An &lt;a href="https://en.m.wikipedia.org/wiki/Enclave_and_exclave"&gt;enclave&lt;/a&gt; is a territory, or a part of a territory, that is entirely surrounded by the territory of one other state. An exclave is a portion of a state or territory geographically separated from the main part by surrounding alien territory (of one or more&amp;nbsp;states).&lt;/p&gt;
 &lt;p&gt;West Berlin was a famous enclave, of West Germany, surrounded by East&amp;nbsp;Germany.&lt;/p&gt;
 &lt;p&gt;Enclaves/exclaves don&amp;#8217;t have to be surrounded entirely by other countries (they can have sea borders), but they&amp;#8217;re more fun if they&amp;nbsp;do.&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.google.co.uk/maps/place/Kaliningradskaya+Oblast,+Russia/@54.1568088,19.6308758,6z/data=!4m5!3m4!1s0x46e39c45442e0be3:0x1e2558c4d03a027b!8m2!3d54.8235292!4d21.4816163"&gt;Kaliningrad Oblast&lt;/a&gt; is a fairly large chunk of Russia that sits in Europe, between Lithuania and&amp;nbsp;Poland.&lt;/p&gt;
@@ -100,7 +103,72 @@ conda install numpy
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
-&lt;p&gt;where &lt;code&gt;&amp;lt;packagename&amp;gt;&lt;/code&gt; is any of the listed packages, including &lt;code&gt;python&lt;/code&gt;.&lt;/p&gt;</summary><category term="python"></category><category term="conda"></category><category term="virtualenv"></category></entry><entry><title>virtualenv and VTK</title><link href="//amit.visrolia.net/vtk.html" rel="alternate"></link><published>2016-10-07T00:00:00+01:00</published><updated>2016-10-07T00:00:00+01:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2016-10-07:vtk.html</id><summary type="html">&lt;p&gt;For whatever reason, I can&amp;#8217;t get &lt;a href="http://www.vtk.org/Wiki/VTK/Examples/Python"&gt;&lt;span class="caps"&gt;VTK&lt;/span&gt;&lt;/a&gt; to install in my virtualenv. So, the horrible hack I am using is to symlink the system package to my&amp;nbsp;virtualenv:&lt;/p&gt;
+&lt;p&gt;where &lt;code&gt;&amp;lt;packagename&amp;gt;&lt;/code&gt; is any of the listed packages, including &lt;code&gt;python&lt;/code&gt;.&lt;/p&gt;</summary><category term="python"></category><category term="conda"></category><category term="virtualenv"></category></entry><entry><title>Thermoplastic crystallization</title><link href="//amit.visrolia.net/tpcrystallization.html" rel="alternate"></link><published>2016-10-10T00:00:00+01:00</published><updated>2016-10-10T00:00:00+01:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2016-10-10:tpcrystallization.html</id><summary type="html">&lt;p&gt;&lt;span class="math"&gt;\(\alpha(t)\)&lt;/span&gt; - degree of&amp;nbsp;crystallization&lt;/p&gt;
+&lt;div class="math"&gt;$$\alpha = \frac{\text{crystallized volume}}{\text{ultimate crystallizable volume}} = \frac{x_c(t,T)}{x_\infty}$$&lt;/div&gt;
+&lt;p&gt;The &lt;a href="https://en.wikipedia.org/wiki/Avrami_equation"&gt;Avrami equation&lt;/a&gt; describes how solids transform from one phase (state of matter) to another at constant temperature. It can specifically describe the kinetics of crystallisation, but can be applied generally to other changes of phase in materials, like chemical reaction&amp;nbsp;rates:&lt;/p&gt;
+&lt;div class="math"&gt;$$\alpha(t) = 1 - \exp\left[ -k(T).t^n \right] $$&lt;/div&gt;
+&lt;p&gt;where n is the Avrami&amp;nbsp;exponent. &lt;/p&gt;
+&lt;p&gt;For non-isothermal processes, the Nakamura equation can be&amp;nbsp;used:&lt;/p&gt;
+&lt;div class="math"&gt;$$\alpha(t) = 1 - \exp\left[ -\left\{ \int_0^t k(T,\tau) \mathrm{d}\tau \right\}^n \right] $$&lt;/div&gt;
+&lt;p&gt;or:&lt;/p&gt;
+&lt;div class="math"&gt;$$\frac{\mathrm{d}\alpha}{\mathrm{d}t} = nk(T)(1-\alpha) \left[ \ln\left( \frac{1}{1-\alpha} \right) \right]^{(n-1)/n} $$&lt;/div&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' &amp;&amp; location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><category term="simulation"></category></entry><entry><title>virtualenv and VTK</title><link href="//amit.visrolia.net/vtk.html" rel="alternate"></link><published>2016-10-07T00:00:00+01:00</published><updated>2016-10-07T00:00:00+01:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2016-10-07:vtk.html</id><summary type="html">&lt;p&gt;For whatever reason, I can&amp;#8217;t get &lt;a href="http://www.vtk.org/Wiki/VTK/Examples/Python"&gt;&lt;span class="caps"&gt;VTK&lt;/span&gt;&lt;/a&gt; to install in my virtualenv. So, the horrible hack I am using is to symlink the system package to my&amp;nbsp;virtualenv:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ln -s /usr/lib64/python3.5/site-packages/vtk ~/PATH/TO/VIRTUALENV/lib64/python3.5/site-packages/
 &lt;/pre&gt;&lt;/div&gt;</summary><category term="code"></category><category term="python"></category></entry><entry><title>Brain-training programs</title><link href="//amit.visrolia.net/braintraining.html" rel="alternate"></link><published>2016-10-01T00:00:00+01:00</published><updated>2016-10-01T00:00:00+01:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2016-10-01:braintraining.html</id><summary type="html">&lt;p&gt;There are a number of &amp;#8220;games&amp;#8221; available, both casual downloadable games and those that purport to be more &amp;#8220;scientific&amp;#8221;, that make the claim that they are a way to either improve cognitive function, or to decrease the rate of cognitive&amp;nbsp;decline. &lt;/p&gt;
 &lt;p&gt;In this fairly comprehensive work, &lt;a href="//amit.visrolia.net/pdf/brain_training.pdf"&gt;&lt;em&gt;Do &amp;#8220;brain-training&amp;#8221; programs work?&lt;/em&gt;&lt;/a&gt;, a review is conducted of the literature which has previously found countering claims of the efficiacy or otherwise of these&amp;nbsp;games. &lt;/p&gt;
@@ -116,7 +184,7 @@ conda install numpy
 &lt;img src="/images/szombathely3.jpg" class="imageitem half" /&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Wedding in&amp;nbsp;Szombathely&lt;/p&gt;</summary><category term="travel"></category><category term="hungary"></category></entry><entry><title>Great North Run</title><link href="//amit.visrolia.net/gnr2016.html" rel="alternate"></link><published>2016-09-11T00:00:00+01:00</published><updated>2016-09-11T00:00:00+01:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2016-09-11:gnr2016.html</id><summary type="html">&lt;div class="imagepost"&gt;
+&lt;p&gt;Wedding in&amp;nbsp;Szombathely&lt;/p&gt;</summary><category term="travel"></category><category term="hungary"></category></entry><entry><title>How to write unmaintainable code</title><link href="//amit.visrolia.net/unmaintainable.html" rel="alternate"></link><published>2016-09-13T00:00:00+01:00</published><updated>2016-09-13T00:00:00+01:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2016-09-13:unmaintainable.html</id><summary type="html">&lt;p&gt;&lt;a href="https://github.com/Droogans/unmaintainable-code#how-to-write-unmaintainable-code"&gt;How to write unmaintainable&amp;nbsp;code&lt;/a&gt;&lt;/p&gt;</summary><category term="code"></category></entry><entry><title>Great North Run</title><link href="//amit.visrolia.net/gnr2016.html" rel="alternate"></link><published>2016-09-11T00:00:00+01:00</published><updated>2016-09-11T00:00:00+01:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2016-09-11:gnr2016.html</id><summary type="html">&lt;div class="imagepost"&gt;
 &lt;img src="/images/gnr.jpg" class="imageitem large" /&gt;
 &lt;/div&gt;</summary><category term="travel"></category><category term="newcastle"></category><category term="running"></category></entry><entry><title>Interleaving two pdf files</title><link href="//amit.visrolia.net/interleavepdf.html" rel="alternate"></link><published>2016-08-28T00:00:00+01:00</published><updated>2016-08-28T00:00:00+01:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2016-08-28:interleavepdf.html</id><summary type="html">&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
 2
