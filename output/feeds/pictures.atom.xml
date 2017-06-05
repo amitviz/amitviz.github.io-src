@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Amit's notes</title><link href="//amit.visrolia.net/" rel="alternate"></link><link href="//amit.visrolia.net/feeds/pictures.atom.xml" rel="self"></link><id>//amit.visrolia.net/</id><updated>2017-03-26T00:00:00+00:00</updated><entry><title>Pisa</title><link href="//amit.visrolia.net/pisa.html" rel="alternate"></link><published>2017-03-26T00:00:00+00:00</published><updated>2017-03-26T00:00:00+00:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2017-03-26:pisa.html</id><summary type="html">&lt;div class="imagepost"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Amit's notes</title><link href="//amit.visrolia.net/" rel="alternate"></link><link href="//amit.visrolia.net/feeds/pictures.atom.xml" rel="self"></link><id>//amit.visrolia.net/</id><updated>2017-05-29T00:00:00+01:00</updated><entry><title>Cheese rolling</title><link href="//amit.visrolia.net/cheeserolling.html" rel="alternate"></link><published>2017-05-29T00:00:00+01:00</published><updated>2017-05-29T00:00:00+01:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2017-05-29:cheeserolling.html</id><summary type="html">&lt;p&gt;Cooper&amp;#8217;s Hill,&amp;nbsp;Gloucestershire&lt;/p&gt;
+&lt;div class="imagepost"&gt;
+&lt;img src="/images/cheeserolling1.jpg" class="imageitem large" /&gt;
+&lt;img src="/images/cheeserolling2.jpg" class="imageitem large" /&gt;
+&lt;/div&gt;</summary></entry><entry><title>Kayaking on the Llangollen Canal</title><link href="//amit.visrolia.net/llangollen.html" rel="alternate"></link><published>2017-05-28T00:00:00+01:00</published><updated>2017-05-28T00:00:00+01:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2017-05-28:llangollen.html</id><summary type="html">&lt;p&gt;Chirk and Pontcysyllte canal&amp;nbsp;aqueducts&lt;/p&gt;
+&lt;div class="imagepost"&gt;
+&lt;img src="/images/llangollen1.jpg" class="imageitem half" /&gt;
+&lt;img src="/images/llangollen2.jpg" class="imageitem half" /&gt;
+&lt;img src="/images/llangollen3.jpg" class="imageitem half" /&gt;
+&lt;img src="/images/llangollen4.jpg" class="imageitem half" /&gt;
+&lt;/div&gt;</summary><category term="travel"></category><category term="wales"></category><category term="canoe"></category></entry><entry><title>Wales road trip</title><link href="//amit.visrolia.net/walesrt.html" rel="alternate"></link><published>2017-05-27T00:00:00+01:00</published><updated>2017-05-27T00:00:00+01:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2017-05-27:walesrt.html</id><summary type="html">&lt;div class="imagepost"&gt;
+&lt;img src="/images/walesrt1.jpg" class="imageitem large" /&gt;
+&lt;img src="/images/walesrt2.jpg" class="imageitem large" /&gt;
+&lt;img src="/images/walesrt3.jpg" class="imageitem large" /&gt;
+&lt;/div&gt;</summary><category term="travel"></category><category term="wales"></category><category term="gower"></category><category term="pembrokshire"></category></entry><entry><title>Pisa</title><link href="//amit.visrolia.net/pisa.html" rel="alternate"></link><published>2017-03-26T00:00:00+00:00</published><updated>2017-03-26T00:00:00+00:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2017-03-26:pisa.html</id><summary type="html">&lt;div class="imagepost"&gt;
 &lt;img src="/images/pisa1.jpg" class="imageitem half" /&gt;
 &lt;img src="/images/pisa2.jpg" class="imageitem half" /&gt;
 &lt;img src="/images/pisa3.jpg" class="imageitem large" /&gt;
