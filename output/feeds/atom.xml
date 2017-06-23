@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Amit's notes</title><link href="//amit.visrolia.net/" rel="alternate"></link><link href="//amit.visrolia.net/feeds/atom.xml" rel="self"></link><id>//amit.visrolia.net/</id><updated>2017-05-29T00:00:00+01:00</updated><entry><title>Cheese rolling</title><link href="//amit.visrolia.net/cheeserolling.html" rel="alternate"></link><published>2017-05-29T00:00:00+01:00</published><updated>2017-05-29T00:00:00+01:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2017-05-29:cheeserolling.html</id><summary type="html">&lt;p&gt;Cooper&amp;#8217;s Hill,&amp;nbsp;Gloucestershire&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Amit's notes</title><link href="//amit.visrolia.net/" rel="alternate"></link><link href="//amit.visrolia.net/feeds/atom.xml" rel="self"></link><id>//amit.visrolia.net/</id><updated>2017-06-15T00:00:00+01:00</updated><entry><title>Uppsala</title><link href="//amit.visrolia.net/uppsala.html" rel="alternate"></link><published>2017-06-15T00:00:00+01:00</published><updated>2017-06-15T00:00:00+01:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2017-06-15:uppsala.html</id><summary type="html">&lt;div class="imagepost"&gt;
+&lt;img src="/images/uppsala_1.jpg" class="imageitem large" /&gt;
+&lt;img src="/images/uppsala_2.jpg" class="imageitem large" /&gt;
+&lt;img src="/images/uppsala_3.jpg" class="imageitem half" /&gt;
+&lt;img src="/images/uppsala_4.jpg" class="imageitem half" /&gt;
+
+&lt;/div&gt;</summary><category term="travel"></category><category term="sweden"></category></entry><entry><title>Stockholm</title><link href="//amit.visrolia.net/stockholm.html" rel="alternate"></link><published>2017-06-11T00:00:00+01:00</published><updated>2017-06-11T00:00:00+01:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2017-06-11:stockholm.html</id><summary type="html">&lt;div class="imagepost"&gt;
+&lt;img src="/images/stockholm_1.jpg" class="imageitem half" /&gt;
+&lt;img src="/images/stockholm_2.jpg" class="imageitem half" /&gt;
+&lt;img src="/images/stockholm_3.jpg" class="imageitem half" /&gt;
+&lt;img src="/images/stockholm_4.jpg" class="imageitem half" /&gt;
+&lt;img src="/images/stockholm_5.jpg" class="imageitem half" /&gt;
+&lt;img src="/images/stockholm_6.jpg" class="imageitem half" /&gt;
+
+&lt;/div&gt;</summary><category term="travel"></category><category term="sweden"></category></entry><entry><title>Cheese rolling</title><link href="//amit.visrolia.net/cheeserolling.html" rel="alternate"></link><published>2017-05-29T00:00:00+01:00</published><updated>2017-05-29T00:00:00+01:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2017-05-29:cheeserolling.html</id><summary type="html">&lt;p&gt;Cooper&amp;#8217;s Hill,&amp;nbsp;Gloucestershire&lt;/p&gt;
 &lt;div class="imagepost"&gt;
 &lt;img src="/images/cheeserolling1.jpg" class="imageitem large" /&gt;
 &lt;img src="/images/cheeserolling2.jpg" class="imageitem large" /&gt;
