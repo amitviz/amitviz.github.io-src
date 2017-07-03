@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Amit's notes</title><link href="//amit.visrolia.net/" rel="alternate"></link><link href="//amit.visrolia.net/feeds/atom.xml" rel="self"></link><id>//amit.visrolia.net/</id><updated>2017-06-15T00:00:00+01:00</updated><entry><title>Uppsala</title><link href="//amit.visrolia.net/uppsala.html" rel="alternate"></link><published>2017-06-15T00:00:00+01:00</published><updated>2017-06-15T00:00:00+01:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2017-06-15:uppsala.html</id><summary type="html">&lt;div class="imagepost"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Amit's notes</title><link href="//amit.visrolia.net/" rel="alternate"></link><link href="//amit.visrolia.net/feeds/atom.xml" rel="self"></link><id>//amit.visrolia.net/</id><updated>2017-07-12T00:00:00+01:00</updated><entry><title>Foremarke Hall Sprint Triathlon</title><link href="//amit.visrolia.net/foremarke.html" rel="alternate"></link><published>2017-07-12T00:00:00+01:00</published><updated>2017-07-12T00:00:00+01:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2017-07-12:foremarke.html</id><summary type="html">&lt;div class="imagepost"&gt;
+&lt;img src="/images/foremarke_2.jpg" class="imageitem half" /&gt;
+&lt;img src="/images/foremarke_3.jpg" class="imageitem half" /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;First ever triathlon (of more to&amp;nbsp;come?)!&lt;/p&gt;</summary><category term="running"></category><category term="cycling"></category><category term="triathlon"></category></entry><entry><title>Uppsala</title><link href="//amit.visrolia.net/uppsala.html" rel="alternate"></link><published>2017-06-15T00:00:00+01:00</published><updated>2017-06-15T00:00:00+01:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2017-06-15:uppsala.html</id><summary type="html">&lt;div class="imagepost"&gt;
 &lt;img src="/images/uppsala_1.jpg" class="imageitem large" /&gt;
 &lt;img src="/images/uppsala_2.jpg" class="imageitem large" /&gt;
 &lt;img src="/images/uppsala_3.jpg" class="imageitem half" /&gt;
