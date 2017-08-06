@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Amit's notes</title><link href="//amit.visrolia.net/" rel="alternate"></link><link href="//amit.visrolia.net/feeds/atom.xml" rel="self"></link><id>//amit.visrolia.net/</id><updated>2017-07-12T00:00:00+01:00</updated><entry><title>Foremarke Hall Sprint Triathlon</title><link href="//amit.visrolia.net/foremarke.html" rel="alternate"></link><published>2017-07-12T00:00:00+01:00</published><updated>2017-07-12T00:00:00+01:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2017-07-12:foremarke.html</id><summary type="html">&lt;div class="imagepost"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Amit's notes</title><link href="//amit.visrolia.net/" rel="alternate"></link><link href="//amit.visrolia.net/feeds/atom.xml" rel="self"></link><id>//amit.visrolia.net/</id><updated>2017-07-30T00:00:00+01:00</updated><entry><title>Sintra</title><link href="//amit.visrolia.net/sintra.html" rel="alternate"></link><published>2017-07-30T00:00:00+01:00</published><updated>2017-07-30T00:00:00+01:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2017-07-30:sintra.html</id><summary type="html">&lt;div class="imagepost"&gt;
+&lt;img src="/images/sintra1.jpg" class="imageitem half" /&gt;
+&lt;img src="/images/sintra2.jpg" class="imageitem half" /&gt;
+&lt;img src="/images/sintra3.jpg" class="imageitem large" /&gt;
+
+&lt;/div&gt;</summary><category term="travel"></category><category term="portugal"></category></entry><entry><title>Lisbon</title><link href="//amit.visrolia.net/lisbon.html" rel="alternate"></link><published>2017-07-29T00:00:00+01:00</published><updated>2017-07-29T00:00:00+01:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2017-07-29:lisbon.html</id><summary type="html">&lt;div class="imagepost"&gt;
+&lt;img src="/images/lisbon1.jpg" class="imageitem half" /&gt;
+&lt;img src="/images/lisbon2.jpg" class="imageitem half" /&gt;
+&lt;img src="/images/lisbon3.jpg" class="imageitem large" /&gt;
+
+&lt;/div&gt;</summary><category term="travel"></category><category term="portugal"></category></entry><entry><title>Coimbra</title><link href="//amit.visrolia.net/coimbra.html" rel="alternate"></link><published>2017-07-27T00:00:00+01:00</published><updated>2017-07-27T00:00:00+01:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2017-07-27:coimbra.html</id><summary type="html">&lt;div class="imagepost"&gt;
+&lt;img src="/images/coimbra1.jpg" class="imageitem half" /&gt;
+&lt;img src="/images/coimbra2.jpg" class="imageitem half" /&gt;
+&lt;img src="/images/coimbra3.jpg" class="imageitem half" /&gt;
+&lt;img src="/images/coimbra4.jpg" class="imageitem half" /&gt;
+
+&lt;/div&gt;</summary><category term="travel"></category><category term="portugal"></category></entry><entry><title>Porto</title><link href="//amit.visrolia.net/porto.html" rel="alternate"></link><published>2017-07-24T00:00:00+01:00</published><updated>2017-07-24T00:00:00+01:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2017-07-24:porto.html</id><summary type="html">&lt;div class="imagepost"&gt;
+&lt;img src="/images/porto1.jpg" class="imageitem half" /&gt;
+&lt;img src="/images/porto2.jpg" class="imageitem half" /&gt;
+&lt;img src="/images/porto3.jpg" class="imageitem half" /&gt;
+&lt;img src="/images/porto4.jpg" class="imageitem half" /&gt;
+
+&lt;/div&gt;</summary><category term="travel"></category><category term="portugal"></category></entry><entry><title>Foremarke Hall Sprint Triathlon</title><link href="//amit.visrolia.net/foremarke.html" rel="alternate"></link><published>2017-07-12T00:00:00+01:00</published><updated>2017-07-12T00:00:00+01:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2017-07-12:foremarke.html</id><summary type="html">&lt;div class="imagepost"&gt;
 &lt;img src="/images/foremarke_2.jpg" class="imageitem half" /&gt;
 &lt;img src="/images/foremarke_3.jpg" class="imageitem half" /&gt;
 &lt;/div&gt;

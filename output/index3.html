@@ -75,6 +75,163 @@
 
 <article>
   <header>
+    <h2><a href="//amit.visrolia.net/hdparm.html#hdparm">Spin down hard disk drives in&nbsp;Linux</a></h2>
+    <p>
+          Posted on October 30, 2016 in <a href="//amit.visrolia.net/category/notes.html">Notes</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="//amit.visrolia.net/tag/code.html">code</a>,              <a href="//amit.visrolia.net/tag/linux.html">linux</a>
+    </p>
+  </header>
+  <div>
+      <p>Using <code>hdparm</code>, to determine the current&nbsp;state: </p>
+<div class="highlight"><pre><span></span>hdparm -B /dev/sda
+</pre></div>
+
+
+<p>To set the&nbsp;parameters: </p>
+<div class="highlight"><pre><span></span>hdparm -B <span class="m">127</span> -S <span class="m">36</span> -M /dev/sda
+</pre></div>
+
+
+<ul>
+<li><code>-B</code> sets advanced pover management: values below 128 permit&nbsp;spin-down</li>
+<li><code>-S</code> sets the spin-down time, in multiples of 5 seconds. 36 here represents 3&nbsp;minutes</li>
+<li><code>-M</code> sets ...</li></ul>
+      <br>
+      <a class="btn" href="//amit.visrolia.net/hdparm.html#hdparm">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="//amit.visrolia.net/vtk_tutorial.html#vtk_tutorial"><span class="caps">VTK</span>&nbsp;tutorial</a></h2>
+    <p>
+          Posted on October 15, 2016 in <a href="//amit.visrolia.net/category/notes.html">Notes</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="//amit.visrolia.net/tag/vtk.html">vtk</a>,              <a href="//amit.visrolia.net/tag/python.html">python</a>
+    </p>
+  </header>
+  <div>
+      <p><a href="//amit.visrolia.net/pdf/quammen_vtk.pdf">Scientific data analysis and visualization with Python, <span class="caps">VTK</span> and ParaView&nbsp;(pdf)</a></p>
+      <br>
+      <a class="btn" href="//amit.visrolia.net/vtk_tutorial.html#vtk_tutorial">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="//amit.visrolia.net/anaconda.html#anaconda">Anaconda&nbsp;environments</a></h2>
+    <p>
+          Posted on October 10, 2016 in <a href="//amit.visrolia.net/category/notes.html">Notes</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="//amit.visrolia.net/tag/python.html">python</a>,              <a href="//amit.visrolia.net/tag/conda.html">conda</a>,              <a href="//amit.visrolia.net/tag/virtualenv.html">virtualenv</a>
+    </p>
+  </header>
+  <div>
+      <p><a href="https://www.continuum.io/downloads#linux">Anaconda</a> is a Python distribution and package manager that might be a bit nicer than using <code>virtualenv</code>s and <code>pip</code>.</p>
+<p>To set up a new environment using&nbsp;Anaconda:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>conda create --name &lt;envname&gt; <span class="nv">python</span><span class="o">=</span>3.5
+</pre></div>
+</td></tr></table>
+
+<p>The environment is created in the Anaconda installation directory. To activate and deactivate the ...</p>
+      <br>
+      <a class="btn" href="//amit.visrolia.net/anaconda.html#anaconda">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="//amit.visrolia.net/tpcrystallization.html#tpcrystallization">Thermoplastic&nbsp;crystallization</a></h2>
+    <p>
+          Posted on October 10, 2016 in <a href="//amit.visrolia.net/category/notes.html">Notes</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="//amit.visrolia.net/tag/simulation.html">simulation</a>
+    </p>
+  </header>
+  <div>
+      <p><span class="math">\(\alpha(t)\)</span> - degree of&nbsp;crystallization</p>
+<div class="math">$$\alpha = \frac{\text{crystallized volume}}{\text{ultimate crystallizable volume}} = \frac{x_c(t,T)}{x_\infty}$$</div>
+<p>The <a href="https://en.wikipedia.org/wiki/Avrami_equation">Avrami equation</a> describes how solids transform from one phase (state of matter) to another at constant temperature. It can specifically describe the kinetics of crystallisation, but can be applied ...</p><script type='text/javascript'>if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+      <br>
+      <a class="btn" href="//amit.visrolia.net/tpcrystallization.html#tpcrystallization">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
     <h2><a href="//amit.visrolia.net/vtk.html#vtk">virtualenv and <span class="caps">VTK</span></a></h2>
     <p>
           Posted on October 07, 2016 in <a href="//amit.visrolia.net/category/notes.html">Notes</a>
@@ -200,108 +357,6 @@
       <p><a href="https://github.com/Droogans/unmaintainable-code#how-to-write-unmaintainable-code">How to write unmaintainable&nbsp;code</a></p>
       <br>
       <a class="btn" href="//amit.visrolia.net/unmaintainable.html#unmaintainable">    Continue reading
-</a>
-  </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="//amit.visrolia.net/gnr2016.html#gnr2016">Great North&nbsp;Run</a></h2>
-    <p>
-          Posted on September 11, 2016 in <a href="//amit.visrolia.net/category/pictures.html">Pictures</a>
-
-
-          &#8226;     Tagged with
-
-              <a href="//amit.visrolia.net/tag/travel.html">travel</a>,              <a href="//amit.visrolia.net/tag/newcastle.html">newcastle</a>,              <a href="//amit.visrolia.net/tag/running.html">running</a>
-    </p>
-  </header>
-  <div>
-      <div class="imagepost">
-<img src="/images/gnr.jpg" class="imageitem large" />
-</div>
-      <br>
-      <a class="btn" href="//amit.visrolia.net/gnr2016.html#gnr2016">    Continue reading
-</a>
-  </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="//amit.visrolia.net/interleavepdf.html#interleavepdf">Interleaving two pdf&nbsp;files</a></h2>
-    <p>
-          Posted on August 28, 2016 in <a href="//amit.visrolia.net/category/notes.html">Notes</a>
-
-
-          &#8226;     Tagged with
-
-              <a href="//amit.visrolia.net/tag/code.html">code</a>,              <a href="//amit.visrolia.net/tag/pdf.html">pdf</a>,              <a href="//amit.visrolia.net/tag/bash.html">bash</a>
-    </p>
-  </header>
-  <div>
-      <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9</pre></div></td><td class="code"><div class="highlight"><pre><span></span>pdftk <span class="nv">$1</span> burst output %04d_A.pdf
-pdftk <span class="nv">$2</span> burst output %04d_B.pdf
-
-rm <span class="nv">$1</span>
-rm <span class="nv">$2</span>
-
-pdftk *.pdf cat output output.pdf
-
-rm ????_?.pdf
-</pre></div>
-</td></tr></table>
-      <br>
-      <a class="btn" href="//amit.visrolia.net/interleavepdf.html#interleavepdf">    Continue reading
-</a>
-  </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="//amit.visrolia.net/croppdf.html#croppdf">Cropping a pdf&nbsp;file</a></h2>
-    <p>
-          Posted on August 27, 2016 in <a href="//amit.visrolia.net/category/notes.html">Notes</a>
-
-
-          &#8226;     Tagged with
-
-              <a href="//amit.visrolia.net/tag/code.html">code</a>,              <a href="//amit.visrolia.net/tag/pdf.html">pdf</a>,              <a href="//amit.visrolia.net/tag/bash.html">bash</a>
-    </p>
-  </header>
-  <div>
-      <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>gs -o <span class="nv">$output</span> -sDEVICE<span class="o">=</span>pdfwrite -c <span class="s2">&quot;[/CropBox [</span><span class="nv">$x0</span><span class="s2"> </span><span class="nv">$y0</span><span class="s2"> </span><span class="nv">$x1</span><span class="s2"> </span><span class="nv">$y1</span><span class="s2">]&quot;</span> -c <span class="s2">&quot; /PAGES pdfmark&quot;</span> -f <span class="nv">$1</span>
-</pre></div>
-</td></tr></table>
-      <br>
-      <a class="btn" href="//amit.visrolia.net/croppdf.html#croppdf">    Continue reading
-</a>
-  </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="//amit.visrolia.net/frenchparks.html#frenchparks">10 of the best National Parks in&nbsp;France</a></h2>
-    <p>
-          Posted on July 29, 2016 in <a href="//amit.visrolia.net/category/links.html">Links</a>
-
-
-          &#8226;     Tagged with
-
-              <a href="//amit.visrolia.net/tag/travel.html">travel</a>,              <a href="//amit.visrolia.net/tag/france.html">france</a>
-    </p>
-  </header>
-  <div>
-      <p><a href="https://www.theguardian.com/travel/2016/jun/29/10-best-national-parks-in-france">The&nbsp;Guardian</a></p>
-      <br>
-      <a class="btn" href="//amit.visrolia.net/frenchparks.html#frenchparks">    Continue reading
 </a>
   </div>
 </article>
