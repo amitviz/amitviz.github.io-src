@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Amit's notes</title><link href="//amit.visrolia.net/" rel="alternate"></link><link href="//amit.visrolia.net/feeds/atom.xml" rel="self"></link><id>//amit.visrolia.net/</id><updated>2017-07-30T00:00:00+01:00</updated><entry><title>Sintra</title><link href="//amit.visrolia.net/sintra.html" rel="alternate"></link><published>2017-07-30T00:00:00+01:00</published><updated>2017-07-30T00:00:00+01:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2017-07-30:sintra.html</id><summary type="html">&lt;div class="imagepost"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Amit's notes</title><link href="//amit.visrolia.net/" rel="alternate"></link><link href="//amit.visrolia.net/feeds/atom.xml" rel="self"></link><id>//amit.visrolia.net/</id><updated>2017-08-15T00:00:00+01:00</updated><entry><title>Basel</title><link href="//amit.visrolia.net/basel.html" rel="alternate"></link><published>2017-08-15T00:00:00+01:00</published><updated>2017-08-15T00:00:00+01:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2017-08-15:basel.html</id><summary type="html">&lt;div class="imagepost"&gt;
+&lt;img src="/images/basel1.jpg" class="imageitem half" /&gt;
+&lt;img src="/images/basel2.jpg" class="imageitem half" /&gt;
+&lt;img src="/images/basel3.jpg" class="imageitem half" /&gt;
+&lt;img src="/images/basel4.jpg" class="imageitem half" /&gt;
+&lt;/div&gt;</summary><category term="travel"></category><category term="switzerland"></category><category term="swimming"></category><category term="rhine"></category></entry><entry><title>Vaduz</title><link href="//amit.visrolia.net/vaduz.html" rel="alternate"></link><published>2017-08-14T00:00:00+01:00</published><updated>2017-08-14T00:00:00+01:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2017-08-14:vaduz.html</id><summary type="html">&lt;div class="imagepost"&gt;
+&lt;img src="/images/vaduz1.jpg" class="imageitem large" /&gt;
+&lt;img src="/images/vaduz2.jpg" class="imageitem half" /&gt;
+&lt;img src="/images/vaduz3.jpg" class="imageitem half" /&gt;
+&lt;/div&gt;</summary><category term="travel"></category><category term="liechtenstein"></category><category term="switzerland"></category></entry><entry><title>Lugano</title><link href="//amit.visrolia.net/lugano.html" rel="alternate"></link><published>2017-08-13T00:00:00+01:00</published><updated>2017-08-13T00:00:00+01:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2017-08-13:lugano.html</id><summary type="html">&lt;div class="imagepost"&gt;
+&lt;img src="/images/lugano1.jpg" class="imageitem large" /&gt;
+&lt;img src="/images/lugano2.jpg" class="imageitem half" /&gt;
+&lt;img src="/images/lugano3.jpg" class="imageitem half" /&gt;
+&lt;/div&gt;</summary><category term="travel"></category><category term="switzerland"></category><category term="italy"></category></entry><entry><title>Lucerne</title><link href="//amit.visrolia.net/lucerne.html" rel="alternate"></link><published>2017-08-12T00:00:00+01:00</published><updated>2017-08-12T00:00:00+01:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2017-08-12:lucerne.html</id><summary type="html">&lt;div class="imagepost"&gt;
+&lt;img src="/images/lucerne1.jpg" class="imageitem half" /&gt;
+&lt;img src="/images/lucerne2.jpg" class="imageitem half" /&gt;
+&lt;/div&gt;</summary><category term="travel"></category><category term="switzerland"></category></entry><entry><title>Sintra</title><link href="//amit.visrolia.net/sintra.html" rel="alternate"></link><published>2017-07-30T00:00:00+01:00</published><updated>2017-07-30T00:00:00+01:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2017-07-30:sintra.html</id><summary type="html">&lt;div class="imagepost"&gt;
 &lt;img src="/images/sintra1.jpg" class="imageitem half" /&gt;
 &lt;img src="/images/sintra2.jpg" class="imageitem half" /&gt;
 &lt;img src="/images/sintra3.jpg" class="imageitem large" /&gt;
