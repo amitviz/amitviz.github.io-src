@@ -28,11 +28,11 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
 <meta name="author" content="Amit" />
-<meta name="description" content="Beam Finite Element Analysis Here, we’re going to take a brief overview of the steps required in producing a Finite Element (FE) programme for beam analysis. Not all the answers are in these notes! There should be enough hints to produce a 2D FE code. If we can produce ..." />
+<meta name="description" content="Beam Finite Element Analysis Here, we’re going to take a brief overview of the steps required in producing a Finite Element (FE) programme for beam analysis. Not all the answers are in these notes! There should be enough hints to produce a 2D FE code. If we can produce …" />
 <meta name="keywords" content="matlab, code, teaching, bath">
 <meta property="og:site_name" content="Amit's notes"/>
 <meta property="og:title" content="Introduction to Matlab: lecture 2"/>
-<meta property="og:description" content="Beam Finite Element Analysis Here, we’re going to take a brief overview of the steps required in producing a Finite Element (FE) programme for beam analysis. Not all the answers are in these notes! There should be enough hints to produce a 2D FE code. If we can produce ..."/>
+<meta property="og:description" content="Beam Finite Element Analysis Here, we’re going to take a brief overview of the steps required in producing a Finite Element (FE) programme for beam analysis. Not all the answers are in these notes! There should be enough hints to produce a 2D FE code. If we can produce …"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="//amit.visrolia.net/matlabbeamfe.html"/>
 <meta property="og:type" content="article"/>
@@ -102,7 +102,7 @@
 </ul>
 <h2>Finite element&nbsp;analysis</h2>
 <h3>Parts of an <span class="caps">FE</span>&nbsp;program</h3>
-<p><img alt="Parts of an FEA program" src="/images/fea2.png" /></p>
+<p><img alt="Parts of an FEA program" src="/images/fea2.png"></p>
 <ul>
 <li>Problem definition<ul>
 <li>component&nbsp;shape</li>
@@ -149,7 +149,7 @@
 <li>an <strong>element</strong> is defined by the nodes it&nbsp;connects</li>
 </ul>
 <p>We can input these data directly in the form of a list (of course, <span class="caps">MATLAB</span> calls this a &#8216;matrix&#8217;). It&#8217;s also useful to input the moduli and areas: also as a list, since they might not be the same for all&nbsp;beams.</p>
-<p><img alt="2D beams" src="/images/2dbeams_annotated.png" /></p>
+<p><img alt="2D beams" src="/images/2dbeams_annotated.png"></p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -221,7 +221,7 @@
 <div class="math">\begin{align}
 L = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}
 \end{align}</div>
-<p><img alt="Element length calculation" src="/images/elementlength_calc.png" /></p>
+<p><img alt="Element length calculation" src="/images/elementlength_calc.png"></p>
 <p>Which arguments? A function is self contained, so it only has access to the variables that are passed to&nbsp;it.</p>
 <p>Should we calculate all the lengths in one go, or calculate the length of one specified&nbsp;element?</p>
 <h3>Solver&#8212;general</h3>
@@ -248,14 +248,14 @@ This is a simultaneous system of equations. Each element must&nbsp;satisfy:
     u_1\\u_2\\v_1\\v_2
   \end{Bmatrix}
  \end{align}</div>
-<p><img alt="Degrees-of-freedom on a truss" src="/images/elementdisp.png" /></p>
+<p><img alt="Degrees-of-freedom on a truss" src="/images/elementdisp.png"></p>
 <p>The global solution vector is similar. We should choose and stick to one <span class="caps">DOF</span> ordering&nbsp;system.</p>
 <h3>Solver&#8212;element matrices, local&nbsp;coordinates</h3>
 <p>We know the stiffness of a beam, <span class="math">\(k\)</span>, in its longitudinal direction is given&nbsp;by:</p>
 <div class="math">\begin{align}
  k = \frac{EA}{L}
 \end{align}</div>
-<p><img alt="Degrees-of-freedom in the local coordinate system" src="/images/elementlocal.png" /></p>
+<p><img alt="Degrees-of-freedom in the local coordinate system" src="/images/elementlocal.png"></p>
 <p>This corresponds to the direction <span class="math">\(x'\)</span> in the local coordinate system <span class="math">\((x',y')\)</span>, with associated displacements <span class="math">\((u',v')\)</span>, <em>i.e.</em> the&nbsp;system:
 </p>
 <div class="math">\begin{align}
@@ -613,15 +613,13 @@ Global stiffness&nbsp;matrix:
     }
 
     var mathjaxscript = document.createElement('script');
-    var location_protocol = (false) ? 'https' : document.location.protocol;
-    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
     mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
     mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +

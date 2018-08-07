@@ -28,11 +28,11 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
 <meta name="author" content="Amit" />
-<meta name="description" content="Debugging The last lectures introduced MATLAB, then focussed on developing the structure of the solver part of the finite element programme. This lecture, we look at the process of debugging a programme in MATLAB. By the end of this lecture, the students should be able to: Debug scripts and functions ..." />
+<meta name="description" content="Debugging The last lectures introduced MATLAB, then focussed on developing the structure of the solver part of the finite element programme. This lecture, we look at the process of debugging a programme in MATLAB. By the end of this lecture, the students should be able to: Debug scripts and functions …" />
 <meta name="keywords" content="matlab, code, teaching, bath">
 <meta property="og:site_name" content="Amit's notes"/>
 <meta property="og:title" content="Introduction to Matlab: lecture 3"/>
-<meta property="og:description" content="Debugging The last lectures introduced MATLAB, then focussed on developing the structure of the solver part of the finite element programme. This lecture, we look at the process of debugging a programme in MATLAB. By the end of this lecture, the students should be able to: Debug scripts and functions ..."/>
+<meta property="og:description" content="Debugging The last lectures introduced MATLAB, then focussed on developing the structure of the solver part of the finite element programme. This lecture, we look at the process of debugging a programme in MATLAB. By the end of this lecture, the students should be able to: Debug scripts and functions …"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="//amit.visrolia.net/matlabdebugging.html"/>
 <meta property="og:type" content="article"/>
@@ -125,11 +125,11 @@
 </ul>
 <h3>Setting breakpoints for a&nbsp;run</h3>
 <p>A breakpoint is set in a <span class="caps">MATLAB</span> file from the <span class="caps">MATLAB</span> editor. Any line that can have a breakpoint set has a little <code>-</code> next to the line&nbsp;number.</p>
-<p>The breakpoint is set or cleared by either clicking on the <code>-</code>, or clicking on the <img alt="Set breakpoint icon" src="/images/matlab_db2.png" />&nbsp;icon</p>
-<p><img alt="Setting the breakpoint" src="/images/set_breakpoint.png" /></p>
-<p>The code is run by using the function name at the command line as usual, or by clicking on the <img alt="Play icon" src="/images/matlab_db1.png" />&nbsp;icon.</p>
+<p>The breakpoint is set or cleared by either clicking on the <code>-</code>, or clicking on the <img alt="Set breakpoint icon" src="/images/matlab_db2.png">&nbsp;icon</p>
+<p><img alt="Setting the breakpoint" src="/images/set_breakpoint.png"></p>
+<p>The code is run by using the function name at the command line as usual, or by clicking on the <img alt="Play icon" src="/images/matlab_db1.png">&nbsp;icon.</p>
 <p>When <span class="caps">MATLAB</span> reaches the breakpoint, it pauses, and indicates which step it is at with a little green arrow next to the&nbsp;line:</p>
-<p><img alt="The program paused at the breakpoint" src="/images/run_breakpoint.png" /></p>
+<p><img alt="The program paused at the breakpoint" src="/images/run_breakpoint.png"></p>
 <h3>During a&nbsp;breakpoint</h3>
 <p>When <span class="caps">MATLAB</span> pauses for a breakpoint, it returns control to the user in the command window.  The Command prompt is slightly different to the normal&nbsp;one:</p>
 <div class="highlight"><pre><span></span><span class="mi">3</span>   <span class="n">dy</span> <span class="p">=</span> <span class="n">nodes</span><span class="p">(</span><span class="n">elements</span><span class="p">(</span><span class="n">e</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">nodes</span><span class="p">(</span><span class="n">elements</span><span class="p">(</span><span class="n">e</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="mi">2</span><span class="p">);</span>
@@ -144,22 +144,22 @@
 <p>From here, all the usual <span class="caps">MATLAB</span> commands are available. Additionally, you have access to all the variables that are in memory at this point in the programme: they are listed in the <em>Workspace</em> pane in <span class="caps">MATLAB</span>. At this point, it&#8217;s worth checking that the variables contain what you expect them to&nbsp;contain!</p>
 <p>Once we&#8217;re done inspecting the programme at it&#8217;s current state, there are a few&nbsp;options:</p>
 <ul>
-<li><img alt="Step icon" src="/images/matlab_db4.png" /> Using the `Step&#8217; button, <span class="caps">MATLAB</span> will run the current line, and pause at the next line. Using this option, we can run a function one line at a time, checking that each step does what you expect it&nbsp;to.</li>
-<li><img alt="Step in icon" src="/images/matlab_db5.png" /> With the `Step in&#8217; button, instead of just stepping to the next line in a function or script file, we can follow the flow of our programme into another script&nbsp;file.</li>
-<li><img alt="Step out icon" src="/images/matlab_db6.png" /> If we decide that the bug is not within the current function, the `Step out&#8217; button runs the remainder of the function, and pauses in whatever the parent function&nbsp;was.</li>
-<li><img alt="Continue icon" src="/images/matlab_db7.png" /> If we want to skip over a lot of code, we can run it to the next breakpoint (or if there are none, to the end of the&nbsp;programme).</li>
-<li><img alt="Exit debug icon" src="/images/matlab_db8.png" /> Exit debug mode, without running the rest of the&nbsp;programme.</li>
+<li><img alt="Step icon" src="/images/matlab_db4.png"> Using the `Step&#8217; button, <span class="caps">MATLAB</span> will run the current line, and pause at the next line. Using this option, we can run a function one line at a time, checking that each step does what you expect it&nbsp;to.</li>
+<li><img alt="Step in icon" src="/images/matlab_db5.png"> With the `Step in&#8217; button, instead of just stepping to the next line in a function or script file, we can follow the flow of our programme into another script&nbsp;file.</li>
+<li><img alt="Step out icon" src="/images/matlab_db6.png"> If we decide that the bug is not within the current function, the `Step out&#8217; button runs the remainder of the function, and pauses in whatever the parent function&nbsp;was.</li>
+<li><img alt="Continue icon" src="/images/matlab_db7.png"> If we want to skip over a lot of code, we can run it to the next breakpoint (or if there are none, to the end of the&nbsp;programme).</li>
+<li><img alt="Exit debug icon" src="/images/matlab_db8.png"> Exit debug mode, without running the rest of the&nbsp;programme.</li>
 </ul>
 <h3>Summary of Debugging&nbsp;commands</h3>
 <ul>
-<li><img alt="Play icon" src="/images/matlab_db1.png" /> Run&nbsp;file</li>
-<li><img alt="Set breakpoint icon" src="/images/matlab_db2.png" /> Set or Clear&nbsp;breakpoint</li>
-<li><img alt="Clear all breakpoints icon" src="/images/matlab_db3.png" /> Clear all breakpoints in all&nbsp;files</li>
-<li><img alt="Exit debug icon" src="/images/matlab_db8.png" /> Exit debug&nbsp;mode</li>
-<li><img alt="Step icon" src="/images/matlab_db4.png" /> Step (to the next&nbsp;line)</li>
-<li><img alt="Step in icon" src="/images/matlab_db5.png" /> Step in (to a function&nbsp;file)</li>
-<li><img alt="Step out icon" src="/images/matlab_db6.png" /> Step out (of the function&nbsp;file)</li>
-<li><img alt="Continue icon" src="/images/matlab_db7.png" /> Continue (to the next&nbsp;breakpoint)</li>
+<li><img alt="Play icon" src="/images/matlab_db1.png"> Run&nbsp;file</li>
+<li><img alt="Set breakpoint icon" src="/images/matlab_db2.png"> Set or Clear&nbsp;breakpoint</li>
+<li><img alt="Clear all breakpoints icon" src="/images/matlab_db3.png"> Clear all breakpoints in all&nbsp;files</li>
+<li><img alt="Exit debug icon" src="/images/matlab_db8.png"> Exit debug&nbsp;mode</li>
+<li><img alt="Step icon" src="/images/matlab_db4.png"> Step (to the next&nbsp;line)</li>
+<li><img alt="Step in icon" src="/images/matlab_db5.png"> Step in (to a function&nbsp;file)</li>
+<li><img alt="Step out icon" src="/images/matlab_db6.png"> Step out (of the function&nbsp;file)</li>
+<li><img alt="Continue icon" src="/images/matlab_db7.png"> Continue (to the next&nbsp;breakpoint)</li>
 </ul>
   </div>
   <div class="tag-cloud">

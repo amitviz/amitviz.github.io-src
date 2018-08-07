@@ -28,11 +28,11 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
 <meta name="author" content="Amit" />
-<meta name="description" content="Matlab basics The purpose of these lectures is to introduce the students to the MATLAB environment, and use it to solve simple beam finite element problems. At the end of the lectures, the students should have enough information to be able to: Use MATLAB to write complex programmes using multiple ..." />
+<meta name="description" content="Matlab basics The purpose of these lectures is to introduce the students to the MATLAB environment, and use it to solve simple beam finite element problems. At the end of the lectures, the students should have enough information to be able to: Use MATLAB to write complex programmes using multiple …" />
 <meta name="keywords" content="matlab, code, teaching, bath">
 <meta property="og:site_name" content="Amit's notes"/>
 <meta property="og:title" content="Introduction to Matlab: lecture 1"/>
-<meta property="og:description" content="Matlab basics The purpose of these lectures is to introduce the students to the MATLAB environment, and use it to solve simple beam finite element problems. At the end of the lectures, the students should have enough information to be able to: Use MATLAB to write complex programmes using multiple ..."/>
+<meta property="og:description" content="Matlab basics The purpose of these lectures is to introduce the students to the MATLAB environment, and use it to solve simple beam finite element problems. At the end of the lectures, the students should have enough information to be able to: Use MATLAB to write complex programmes using multiple …"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="//amit.visrolia.net/matlabbasics.html"/>
 <meta property="og:type" content="article"/>
@@ -125,12 +125,12 @@
 
 <p>Many of the steps involved are also matrix operations, such as coordinate transforms, or matrix inversions. A programming language is also useful to perform repeated operations, such as those applied to elements or nodes in a finite element&nbsp;program.</p>
 <h3>The <span class="caps">MATLAB</span> desktop&nbsp;environment</h3>
-<p><img alt="The Matlab desktop" src="/images/matlab_screen_annotated.png" /></p>
+<p><img alt="The Matlab desktop" src="/images/matlab_screen_annotated.png"></p>
 <ul>
 <li><strong>Current directory</strong> This is where <span class="caps">MATLAB</span> first looks for the files that are to be run. Useful to create a new directory for a&nbsp;project.</li>
 <li><strong>Files</strong> A list of all the function and script files in the current&nbsp;directory.</li>
 <li><strong>Command window</strong> This is where commands are entered to <span class="caps">MATLAB</span>, and where the results are printed&nbsp;out.</li>
-<li><strong>Command prompt</strong> The <code matlab="matlab">&gt;&gt;</code> prompt is where data and commands are typed&nbsp;in.</li>
+<li><strong>Command prompt</strong> The <code matlab>&gt;&gt;</code> prompt is where data and commands are typed&nbsp;in.</li>
 <li><strong>Variables</strong> A list of all the variables that are currently held in&nbsp;memory.</li>
 </ul>
 <h3>Simple&nbsp;calculations</h3>
@@ -510,7 +510,7 @@
   x = \frac{-b\pm\sqrt{b^2 - 4ac}}{2a}
 \end{align}</div>
 <h3><span class="caps">MATLAB</span> scripting&#8212;the&nbsp;editor</h3>
-<p><img alt="Matlab editor" src="/images/matlab_editor_annotated.png" /></p>
+<p><img alt="Matlab editor" src="/images/matlab_editor_annotated.png"></p>
 <h3><span class="caps">MATLAB</span>&nbsp;scripting&#8212;example</h3>
 <p>Using the commands that we already know, we can write the&nbsp;script:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
@@ -634,7 +634,7 @@
 
 <h3>Getting&nbsp;help</h3>
 <p><span class="caps">MATLAB</span> has a comprehensive online help, which details all the functions and how to use&nbsp;them. </p>
-<p><img alt="Matlab help" src="/images/matlab_help.png" /></p>
+<p><img alt="Matlab help" src="/images/matlab_help.png"></p>
 <p>Additionally, a free online book, <a href="http://www.mathworks.com/moler/chapters.html">Numerical Computing with <span class="caps">MATLAB</span></a>, is available, written by the inventor of <span class="caps">MATLAB</span>, Cleve&nbsp;Moler.</p>
 <h3>Flow control in&nbsp;functions</h3>
 <p>An important part of a programme is its ability to make decisions based on input, and take actions based on that decision. There are two main ways of doing&nbsp;this:</p>
@@ -805,15 +805,13 @@
     }
 
     var mathjaxscript = document.createElement('script');
-    var location_protocol = (false) ? 'https' : document.location.protocol;
-    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
     mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
     mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +

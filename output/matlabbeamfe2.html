@@ -28,11 +28,11 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
 <meta name="author" content="Amit" />
-<meta name="description" content="Completing the beam FE program In the previous lectures, we developed a basic truss finite element program. In this lecture, we’ll extend that program, first by adding in aligned boundary conditions, and then by adding more advanced element types (frame and beam elements). We’ll also look at plotting ..." />
+<meta name="description" content="Completing the beam FE program In the previous lectures, we developed a basic truss finite element program. In this lecture, we’ll extend that program, first by adding in aligned boundary conditions, and then by adding more advanced element types (frame and beam elements). We’ll also look at plotting …" />
 <meta name="keywords" content="matlab, code, teaching, bath">
 <meta property="og:site_name" content="Amit's notes"/>
 <meta property="og:title" content="Introduction to Matlab: lecture 4"/>
-<meta property="og:description" content="Completing the beam FE program In the previous lectures, we developed a basic truss finite element program. In this lecture, we’ll extend that program, first by adding in aligned boundary conditions, and then by adding more advanced element types (frame and beam elements). We’ll also look at plotting ..."/>
+<meta property="og:description" content="Completing the beam FE program In the previous lectures, we developed a basic truss finite element program. In this lecture, we’ll extend that program, first by adding in aligned boundary conditions, and then by adding more advanced element types (frame and beam elements). We’ll also look at plotting …"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="//amit.visrolia.net/matlabbeamfe2.html"/>
 <meta property="og:type" content="article"/>
@@ -104,7 +104,7 @@
 <p>This is the last of this series of lectures, so I hope that by the end, the students will have an appreciation of the process of creating a Matlab&nbsp;program.</p>
 <h2>Aligned boundary conditions in the&nbsp;solver</h2>
 <p>The code developed for the solver in the previous lecture applied boundary conditions only in the global coordinate system (<span class="math">\(u=0\)</span> or <span class="math">\(v=0\)</span>). To make the code a bit more general, we should handle aligned supports (<span class="math">\(u'=0\)</span> or <span class="math">\(v'=0\)</span>).</p>
-<p><img alt="Aligned boundary conditions" src="/images/alignedbc.png" /></p>
+<p><img alt="Aligned boundary conditions" src="/images/alignedbc.png"></p>
 <h3>Solution&nbsp;vector</h3>
 <p>Instead of solving for the a solution vector of the&nbsp;form:</p>
 <div class="math">\begin{align}
@@ -171,7 +171,7 @@
 <li>displacement in <span class="math">\(y\)</span>-direction (<span class="math">\(v\)</span>)</li>
 <li>rotation (<span class="math">\(\phi\)</span>)</li>
 </ul>
-<p><img alt="Frame element in the local coordinate system" src="/images/frameelementlocal.png" /></p>
+<p><img alt="Frame element in the local coordinate system" src="/images/frameelementlocal.png"></p>
 <h3>Frame element stiffness&nbsp;matrix</h3>
 <p>The terms in the stiffness matrix can still be calculated&nbsp;directly.</p>
 <p>The stiffness matrix for a 2-node frame element, with a solution vector of the form <span class="math">\(\mathbf{u}'_e = [u'_1, v'_1, \phi_1, u'_2, v'_2, \phi_2]^T\)</span>&nbsp;is:</p>
@@ -247,7 +247,7 @@
   \varepsilon_{x'}(x',\bar{y}) &amp;= \frac{\mathrm{d}u'}{\mathrm{d}x'} -\bar{y}\frac{\mathrm{d}^2v'}{\mathrm{d}x'^2} \label{eq:strain} \\
   M(x') &amp;= EI \frac{\mathrm{d}^2v'}{\mathrm{d}x'^2} \label{eq:bendingmoment}
  \end{align}</div>
-<p><img alt="Strains in beam bending" src="/images/neutralaxis.png" /></p>
+<p><img alt="Strains in beam bending" src="/images/neutralaxis.png"></p>
 <ul>
 <li><span class="math">\(\bar{y}\)</span> is the distance from the neutral&nbsp;axis</li>
 <li><span class="math">\(\frac{\mathrm{d}u'}{\mathrm{d}x'}\)</span> is the mean axial strain&#8212;-this is the same as it is for the truss element (previous&nbsp;lecture)</li>
@@ -305,7 +305,7 @@
 <p>In the previous lecture, the results of the analysis were presented as a <span class="caps">MATLAB</span> vector of&nbsp;values.</p>
 <p><span class="caps">MATLAB</span> has some powerful plotting functions, so we can try to visualize these results to make them easier to&nbsp;understand.</p>
 <h3>The&nbsp;problem</h3>
-<p><img alt="Tutorial example with truss elements" src="/images/truss_tutorial.png" /></p>
+<p><img alt="Tutorial example with truss elements" src="/images/truss_tutorial.png"></p>
 <h3>Saving the&nbsp;results</h3>
 <p>So that we don&#8217;t have to re-run the whole model every time we want to create a plot, we can save the results to a&nbsp;file. </p>
 <p>This step isn&#8217;t necessary for the type of problems we might be solving, but when the models become larger and take a significant amount of time to run, it is useful to be able to keep a copy of the solution vector so that it can be processed at a later&nbsp;date.</p>
@@ -326,7 +326,7 @@
 <li>All of the plotting commands create their own figure windows, so it&#8217;s not necessary to explicitly create a&nbsp;&#8216;figure&#8217;.</li>
 <li>However, it&#8217;s useful to use this command to ensure that a plot is created on a new figure window, and not an existing&nbsp;window.</li>
 </ul>
-<p><img alt="Blank Matlab figure window" src="/images/matlab_figure_blank.png" /></p>
+<p><img alt="Blank Matlab figure window" src="/images/matlab_figure_blank.png"></p>
 <h3>The plot&nbsp;command</h3>
 <p>The plot command in its simplest form takes two arguments: a vector of <span class="math">\(x\)</span>-values and a vector of <span class="math">\(y\)</span>-values, <em>e.g.</em></p>
 <div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">x</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">10</span><span class="p">;</span>
@@ -335,7 +335,7 @@
 </pre></div>
 
 
-<p><img alt="Plot of the function x-squared" src="/images/x2.png" /></p>
+<p><img alt="Plot of the function x-squared" src="/images/x2.png"></p>
 <h3>Formatting the&nbsp;plot</h3>
 <p>A third argument is used in the plot command to control the appearance of the plotted line. Some common options&nbsp;are:</p>
 <ul>
@@ -355,7 +355,7 @@
 </pre></div>
 
 
-<p><img alt="The nodes of the structure plotted" src="/images/truss_nodes.png" /></p>
+<p><img alt="The nodes of the structure plotted" src="/images/truss_nodes.png"></p>
 <p>The full details on the capability of the <code>plot</code> command are given by typing <code>help plot</code> at the <span class="caps">MATLAB</span> command&nbsp;prompt.</p>
 <h3>Plot&nbsp;lines</h3>
 <p>To plot the elements, we can use the <code>line</code> command. Before we do this, we use the&nbsp;command</p>
@@ -370,7 +370,7 @@ We can use it in a loop, to plot one <code>line</code> (with two pairs of <span 
 </pre></div>
 
 
-<p><img alt="The elements of the structure plotted" src="/images/truss_mesh.png" /></p>
+<p><img alt="The elements of the structure plotted" src="/images/truss_mesh.png"></p>
 <h3>Adding&nbsp;colour</h3>
 <p>The <code>line</code> function also takes an argument <code>color</code> (note the incorrect spelling).
 Instead of giving the lines colours like &#8216;b&#8217; for blue or &#8216;r&#8217; for red, we can be more specific about the colour: the red, green and blue components can be specified as a row vector, using values between 0&#8212;1. Some examples&nbsp;are:</p>
@@ -390,12 +390,12 @@ Instead of giving the lines colours like &#8216;b&#8217; for blue or &#8216;r&#8
 
 <h3>The finished postprocessor with&nbsp;displacements</h3>
 <p>This is what we&#8217;re aiming&nbsp;for: </p>
-<p><img alt="The structure plotted with displacements and stresses" src="/images/truss_output.png" /></p>
+<p><img alt="The structure plotted with displacements and stresses" src="/images/truss_output.png"></p>
 <p>The displacement is shown by plotting <span class="math">\(\mathbf{x} + s\mathbf{u}\)</span>, where <span class="math">\(s\)</span> is a scaling factor.
 The colour represents the stress in the elements: blue is the lowest stress, red is the&nbsp;highest.</p>
 <h3>The displacements for frame&nbsp;elements</h3>
 <p>If the displacements are interpolated using the shape functions (at <em>e.g.</em> <code>xi = -1:0.1:1</code>), we can determine the displacements and plot the shape of a frame element. When plotting the line using <code>line(x,y)</code>, the parameters <code>x</code> and <code>y</code> will both be&nbsp;vectors.</p>
-<p><img alt="The frame structure plotted with displacements and stresses" src="/images/frame_output.png" /></p>
+<p><img alt="The frame structure plotted with displacements and stresses" src="/images/frame_output.png"></p>
 <ul>
 <li>The line command does not allow for change in colour along the length of a single line, so we can&#8217;t use this command to plot variables that are a function of <span class="math">\(x'\)</span>, such as bending&nbsp;moment. </li>
 </ul>
@@ -425,15 +425,13 @@ The colour represents the stress in the elements: blue is the lowest stress, red
     }
 
     var mathjaxscript = document.createElement('script');
-    var location_protocol = (false) ? 'https' : document.location.protocol;
-    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
     mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
     mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +
