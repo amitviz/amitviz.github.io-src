@@ -10,4 +10,5 @@ Authors: Amit
 <img src="/images/manarola4.jpg" class="imageitem half" />
 <img src="/images/manarola2.jpg" class="imageitem half" />
 <img src="/images/manarola3.jpg" class="imageitem half" />
+<img src="/images/manarola5.jpg" class="imageitem large" />
 </div>
