@@ -1,4 +1,4 @@
-Title: Bologno
+Title: Bologna
 Date: 2018-06-27
 Category: Pictures
 Tags: travel, italy, food, pasta

@@ -7,7 +7,7 @@ Authors: Amit
 
 <div class="imagepost">
 <img src="/images/manarola1.jpg" class="imageitem half" />
+<img src="/images/manarola4.jpg" class="imageitem half" />
 <img src="/images/manarola2.jpg" class="imageitem half" />
 <img src="/images/manarola3.jpg" class="imageitem half" />
-<img src="/images/manarola4.jpg" class="imageitem half" />
 </div>
