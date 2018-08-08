@@ -75,6 +75,32 @@
 
 <article>
   <header>
+    <h2><a href="//amit.visrolia.net/anaconda.html#anaconda">Anaconda&nbsp;environments</a></h2>
+    <p>
+          Posted on October 10, 2016 in <a href="//amit.visrolia.net/category/notes.html">Notes</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="//amit.visrolia.net/tag/python.html">python</a>,              <a href="//amit.visrolia.net/tag/conda.html">conda</a>,              <a href="//amit.visrolia.net/tag/virtualenv.html">virtualenv</a>
+    </p>
+  </header>
+  <div>
+      <p><a href="https://www.continuum.io/downloads#linux">Anaconda</a> is a Python distribution and package manager that might be a bit nicer than using <code>virtualenv</code>s and <code>pip</code>.</p>
+<p>To set up a new environment using&nbsp;Anaconda:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>conda create --name &lt;envname&gt; <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.5
+</pre></div>
+</td></tr></table>
+
+<p>The environment is created in the Anaconda installation directory. To activate and deactivate the …</p>
+      <br>
+      <a class="btn" href="//amit.visrolia.net/anaconda.html#anaconda">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
     <h2><a href="//amit.visrolia.net/tpcrystallization.html#tpcrystallization">Thermoplastic&nbsp;crystallization</a></h2>
     <p>
           Posted on October 10, 2016 in <a href="//amit.visrolia.net/category/notes.html">Notes</a>
@@ -336,28 +362,6 @@ rm ????_?.pdf
 </td></tr></table>
       <br>
       <a class="btn" href="//amit.visrolia.net/interleavepdf.html#interleavepdf">    Continue reading
-</a>
-  </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="//amit.visrolia.net/croppdf.html#croppdf">Cropping a pdf&nbsp;file</a></h2>
-    <p>
-          Posted on August 27, 2016 in <a href="//amit.visrolia.net/category/notes.html">Notes</a>
-
-
-          &#8226;     Tagged with
-
-              <a href="//amit.visrolia.net/tag/code.html">code</a>,              <a href="//amit.visrolia.net/tag/pdf.html">pdf</a>,              <a href="//amit.visrolia.net/tag/bash.html">bash</a>
-    </p>
-  </header>
-  <div>
-      <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>gs -o <span class="nv">$output</span> -sDEVICE<span class="o">=</span>pdfwrite -c <span class="s2">&quot;[/CropBox [</span><span class="nv">$x0</span><span class="s2"> </span><span class="nv">$y0</span><span class="s2"> </span><span class="nv">$x1</span><span class="s2"> </span><span class="nv">$y1</span><span class="s2">]&quot;</span> -c <span class="s2">&quot; /PAGES pdfmark&quot;</span> -f <span class="nv">$1</span>
-</pre></div>
-</td></tr></table>
-      <br>
-      <a class="btn" href="//amit.visrolia.net/croppdf.html#croppdf">    Continue reading
 </a>
   </div>
 </article>
