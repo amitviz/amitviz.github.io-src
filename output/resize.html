@@ -27,17 +27,23 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-  <meta name="author" content="Amit Visrolia" />
-  <meta name="description" content="Amit's notes, links, and pictures" />
+<meta name="author" content="Amit" />
+<meta name="description" content="To resize to a maximum dimension (maintaining aspect ratio): 1convert in.jpg -resize 1280x1280 out.jpg In batch, on a given folder (in-place, overwriting theoriginal!): 1parallel "convert {} -resize 1280x1280 {}" ::: *.jpg" />
+<meta name="keywords" content="linux">
 <meta property="og:site_name" content="Amit's notes"/>
-<meta property="og:type" content="blog"/>
-<meta property="og:title" content="Amit's notes"/>
-<meta property="og:description" content="Amit's notes, links, and pictures"/>
-<meta property="og:locale" content="en_GB"/>
-<meta property="og:url" content="//amit.visrolia.net"/>
+<meta property="og:title" content="Resize images using Imagemagick"/>
+<meta property="og:description" content="To resize to a maximum dimension (maintaining aspect ratio): 1convert in.jpg -resize 1280x1280 out.jpg In batch, on a given folder (in-place, overwriting theoriginal!): 1parallel "convert {} -resize 1280x1280 {}" ::: *.jpg"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="//amit.visrolia.net/resize.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2018-08-10 00:00:00+01:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="//amit.visrolia.net/author/amit.html">
+<meta property="article:section" content="Notes"/>
+<meta property="article:tag" content="linux"/>
+<meta property="og:image" content="">
 
-  <title>Amit's notes &ndash;     Tag linux
-</title>
+  <title>Amit's notes &ndash; Resize images using Imagemagick</title>
 </head>
 <body>
   <aside>
@@ -76,18 +82,15 @@
 
 <article>
   <header>
-    <h2><a href="//amit.visrolia.net/resize.html#resize">Resize images using&nbsp;Imagemagick</a></h2>
+    <h1 id="resize">Resize images using&nbsp;Imagemagick</h1>
     <p>
           Posted on August 10, 2018 in <a href="//amit.visrolia.net/category/notes.html">Notes</a>
 
 
-          &#8226;     Tagged with
-
-              <a href="//amit.visrolia.net/tag/linux.html">linux</a>
     </p>
   </header>
   <div>
-      <p>To resize to a maximum dimension (maintaining aspect&nbsp;ratio):</p>
+    <p>To resize to a maximum dimension (maintaining aspect&nbsp;ratio):</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>convert in.jpg -resize 1280x1280 out.jpg
 </pre></div>
 </td></tr></table>
@@ -96,99 +99,16 @@
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>parallel <span class="s2">&quot;convert  {} -resize 1280x1280 {}&quot;</span> ::: *.jpg
 </pre></div>
 </td></tr></table>
-      <br>
-      <a class="btn" href="//amit.visrolia.net/resize.html#resize">    Continue reading
-</a>
   </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="//amit.visrolia.net/image_rotation.html#image_rotation">Rotating images&nbsp;losslessly</a></h2>
+  <div class="tag-cloud">
     <p>
-          Posted on August 08, 2018 in <a href="//amit.visrolia.net/category/notes.html">Notes</a>
-
-
-          &#8226;     Tagged with
-
-              <a href="//amit.visrolia.net/tag/linux.html">linux</a>
+      <a href="//amit.visrolia.net/tag/linux.html">linux</a>
     </p>
-  </header>
-  <div>
-      <p>When the orientation doesn&#8217;t match the&nbsp;Exif:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>jhead -autorot  *.jpg
-</pre></div>
-</td></tr></table>
-      <br>
-      <a class="btn" href="//amit.visrolia.net/image_rotation.html#image_rotation">    Continue reading
-</a>
   </div>
-  <hr />
+
+
+
 </article>
-<article>
-  <header>
-    <h2><a href="//amit.visrolia.net/hdparm.html#hdparm">Spin down hard disk drives in&nbsp;Linux</a></h2>
-    <p>
-          Posted on October 30, 2016 in <a href="//amit.visrolia.net/category/notes.html">Notes</a>
-
-
-          &#8226;     Tagged with
-
-              <a href="//amit.visrolia.net/tag/code.html">code</a>,              <a href="//amit.visrolia.net/tag/linux.html">linux</a>
-    </p>
-  </header>
-  <div>
-      <p>Using <code>hdparm</code>, to determine the current&nbsp;state: </p>
-<div class="highlight"><pre><span></span>hdparm -B /dev/sda
-</pre></div>
-
-
-<p>To set the&nbsp;parameters: </p>
-<div class="highlight"><pre><span></span>hdparm -B <span class="m">127</span> -S <span class="m">36</span> -M /dev/sda
-</pre></div>
-
-
-<ul>
-<li><code>-B</code> sets advanced pover management: values below 128 permit&nbsp;spin-down</li>
-<li><code>-S</code> sets the spin-down time, in multiples of 5 seconds. 36 here represents 3&nbsp;minutes</li>
-<li><code>-M</code> sets …</li></ul>
-      <br>
-      <a class="btn" href="//amit.visrolia.net/hdparm.html#hdparm">    Continue reading
-</a>
-  </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="//amit.visrolia.net/rsync.html#rsync">Do-It-Yourself Backup System Using&nbsp;Rsync</a></h2>
-    <p>
-          Posted on March 02, 2010 in <a href="//amit.visrolia.net/category/links.html">Links</a>
-
-
-          &#8226;     Tagged with
-
-              <a href="//amit.visrolia.net/tag/linux.html">linux</a>
-    </p>
-  </header>
-  <div>
-      <p><a href="http://www.sanitarium.net/golug/rsync_backups_2010.html">Kevin&nbsp;Korb</a></p>
-      <br>
-      <a class="btn" href="//amit.visrolia.net/rsync.html#rsync">    Continue reading
-</a>
-  </div>
-</article>
-
-  <div class="pagination">
-  <ul class="pagination">
-  
-    <li class="disabled"><a href="#!"><i class="fa fa-angle-left"></i></a></li>
-  
-    <li class="active"><a href="#!">1</a></li>
-  
-    <li class="disabled"><a href="#!"><i class="fa fa-angle-right"></i></a></li>
-  
-  </ul>
-  </div>
 
     <footer>
 <p>&copy; Amit Visrolia 2016</p>

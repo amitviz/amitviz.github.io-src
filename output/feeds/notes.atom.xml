@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Amit's notes - Notes</title><link href="//amit.visrolia.net/" rel="alternate"></link><link href="//amit.visrolia.net/feeds/notes.atom.xml" rel="self"></link><id>//amit.visrolia.net/</id><updated>2018-08-08T00:00:00+01:00</updated><entry><title>Rotating images losslessly</title><link href="//amit.visrolia.net/image_rotation.html" rel="alternate"></link><published>2018-08-08T00:00:00+01:00</published><updated>2018-08-08T00:00:00+01:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2018-08-08:/image_rotation.html</id><summary type="html">&lt;p&gt;When the orientation doesn&amp;#8217;t match the&amp;nbsp;Exif:&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Amit's notes - Notes</title><link href="//amit.visrolia.net/" rel="alternate"></link><link href="//amit.visrolia.net/feeds/notes.atom.xml" rel="self"></link><id>//amit.visrolia.net/</id><updated>2018-08-10T00:00:00+01:00</updated><entry><title>Resize images using Imagemagick</title><link href="//amit.visrolia.net/resize.html" rel="alternate"></link><published>2018-08-10T00:00:00+01:00</published><updated>2018-08-10T00:00:00+01:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2018-08-10:/resize.html</id><summary type="html">&lt;p&gt;To resize to a maximum dimension (maintaining aspect&amp;nbsp;ratio):&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;convert in.jpg -resize 1280x1280 out.jpg
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;In batch, on a given folder (in-place, overwriting&amp;nbsp;theoriginal!): &lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;parallel &lt;span class="s2"&gt;&amp;quot;convert  {} -resize 1280x1280 {}&amp;quot;&lt;/span&gt; ::: *.jpg
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</summary><content type="html">&lt;p&gt;To resize to a maximum dimension (maintaining aspect&amp;nbsp;ratio):&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;convert in.jpg -resize 1280x1280 out.jpg
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;In batch, on a given folder (in-place, overwriting&amp;nbsp;theoriginal!): &lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;parallel &lt;span class="s2"&gt;&amp;quot;convert  {} -resize 1280x1280 {}&amp;quot;&lt;/span&gt; ::: *.jpg
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content><category term="linux"></category></entry><entry><title>Rotating images losslessly</title><link href="//amit.visrolia.net/image_rotation.html" rel="alternate"></link><published>2018-08-08T00:00:00+01:00</published><updated>2018-08-08T00:00:00+01:00</updated><author><name>Amit</name></author><id>tag:amit.visrolia.net,2018-08-08:/image_rotation.html</id><summary type="html">&lt;p&gt;When the orientation doesn&amp;#8217;t match the&amp;nbsp;Exif:&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;jhead -autorot  *.jpg
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</summary><content type="html">&lt;p&gt;When the orientation doesn&amp;#8217;t match the&amp;nbsp;Exif:&lt;/p&gt;

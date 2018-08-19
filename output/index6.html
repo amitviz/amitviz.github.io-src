@@ -75,6 +75,59 @@
 
 <article>
   <header>
+    <h2><a href="//amit.visrolia.net/hdparm.html#hdparm">Spin down hard disk drives in&nbsp;Linux</a></h2>
+    <p>
+          Posted on October 30, 2016 in <a href="//amit.visrolia.net/category/notes.html">Notes</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="//amit.visrolia.net/tag/code.html">code</a>,              <a href="//amit.visrolia.net/tag/linux.html">linux</a>
+    </p>
+  </header>
+  <div>
+      <p>Using <code>hdparm</code>, to determine the current&nbsp;state: </p>
+<div class="highlight"><pre><span></span>hdparm -B /dev/sda
+</pre></div>
+
+
+<p>To set the&nbsp;parameters: </p>
+<div class="highlight"><pre><span></span>hdparm -B <span class="m">127</span> -S <span class="m">36</span> -M /dev/sda
+</pre></div>
+
+
+<ul>
+<li><code>-B</code> sets advanced pover management: values below 128 permit&nbsp;spin-down</li>
+<li><code>-S</code> sets the spin-down time, in multiples of 5 seconds. 36 here represents 3&nbsp;minutes</li>
+<li><code>-M</code> sets …</li></ul>
+      <br>
+      <a class="btn" href="//amit.visrolia.net/hdparm.html#hdparm">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="//amit.visrolia.net/vtk_tutorial.html#vtk_tutorial"><span class="caps">VTK</span>&nbsp;tutorial</a></h2>
+    <p>
+          Posted on October 15, 2016 in <a href="//amit.visrolia.net/category/notes.html">Notes</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="//amit.visrolia.net/tag/vtk.html">vtk</a>,              <a href="//amit.visrolia.net/tag/python.html">python</a>
+    </p>
+  </header>
+  <div>
+      <p><a href="//amit.visrolia.net/pdf/quammen_vtk.pdf">Scientific data analysis and visualization with Python, <span class="caps">VTK</span> and ParaView&nbsp;(pdf)</a></p>
+      <br>
+      <a class="btn" href="//amit.visrolia.net/vtk_tutorial.html#vtk_tutorial">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
     <h2><a href="//amit.visrolia.net/anaconda.html#anaconda">Anaconda&nbsp;environments</a></h2>
     <p>
           Posted on October 10, 2016 in <a href="//amit.visrolia.net/category/notes.html">Notes</a>
@@ -302,66 +355,6 @@
       <p><a href="https://github.com/Droogans/unmaintainable-code#how-to-write-unmaintainable-code">How to write unmaintainable&nbsp;code</a></p>
       <br>
       <a class="btn" href="//amit.visrolia.net/unmaintainable.html#unmaintainable">    Continue reading
-</a>
-  </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="//amit.visrolia.net/gnr2016.html#gnr2016">Great North&nbsp;Run</a></h2>
-    <p>
-          Posted on September 11, 2016 in <a href="//amit.visrolia.net/category/pictures.html">Pictures</a>
-
-
-          &#8226;     Tagged with
-
-              <a href="//amit.visrolia.net/tag/travel.html">travel</a>,              <a href="//amit.visrolia.net/tag/newcastle.html">newcastle</a>,              <a href="//amit.visrolia.net/tag/running.html">running</a>
-    </p>
-  </header>
-  <div>
-      <div class="imagepost">
-<img src="/images/gnr.jpg" class="imageitem large" />
-</div>
-      <br>
-      <a class="btn" href="//amit.visrolia.net/gnr2016.html#gnr2016">    Continue reading
-</a>
-  </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="//amit.visrolia.net/interleavepdf.html#interleavepdf">Interleaving two pdf&nbsp;files</a></h2>
-    <p>
-          Posted on August 28, 2016 in <a href="//amit.visrolia.net/category/notes.html">Notes</a>
-
-
-          &#8226;     Tagged with
-
-              <a href="//amit.visrolia.net/tag/code.html">code</a>,              <a href="//amit.visrolia.net/tag/pdf.html">pdf</a>,              <a href="//amit.visrolia.net/tag/bash.html">bash</a>
-    </p>
-  </header>
-  <div>
-      <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9</pre></div></td><td class="code"><div class="highlight"><pre><span></span>pdftk <span class="nv">$1</span> burst output %04d_A.pdf
-pdftk <span class="nv">$2</span> burst output %04d_B.pdf
-
-rm <span class="nv">$1</span>
-rm <span class="nv">$2</span>
-
-pdftk *.pdf cat output output.pdf
-
-rm ????_?.pdf
-</pre></div>
-</td></tr></table>
-      <br>
-      <a class="btn" href="//amit.visrolia.net/interleavepdf.html#interleavepdf">    Continue reading
 </a>
   </div>
 </article>
